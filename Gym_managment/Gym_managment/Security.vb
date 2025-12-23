@@ -1,0 +1,51 @@
+Imports System.Security.Cryptography
+Imports System.Text
+
+Module Security
+
+    ' Create a PBKDF2 hash for the provided password.
+    ' Format: iterations:saltBase64:hashBase64
+    Public Function HashPassword(password As String, Optional iterations As Integer = 100000) As String
+        If String.IsNullOrEmpty(password) Then Return String.Empty
+        Dim salt(15) As Byte
+        Using rng = RandomNumberGenerator.Create()
+            rng.GetBytes(salt)
+        End Using
+        Dim hash = Rfc2898DeriveBytes.Pbkdf2(password, salt, iterations, HashAlgorithmName.SHA256, 32)
+        Return String.Format("{0}:{1}:{2}", iterations, Convert.ToBase64String(salt), Convert.ToBase64String(hash))
+    End Function
+
+    ' Verify a password against a stored hash (supports PBKDF2 format). Returns True if match.
+    Public Function VerifyPassword(password As String, storedHash As String) As Boolean
+        If String.IsNullOrEmpty(storedHash) OrElse String.IsNullOrEmpty(password) Then Return False
+
+        ' PBKDF2 format: iterations:salt:hash
+        If storedHash.Contains(":"c) Then
+            Dim parts = storedHash.Split(":"c)
+            If parts.Length <> 3 Then Return False
+            Dim iterations As Integer
+            If Not Integer.TryParse(parts(0), iterations) Then Return False
+            Dim salt As Byte() = Convert.FromBase64String(parts(1))
+            Dim hash As Byte() = Convert.FromBase64String(parts(2))
+
+            Dim computed = Rfc2898DeriveBytes.Pbkdf2(password, salt, iterations, HashAlgorithmName.SHA256, hash.Length)
+            Return FixedTimeEquals(hash, computed)
+        Else
+            ' Fallback: legacy SHA256 hex string (previous implementation). Compare SHA256 hex.
+            Dim bytes = Encoding.UTF8.GetBytes(password)
+            Dim computedHash As Byte() = SHA256.HashData(bytes)
+            Dim computedHex = Convert.ToHexString(computedHash)
+            Return String.Equals(computedHex, storedHash, StringComparison.OrdinalIgnoreCase)
+        End If
+    End Function
+
+    Private Function FixedTimeEquals(a As Byte(), b As Byte()) As Boolean
+        If a.Length <> b.Length Then Return False
+        Dim diff As Integer = 0
+        For i = 0 To a.Length - 1
+            diff = diff Or (a(i) Xor b(i))
+        Next
+        Return diff = 0
+    End Function
+
+End Module

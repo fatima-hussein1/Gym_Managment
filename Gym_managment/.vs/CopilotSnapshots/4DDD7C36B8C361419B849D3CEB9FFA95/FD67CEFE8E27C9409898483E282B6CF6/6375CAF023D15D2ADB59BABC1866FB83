@@ -1,0 +1,83 @@
+﻿Imports System.Globalization
+
+Public Class FrmAppointmentTrainer
+
+    Private _displayedDate As Date = Date.Today
+
+    Private Sub FrmAppointmentTrainer_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ' اضبط التقويم عند فتح الشاشة
+        RenderCalendar(_displayedDate)
+    End Sub
+
+    Private Sub btnPrevMonth_Click(sender As Object, e As EventArgs) Handles btnPrevMonth.Click
+        _displayedDate = _displayedDate.AddMonths(-1)
+        RenderCalendar(_displayedDate)
+    End Sub
+
+    Private Sub btnNextMonth_Click(sender As Object, e As EventArgs) Handles btnNextMonth.Click
+        _displayedDate = _displayedDate.AddMonths(1)
+        RenderCalendar(_displayedDate)
+    End Sub
+
+    Private Sub btnToday_Click(sender As Object, e As EventArgs) Handles btnToday.Click
+        _displayedDate = Date.Today
+        RenderCalendar(_displayedDate)
+    End Sub
+
+    ' دالة رسم التقويم في الفلو لياوت
+    Private Sub RenderCalendar(targetDate As Date)
+        flDays.SuspendLayout()
+        flDays.Controls.Clear()
+
+        Dim monthStart As New Date(targetDate.Year, targetDate.Month, 1)
+
+        ' نعرض اسم الشهر والسنة بالعربي
+        Dim arCulture As New CultureInfo("ar-SA")
+        lblMonthAndYear.Text = monthStart.ToString("MMMM yyyy", arCulture)
+
+        ' نحدد بداية الأسبوع (السبت) ليتوافق مع عناوين الأيام لديك
+        Dim firstDayOfWeek As DayOfWeek = DayOfWeek.Saturday
+        Dim current As Date = monthStart
+        While current.DayOfWeek <> firstDayOfWeek
+            current = current.AddDays(-1)
+        End While
+
+        ' ننشئ 6 أسطر * 7 أعمدة (42 يوم) لتغطية أي شهر
+        For i As Integer = 0 To 41
+            Dim dayDate As Date = current.AddDays(i)
+
+            Dim dayCell As New DayCell()
+            dayCell.SetDate(dayDate)
+            dayCell.Tag = dayDate
+
+            ' تمييز اليوم الحالي
+            If dayDate.Date = Date.Today Then
+                dayCell.BackColor = Color.FromArgb(52, 152, 219)
+            End If
+
+            ' تمييز الأيام خارج الشهر الحالي بلون أفتح
+            If dayDate.Month <> targetDate.Month Then
+                dayCell.ForeColor = Color.Gray
+            End If
+
+            ' عند الضغط على اليوم نفتح شاشة المواعيد للمدرب
+            AddHandler dayCell.Click, AddressOf DayCell_Click
+
+            flDays.Controls.Add(dayCell)
+        Next
+
+        flDays.ResumeLayout()
+    End Sub
+
+    Private Sub DayCell_Click(sender As Object, e As EventArgs)
+        Dim cell = TryCast(sender, DayCell)
+        If cell Is Nothing Then Return
+
+        Dim selectedDate As Date = CType(cell.Tag, Date)
+
+        Dim frm As New FrmAdd_Update_Appointments()
+        frm.SelectedDate = selectedDate
+        frm.ShowDialog(Me)
+    End Sub
+
+End ClassEnd Class

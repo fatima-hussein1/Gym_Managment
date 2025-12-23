@@ -1,0 +1,61 @@
+﻿Imports Microsoft.Data.SqlClient
+Imports System.Drawing
+
+Public Class FrmTrainerEdit
+    Private TrainerID As Integer = 0
+
+    Private Sub FrmTrainerEdit_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim appFont As New Font("Times New Roman", 12.0F)
+        UIHelpers.SetLtrAndFont(Me, appFont)
+    End Sub
+
+    Public Sub LoadTrainer(id As Integer)
+        TrainerID = id
+        Try
+            OpenCon()
+            Dim cmd As New SqlCommand("SELECT FirstName, LastName, PhoneNumber, Salary, HireDate FROM Trainers WHERE TrainerID=@id", con)
+            cmd.Parameters.AddWithValue("@id", id)
+            Dim rdr As SqlDataReader = cmd.ExecuteReader()
+            If rdr.Read() Then
+                txtFirst.Text = rdr("FirstName").ToString()
+                txtLast.Text = rdr("LastName").ToString()
+                txtPhone.Text = rdr("PhoneNumber").ToString()
+                numSalary.Value = Convert.ToDecimal(rdr("Salary"))
+                dtpHire.Value = Date.Parse(rdr("HireDate").ToString())
+            End If
+            rdr.Close()
+            CloseCon()
+        Catch ex As Exception
+            MessageBox.Show("خطأ في تحميل بيانات المدرب: " & ex.Message)
+        End Try
+    End Sub
+
+    Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
+        Try
+            OpenCon()
+            Dim cmd As SqlCommand
+            If TrainerID = 0 Then
+                cmd = New SqlCommand("INSERT INTO Trainers(FirstName, LastName, PhoneNumber, Salary, HireDate) VALUES(@f,@l,@p,@s,@h)", con)
+            Else
+                cmd = New SqlCommand("UPDATE Trainers SET FirstName=@f, LastName=@l, PhoneNumber=@p, Salary=@s, HireDate=@h WHERE TrainerID=@id", con)
+                cmd.Parameters.AddWithValue("@id", TrainerID)
+            End If
+            cmd.Parameters.AddWithValue("@f", txtFirst.Text)
+            cmd.Parameters.AddWithValue("@l", txtLast.Text)
+            cmd.Parameters.AddWithValue("@p", txtPhone.Text)
+            cmd.Parameters.AddWithValue("@s", numSalary.Value)
+            cmd.Parameters.AddWithValue("@h", dtpHire.Value.Date)
+            cmd.ExecuteNonQuery()
+            CloseCon()
+            Me.DialogResult = DialogResult.OK
+            Me.Close()
+        Catch ex As Exception
+            MessageBox.Show("خطأ في حفظ بيانات المدرب: " & ex.Message)
+        End Try
+    End Sub
+
+    Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
+        Me.DialogResult = DialogResult.Cancel
+        Me.Close()
+    End Sub
+End Class

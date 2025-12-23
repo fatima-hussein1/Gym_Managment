@@ -1,0 +1,187 @@
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+Partial Class FrmLogin
+    'Inherits System.Windows.Forms.Form
+    Inherits MaterialSkin.Controls.MaterialForm
+
+    'Form overrides dispose to clean up the component list.
+    <System.Diagnostics.DebuggerNonUserCode()>
+    Protected Overrides Sub Dispose(disposing As Boolean)
+        Try
+            If disposing AndAlso components IsNot Nothing Then
+                components.Dispose()
+            End If
+        Finally
+            MyBase.Dispose(disposing)
+        End Try
+    End Sub
+
+    'Required by the Windows Form Designer
+    Private components As System.ComponentModel.IContainer
+
+    'NOTE: The following procedure is required by the Windows Form Designer
+    'It can be modified using the Windows Form Designer.
+    'Do not modify it using the code editor.
+    <System.Diagnostics.DebuggerStepThrough()>
+    Private Sub InitializeComponent()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.MaterialLabelTitle = New MaterialSkin.Controls.MaterialLabel()
+        Me.lblUsername = New MaterialSkin.Controls.MaterialLabel()
+        Me.lblPassword = New MaterialSkin.Controls.MaterialLabel()
+        Me.txtUsername = New System.Windows.Forms.TextBox()
+        Me.txtPassword = New System.Windows.Forms.TextBox()
+        Me.chkRemember = New System.Windows.Forms.CheckBox()
+        Me.MaterialButtonLogin = New MaterialSkin.Controls.MaterialButton()
+        Me.MaterialButtonCancel = New MaterialSkin.Controls.MaterialButton()
+        Me.GroupBox1.SuspendLayout()
+        Me.SuspendLayout()
+        ' 
+        ' GroupBox1
+        ' 
+        Me.GroupBox1.Controls.Add(Me.MaterialLabelTitle)
+        Me.GroupBox1.Controls.Add(Me.lblUsername)
+        Me.GroupBox1.Controls.Add(Me.lblPassword)
+        Me.GroupBox1.Controls.Add(Me.txtUsername)
+        Me.GroupBox1.Controls.Add(Me.txtPassword)
+        Me.GroupBox1.Controls.Add(Me.chkRemember)
+        Me.GroupBox1.Controls.Add(Me.MaterialButtonLogin)
+        Me.GroupBox1.Controls.Add(Me.MaterialButtonCancel)
+        Me.GroupBox1.Location = New System.Drawing.Point(180, 90)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(540, 300)
+        Me.GroupBox1.TabIndex = 0
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = ""
+        Me.GroupBox1.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        ' 
+        ' MaterialLabelTitle
+        ' 
+        Me.MaterialLabelTitle.AutoSize = True
+        Me.MaterialLabelTitle.Depth = 0
+        Me.MaterialLabelTitle.Font = New System.Drawing.Font("Roboto", 14.0!)
+        Me.MaterialLabelTitle.Location = New System.Drawing.Point(360, 20)
+        Me.MaterialLabelTitle.MouseState = MaterialSkin.MouseState.HOVER
+        Me.MaterialLabelTitle.Name = "MaterialLabelTitle"
+        Me.MaterialLabelTitle.Size = New System.Drawing.Size(110, 24)
+        Me.MaterialLabelTitle.TabIndex = 0
+        Me.MaterialLabelTitle.Text = "تسجيل الدخول"
+        Me.MaterialLabelTitle.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        ' 
+        ' lblUsername
+        ' 
+        Me.lblUsername.AutoSize = True
+        Me.lblUsername.Depth = 0
+        Me.lblUsername.Font = New System.Drawing.Font("Roboto", 11.0!)
+        Me.lblUsername.Location = New System.Drawing.Point(420, 80)
+        Me.lblUsername.MouseState = MaterialSkin.MouseState.HOVER
+        Me.lblUsername.Name = "lblUsername"
+        Me.lblUsername.Size = New System.Drawing.Size(100, 19)
+        Me.lblUsername.TabIndex = 1
+        Me.lblUsername.Text = "اسم المستخدم"
+        Me.lblUsername.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        ' 
+        ' lblPassword
+        ' 
+        Me.lblPassword.AutoSize = True
+        Me.lblPassword.Depth = 0
+        Me.lblPassword.Font = New System.Drawing.Font("Roboto", 11.0!)
+        Me.lblPassword.Location = New System.Drawing.Point(420, 140)
+        Me.lblPassword.MouseState = MaterialSkin.MouseState.HOVER
+        Me.lblPassword.Name = "lblPassword"
+        Me.lblPassword.Size = New System.Drawing.Size(86, 19)
+        Me.lblPassword.TabIndex = 2
+        Me.lblPassword.Text = "كلمة المرور"
+        Me.lblPassword.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        ' 
+        ' txtUsername
+        ' 
+        Me.txtUsername.Location = New System.Drawing.Point(60, 78)
+        Me.txtUsername.Name = "txtUsername"
+        Me.txtUsername.Size = New System.Drawing.Size(340, 27)
+        Me.txtUsername.TabIndex = 3
+        Me.txtUsername.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        ' 
+        ' txtPassword
+        ' 
+        Me.txtPassword.Location = New System.Drawing.Point(60, 138)
+        Me.txtPassword.Name = "txtPassword"
+        Me.txtPassword.Size = New System.Drawing.Size(340, 27)
+        Me.txtPassword.TabIndex = 4
+        Me.txtPassword.UseSystemPasswordChar = True
+        Me.txtPassword.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        ' 
+        ' chkRemember
+        ' 
+        Me.chkRemember.AutoSize = True
+        Me.chkRemember.Location = New System.Drawing.Point(360, 190)
+        Me.chkRemember.Name = "chkRemember"
+        Me.chkRemember.Size = New System.Drawing.Size(150, 24)
+        Me.chkRemember.TabIndex = 5
+        Me.chkRemember.Text = "تذكرني على هذا الجهاز"
+        Me.chkRemember.UseVisualStyleBackColor = True
+        Me.chkRemember.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        ' 
+        ' MaterialButtonLogin
+        ' 
+        Me.MaterialButtonLogin.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.MaterialButtonLogin.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default
+        Me.MaterialButtonLogin.Depth = 0
+        Me.MaterialButtonLogin.HighEmphasis = True
+        Me.MaterialButtonLogin.Icon = Nothing
+        Me.MaterialButtonLogin.Location = New System.Drawing.Point(320, 230)
+        Me.MaterialButtonLogin.Margin = New System.Windows.Forms.Padding(4, 6, 4, 6)
+        Me.MaterialButtonLogin.MouseState = MaterialSkin.MouseState.HOVER
+        Me.MaterialButtonLogin.Name = "MaterialButtonLogin"
+        Me.MaterialButtonLogin.NoAccentTextColor = System.Drawing.Color.Empty
+        Me.MaterialButtonLogin.Size = New System.Drawing.Size(120, 36)
+        Me.MaterialButtonLogin.TabIndex = 6
+        Me.MaterialButtonLogin.Text = "تسجيل الدخول"
+        Me.MaterialButtonLogin.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained
+        Me.MaterialButtonLogin.UseAccentColor = False
+        Me.MaterialButtonLogin.UseVisualStyleBackColor = True
+        ' 
+        ' MaterialButtonCancel
+        ' 
+        Me.MaterialButtonCancel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.MaterialButtonCancel.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default
+        Me.MaterialButtonCancel.Depth = 0
+        Me.MaterialButtonCancel.HighEmphasis = True
+        Me.MaterialButtonCancel.Icon = Nothing
+        Me.MaterialButtonCancel.Location = New System.Drawing.Point(160, 230)
+        Me.MaterialButtonCancel.Margin = New System.Windows.Forms.Padding(4, 6, 4, 6)
+        Me.MaterialButtonCancel.MouseState = MaterialSkin.MouseState.HOVER
+        Me.MaterialButtonCancel.Name = "MaterialButtonCancel"
+        Me.MaterialButtonCancel.NoAccentTextColor = System.Drawing.Color.Empty
+        Me.MaterialButtonCancel.Size = New System.Drawing.Size(96, 36)
+        Me.MaterialButtonCancel.TabIndex = 7
+        Me.MaterialButtonCancel.Text = "إلغاء"
+        Me.MaterialButtonCancel.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained
+        Me.MaterialButtonCancel.UseAccentColor = False
+        Me.MaterialButtonCancel.UseVisualStyleBackColor = True
+        ' 
+        ' frmlogin
+        ' 
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.ClientSize = New System.Drawing.Size(896, 593)
+        Me.Controls.Add(Me.GroupBox1)
+        Me.Name = "frmlogin"
+        Me.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.RightToLeftLayout = True
+        Me.Text = "تسجيل الدخول"
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
+        Me.ResumeLayout(False)
+
+    End Sub
+
+    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents MaterialLabelTitle As MaterialSkin.Controls.MaterialLabel
+    Friend WithEvents lblUsername As MaterialSkin.Controls.MaterialLabel
+    Friend WithEvents lblPassword As MaterialSkin.Controls.MaterialLabel
+    Friend WithEvents txtUsername As TextBox
+    Friend WithEvents txtPassword As TextBox
+    Friend WithEvents chkRemember As CheckBox
+    Friend WithEvents MaterialButtonLogin As MaterialSkin.Controls.MaterialButton
+    Friend WithEvents MaterialButtonCancel As MaterialSkin.Controls.MaterialButton
+
+End Class

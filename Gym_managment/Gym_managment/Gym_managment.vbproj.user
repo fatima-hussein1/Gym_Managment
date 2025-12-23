@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Compile Update="DayCell.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="FrmAddMember.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FrmAddTrainer.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FrmAdd_Update_Appointments.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FrmChangePassword.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmDisplayAppointment.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FrmLogin.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FrmMain.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FrmManageMemberPackages.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FrmManagememberr.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FrmPackages.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FrmProfile.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FrmTrainers.vb">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>

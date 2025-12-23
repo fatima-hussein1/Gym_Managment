@@ -1,0 +1,156 @@
+﻿Imports System.ComponentModel
+Imports Microsoft.Data.SqlClient
+Imports System.IO
+Imports MaterialSkin
+Imports System.Drawing
+
+Public Class FrmMain
+
+    Private Title As String = " منظومة إدارة مراكز تجميل"
+    Private SWBTNItem, SWInvoClick, SWStoreClick As Boolean
+    Private SWInvoText, SWStoreText, StrBack As String
+
+    Private R As New ResizeControls()
+
+    Private Sub FrmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ThemeManager.Initialize()
+        ThemeManager.ApplyTheme(Me)
+
+        ' تعيين خط Times New Roman بحجم 14 على الفورم وكل الأدوات
+        Dim appFont As New Font("Times New Roman", 14.0F, FontStyle.Regular)
+        Me.Font = appFont
+        ApplyFontToControls(Me, appFont)
+
+        ' Initialize radio buttons state
+        If ThemeManager.Mode = ThemeManager.ThemeMode.Dark Then
+            If rbDark IsNot Nothing Then rbDark.Checked = True
+        Else
+            If rbLight IsNot Nothing Then rbLight.Checked = True
+        End If
+    End Sub
+
+    Private Sub rbDark_CheckedChanged(sender As Object, e As EventArgs) Handles rbDark.CheckedChanged
+        If rbDark.Checked Then
+            ThemeManager.Mode = ThemeManager.ThemeMode.Dark
+            ThemeManager.ApplyTheme(Me)
+        End If
+    End Sub
+
+    Private Sub rbLight_CheckedChanged(sender As Object, e As EventArgs) Handles rbLight.CheckedChanged
+        If rbLight.Checked Then
+            ThemeManager.Mode = ThemeManager.ThemeMode.Light
+            ThemeManager.ApplyTheme(Me)
+        End If
+    End Sub
+
+    Private Sub BtnCautch_Click(sender As Object, e As EventArgs) Handles BtnCautch.Click
+        'OpenForm(frm, BtnCautch)
+    End Sub
+
+    Private Sub OpenForm(F As Form, B As Button)
+        If F.Visible = True Then
+            HideOpenForms()
+        Else
+            HideOpenForms()
+            F.TopLevel = False
+            F.Parent = PnlMain ' mapped MainPnl -> PnlMain
+            F.BringToFront()
+            F.Show()
+            F.Visible = True
+            F.Size = PnlMain.Size
+            F.Dock = DockStyle.Fill
+
+            Me.Text = Title & " - " & B.Text
+            B.BackColor = Color.White
+            B.ForeColor = Color.Black
+            B.Font = New Font("Hacen Saudi Arabia", 11, FontStyle.Regular)
+
+        End If
+    End Sub
+
+    Private Sub HideOpenForms()
+        For Each BB As Button In Panel1.Controls ' mapped Panel3 -> Panel1
+            If BB.BackColor <> DefaultBackColor Then
+                BB.BackColor = DefaultBackColor
+                BB.ForeColor = Color.Black
+                BB.Font = New Font("Hacen Saudi Arabia", 11, FontStyle.Regular)
+
+            End If
+        Next
+        Me.Text = Title
+
+        For Each FF As Form In Application.OpenForms
+            If FF.Name <> "FrmMain" Then
+                FF.Hide()
+                FF.Visible = False
+            End If
+        Next
+    End Sub
+
+    Private Sub CloseOpenForms()
+        For Each BB As Button In Panel1.Controls
+            BB.BackColor = DefaultBackColor
+            BB.ForeColor = Color.Black
+            BB.Font = New Font("Hacen Saudi Arabia", 11, FontStyle.Regular)
+        Next
+        Me.Text = Title
+
+        For i = Application.OpenForms.Count - 1 To 1 Step -1
+            Dim F As Form = Application.OpenForms(i)
+            If F.Name <> "FrmMain" Then
+                F.Close()
+            End If
+        Next i
+    End Sub
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        If Timer1.Tag >= 1 Then
+            Timer1.Tag = Timer1.Tag + 1
+        End If
+        If Timer1.Tag = 5 Then
+            Timer1.Tag = 0
+            TSLMessage.Visible = False
+            StatusStrip1.BackColor = Color.FromArgb(192, 192, 255)
+        End If
+        TSLDateTime.Text = Now
+        TSLUserName.Text = CurrentUsername & " - " & CurrentRoleName
+
+        'If swactive = True Then
+        '    UserTrafficRegister("FrmMain", 1)
+        '    swactive = False
+        'End If
+
+    End Sub
+
+    Private Sub ApplyFontToControls(parent As Control, f As Font)
+        For Each c As Control In parent.Controls
+            Try
+                c.Font = f
+            Catch
+                ' ignore
+            End Try
+            If c.HasChildren Then
+                ApplyFontToControls(c, f)
+            End If
+        Next
+    End Sub
+
+    Private Sub TsmSettings_Click(sender As Object, e As EventArgs) Handles TsmSettings.Click
+        ' Toggle theme when settings menu clicked
+        ThemeManager.ToggleTheme(Me)
+        If ThemeManager.Mode = ThemeManager.ThemeMode.Dark Then
+            If rbDark IsNot Nothing Then rbDark.Checked = True
+        Else
+            If rbLight IsNot Nothing Then rbLight.Checked = True
+        End If
+    End Sub
+
+    Private Sub FrmMain_Shown(sender As Object, e As EventArgs) Handles Me.Shown
+        FrmLogin.ShowDialog()
+    End Sub
+
+    Private Sub BtnCustomer_Click(sender As Object, e As EventArgs) Handles BtnCustomer.Click
+        OpenForm(FrmTrainers, BtnCautch)
+
+    End Sub
+End Class

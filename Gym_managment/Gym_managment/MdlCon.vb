@@ -1,0 +1,39 @@
+﻿Imports System.Data
+Imports Microsoft.Data.SqlClient
+
+Module MdlCon
+
+    Public ReadOnly ConnectionString As String = "Data Source=" & Environment.MachineName & ";Initial Catalog=GymDB;Integrated Security=True;Encrypt=True;TrustServerCertificate=True;"
+
+    Public con As SqlConnection = New SqlConnection(ConnectionString)
+    Public SQLQuery As String
+    Public rdr As SqlDataReader
+    Public DSTreasury As DataSet
+    Public Cmd As SqlCommand
+    Public CMDB As SqlCommandBuilder
+    Public dtTreasury As DataTable
+    Public DA As SqlDataAdapter
+    Public DTUserPermission As New DataTable
+
+    Public CurrentUserID As Integer = 0
+    Public CurrentUsername As String = String.Empty
+    Public CurrentFullName As String = String.Empty
+    Public CurrentRoleID As Integer = 0
+    Public CurrentRoleName As String = String.Empty
+
+    Public Sub OpenCon()
+        If con Is Nothing Then
+            con = New SqlConnection(ConnectionString)
+        End If
+        If con.State <> ConnectionState.Open Then
+            con.Open()
+        End If
+    End Sub
+
+    Public Sub CloseCon()
+        If con IsNot Nothing AndAlso con.State <> ConnectionState.Closed Then
+            con.Close()
+        End If
+    End Sub
+
+End Module

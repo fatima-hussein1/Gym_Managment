@@ -1,0 +1,72 @@
+﻿Imports Microsoft.Data.SqlClient
+Imports MaterialSkin
+
+Public Class FrmTrainers
+
+    Private Sub FrmTrainers_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim SkinManager As MaterialSkinManager = MaterialSkinManager.Instance
+        SkinManager.AddFormToManage(Me)
+        SkinManager.Theme = MaterialSkinManager.Themes.DARK
+        SkinManager.ColorScheme = New ColorScheme(Primary.Indigo500, Primary.Indigo700, Primary.Indigo100, Accent.LightBlue200, TextShade.WHITE)
+
+        LoadTrainers()
+    End Sub
+
+    Private Sub LoadTrainers()
+        Try
+            OpenCon()
+            Dim dt As New DataTable()
+            Dim sql As String = "SELECT TrainerID, FirstName, LastName, PhoneNumber, Salary, HireDate FROM Trainers"
+            Dim da As New SqlDataAdapter(sql, con)
+            da.Fill(dt)
+            dgvTrainers.DataSource = dt
+            CloseCon()
+        Catch ex As Exception
+            MessageBox.Show("خطأ في جلب بيانات المدربين: " & ex.Message)
+        End Try
+    End Sub
+
+    Private Sub btnRefresh_Click(sender As Object, e As EventArgs) Handles btnRefresh.Click
+        LoadTrainers()
+    End Sub
+
+    Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
+        Dim f As New FrmTrainerEdit()
+        If f.ShowDialog() = DialogResult.OK Then
+            LoadTrainers()
+        End If
+    End Sub
+
+    Private Sub btnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click
+        If dgvTrainers.SelectedRows.Count = 0 Then
+            MessageBox.Show("اختر مدرباً للتعديل")
+            Return
+        End If
+        Dim id As Integer = dgvTrainers.SelectedRows(0).Cells("TrainerID").Value
+        Dim f As New FrmTrainerEdit()
+        f.LoadTrainer(id)
+        If f.ShowDialog() = DialogResult.OK Then
+            LoadTrainers()
+        End If
+    End Sub
+
+    Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
+        If dgvTrainers.SelectedRows.Count = 0 Then
+            MessageBox.Show("اختر مدرباً للحذف")
+            Return
+        End If
+        Dim id As Integer = dgvTrainers.SelectedRows(0).Cells("TrainerID").Value
+        If MessageBox.Show("هل تريد حذف المدرب؟", "تأكيد", MessageBoxButtons.YesNo) = DialogResult.Yes Then
+            Try
+                OpenCon()
+                Dim cmd As New SqlCommand("DELETE FROM Trainers WHERE TrainerID=@id", con)
+                cmd.Parameters.AddWithValue("@id", id)
+                cmd.ExecuteNonQuery()
+                CloseCon()
+                LoadTrainers()
+            Catch ex As Exception
+                MessageBox.Show("خطأ في حذف المدرب: " & ex.Message)
+            End Try
+        End If
+    End Sub
+End Class

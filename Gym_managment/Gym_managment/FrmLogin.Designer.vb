@@ -1,0 +1,160 @@
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+Partial Class FrmLogin
+    'Inherits System.Windows.Forms.Form
+    Inherits MaterialSkin.Controls.MaterialForm
+
+    'Form overrides dispose to clean up the component list.
+    <System.Diagnostics.DebuggerNonUserCode()>
+    Protected Overrides Sub Dispose(disposing As Boolean)
+        Try
+            If disposing AndAlso components IsNot Nothing Then
+                components.Dispose()
+            End If
+        Finally
+            MyBase.Dispose(disposing)
+        End Try
+    End Sub
+
+    'Required by the Windows Form Designer
+    Private components As System.ComponentModel.IContainer
+
+    'NOTE: The following procedure is required by the Windows Form Designer
+    'It can be modified using the Windows Form Designer.
+    'Do not modify it using the code editor.
+    <System.Diagnostics.DebuggerStepThrough()>
+    Private Sub InitializeComponent()
+        GroupBox1 = New GroupBox()
+        PictureBox3 = New PictureBox()
+        PictureBox2 = New PictureBox()
+        PictureBox1 = New PictureBox()
+        TxtPasswprd = New TextBox()
+        CmbUserName = New ComboBox()
+        BtnExit = New Button()
+        BtnOk = New Button()
+        GroupBox1.SuspendLayout()
+        CType(PictureBox3, ComponentModel.ISupportInitialize).BeginInit()
+        CType(PictureBox2, ComponentModel.ISupportInitialize).BeginInit()
+        CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
+        SuspendLayout()
+        ' 
+        ' GroupBox1
+        ' 
+        GroupBox1.Controls.Add(PictureBox3)
+        GroupBox1.Controls.Add(PictureBox2)
+        GroupBox1.Controls.Add(PictureBox1)
+        GroupBox1.Controls.Add(TxtPasswprd)
+        GroupBox1.Controls.Add(CmbUserName)
+        GroupBox1.Controls.Add(BtnExit)
+        GroupBox1.Controls.Add(BtnOk)
+        GroupBox1.Location = New Point(28, 125)
+        GroupBox1.Name = "GroupBox1"
+        GroupBox1.RightToLeft = RightToLeft.Yes
+        GroupBox1.Size = New Size(597, 384)
+        GroupBox1.TabIndex = 0
+        GroupBox1.TabStop = False
+        ' 
+        ' PictureBox3
+        ' 
+        PictureBox3.Image = My.Resources.Resources.e9a60c4e3e80327e1f1024f27376b5c9
+        PictureBox3.Location = New Point(211, 26)
+        PictureBox3.Name = "PictureBox3"
+        PictureBox3.Size = New Size(145, 101)
+        PictureBox3.SizeMode = PictureBoxSizeMode.StretchImage
+        PictureBox3.TabIndex = 6
+        PictureBox3.TabStop = False
+        ' 
+        ' PictureBox2
+        ' 
+        PictureBox2.Image = My.Resources.Resources.icons8_password_48
+        PictureBox2.Location = New Point(451, 197)
+        PictureBox2.Name = "PictureBox2"
+        PictureBox2.Size = New Size(40, 34)
+        PictureBox2.SizeMode = PictureBoxSizeMode.StretchImage
+        PictureBox2.TabIndex = 5
+        PictureBox2.TabStop = False
+        ' 
+        ' PictureBox1
+        ' 
+        PictureBox1.Image = My.Resources.Resources.icons8_user_40
+        PictureBox1.Location = New Point(451, 143)
+        PictureBox1.Name = "PictureBox1"
+        PictureBox1.Size = New Size(40, 34)
+        PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage
+        PictureBox1.TabIndex = 4
+        PictureBox1.TabStop = False
+        ' 
+        ' TxtPasswprd
+        ' 
+        TxtPasswprd.Font = New Font("Times New Roman", 13.8F)
+        TxtPasswprd.Location = New Point(101, 197)
+        TxtPasswprd.Name = "TxtPasswprd"
+        TxtPasswprd.Size = New Size(326, 34)
+        TxtPasswprd.TabIndex = 3
+        TxtPasswprd.UseSystemPasswordChar = True
+        ' 
+        ' CmbUserName
+        ' 
+        CmbUserName.DropDownStyle = ComboBoxStyle.DropDownList
+        CmbUserName.Font = New Font("Times New Roman", 13.8F)
+        CmbUserName.Location = New Point(101, 143)
+        CmbUserName.Name = "CmbUserName"
+        CmbUserName.Size = New Size(326, 34)
+        CmbUserName.TabIndex = 2
+        ' 
+        ' BtnExit
+        ' 
+        BtnExit.BackColor = Color.FromArgb(CByte(255), CByte(192), CByte(192))
+        BtnExit.FlatStyle = FlatStyle.Flat
+        BtnExit.Font = New Font("Times New Roman", 12F)
+        BtnExit.Image = My.Resources.Resources.icons8_close_40__1_
+        BtnExit.ImageAlign = ContentAlignment.MiddleRight
+        BtnExit.Location = New Point(66, 288)
+        BtnExit.Name = "BtnExit"
+        BtnExit.Size = New Size(215, 74)
+        BtnExit.TabIndex = 1
+        BtnExit.Text = "إلغاء"
+        BtnExit.UseVisualStyleBackColor = False
+        ' 
+        ' BtnOk
+        ' 
+        BtnOk.BackColor = Color.FromArgb(CByte(192), CByte(255), CByte(192))
+        BtnOk.FlatStyle = FlatStyle.Flat
+        BtnOk.Font = New Font("Times New Roman", 12F)
+        BtnOk.Image = My.Resources.Resources.icons8_ok_48__1_
+        BtnOk.ImageAlign = ContentAlignment.MiddleRight
+        BtnOk.Location = New Point(309, 288)
+        BtnOk.Name = "BtnOk"
+        BtnOk.Size = New Size(215, 74)
+        BtnOk.TabIndex = 0
+        BtnOk.Text = "موافق"
+        BtnOk.UseVisualStyleBackColor = False
+        ' 
+        ' FrmLogin
+        ' 
+        AutoScaleDimensions = New SizeF(8F, 20F)
+        AutoScaleMode = AutoScaleMode.Font
+        ClientSize = New Size(649, 549)
+        Controls.Add(GroupBox1)
+        Name = "FrmLogin"
+        RightToLeft = RightToLeft.Yes
+        RightToLeftLayout = True
+        StartPosition = FormStartPosition.CenterScreen
+        GroupBox1.ResumeLayout(False)
+        GroupBox1.PerformLayout()
+        CType(PictureBox3, ComponentModel.ISupportInitialize).EndInit()
+        CType(PictureBox2, ComponentModel.ISupportInitialize).EndInit()
+        CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
+        ResumeLayout(False)
+
+    End Sub
+
+    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents BtnExit As Button
+    Friend WithEvents BtnOk As Button
+    Friend WithEvents TxtPasswprd As TextBox
+    Friend WithEvents CmbUserName As ComboBox
+    Friend WithEvents PictureBox2 As PictureBox
+    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents PictureBox3 As PictureBox
+
+End Class

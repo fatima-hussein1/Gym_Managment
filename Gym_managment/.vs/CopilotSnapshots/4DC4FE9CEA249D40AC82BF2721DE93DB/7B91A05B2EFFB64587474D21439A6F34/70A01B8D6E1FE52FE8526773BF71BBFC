@@ -1,0 +1,132 @@
+﻿Imports Microsoft.Data.SqlClient
+'Imports MaterialSkin
+Imports System.Drawing
+
+Partial Public Class FrmTrainers
+
+    Private DTTrainers As New DataTable
+
+
+    Private Sub FrmTrainers_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        Load_Trainers()
+    End Sub
+
+
+    Public Sub Load_Trainers()
+        dgvTrainers.Rows.Clear()
+        DTTrainers.Clear()
+        Try
+            SQLQuery = "SELECT * FROM Trainers where Active =1 "
+            DA = New SqlDataAdapter(SQLQuery, con)
+            DA.Fill(DTTrainers)
+
+            For i As Integer = 0 To DTTrainers.Rows.Count - 1
+                dgvTrainers.Rows.Add()
+
+                dgvTrainers.Item(0, i).Value = DTTrainers.Rows(i).Item("TrainerID")
+                dgvTrainers.Item(1, i).Value = DTTrainers.Rows(i).Item("Name")
+                dgvTrainers.Item(2, i).Value = DTTrainers.Rows(i).Item("PhoneNumber")
+                dgvTrainers.Item(3, i).Value = DTTrainers.Rows(i).Item("HireDate")
+                dgvTrainers.Item(4, i).Value = DTTrainers.Rows(i).Item("UserID")
+
+                ' الصورة في Column5 (index 5)
+                If Not IsDBNull(DTTrainers.Rows(i).Item("PicTrainer")) Then
+                    Dim imgData As Byte() = DirectCast(DTTrainers.Rows(i).Item("PicTrainer"), Byte())
+                    Using ms As New IO.MemoryStream(imgData)
+                        dgvTrainers.Item(5, i).Value = Image.FromStream(ms)
+                    End Using
+                Else
+                    dgvTrainers.Item(5, i).Value = Nothing
+                End If
+            Next
+        Catch ex As Exception
+            MsgBox("فشل في الاتصال بقواعد البيانات: " & ex.Message, MsgBoxStyle.Critical, "خطأ في الاتصال")
+        End Try
+    End Sub
+
+    ' معالجة أخطاء الربط في الـ DataGridView لتجنب رسالة الخطأ الافتراضية
+    Private Sub dgvTrainers_DataError(sender As Object, e As DataGridViewDataErrorEventArgs) Handles dgvTrainers.DataError
+        e.ThrowException = False
+    End Sub
+
+    Private Sub btnAdd_Click(sender As Object, e As EventArgs)
+        'Dim f As New FrmTrainerEdit()
+        'If f.ShowDialog() = DialogResult.OK Then
+        '    LoadTrainers()
+        'End If
+    End Sub
+
+    Private Sub BtnAddtrain_Click(sender As Object, e As EventArgs) Handles BtnAddtrain.Click
+        FrmAddTrainer.Trainer_ID = 0
+        FrmAddTrainer.CLEARITEMS()
+        FrmAddTrainer.BtnAddTrainer.Enabled = True
+        FrmAddTrainer.BtnUpdateTrainer.Enabled = False
+        FrmAddTrainer.ShowDialog()
+    End Sub
+
+    ' فتح نافذة تعديل بيانات المدرب أو حذفه من خلال أزرار داخل DataGridView
+    Private Sub dgvTrainers_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvTrainers.CellContentClick
+        If e.RowIndex < 0 Then Return
+
+        ' زر التعديل (عمود الأيقونة "تعديل" = Column6 index 6)
+        If e.ColumnIndex = 6 Then
+            With FrmAddTrainer
+                .Trainer_ID = dgvTrainers.CurrentRow.Cells(0).Value
+                If con.State = ConnectionState.Open Then con.Close()
+                con.Open()
+                Dim Cmd As New SqlCommand("Select * from Trainers Where TrainerID=@TrainerID", con)
+                Cmd.Parameters.AddWithValue("@TrainerID", .Trainer_ID)
+                Dim rdr As SqlDataReader = Cmd.ExecuteReader()
+                rdr.Read()
+                If rdr.HasRows Then
+                    .TxtName.Text = rdr("Name").ToString()
+                    .TxtPhone.Text = rdr("PhoneNumber").ToString()
+                    If Not IsDBNull(rdr("HireDate")) Then
+                        .DtpDate.Value = Convert.ToDateTime(rdr("HireDate"))
+                    Else
+                        .DtpDate.Value = Now
+                    End If
+
+                    If Not IsDBNull(rdr("PicTrainer")) Then
+                        Dim imgData As Byte() = DirectCast(rdr("PicTrainer"), Byte())
+                        Dim ms As New IO.MemoryStream(imgData)
+                        .Pictrainer.Image = Image.FromStream(ms)
+                    Else
+                        .Pictrainer.Image = Nothing
+                    End If
+
+                    rdr.Close()
+                    con.Close()
+                    .Text = "تعديل بيانات المدرب"
+                    .BtnAddTrainer.Enabled = False
+                    .BtnUpdateTrainer.Enabled = True
+                    .ShowDialog()
+                Else
+                    rdr.Close()
+                    con.Close()
+                End If
+            End With
+
+            ' زر الحذف (عمود الأيقونة "حذف" = Column7 index 7)
+        ElseIf e.ColumnIndex = 7 Then
+            If MsgBox("هل أنت متأكد من حذف هذا المدرب؟", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "تأكيد الحذف") = MsgBoxResult.Yes Then
+                Try
+                    If con.State = ConnectionState.Open Then con.Close()
+                    con.Open()
+                    Dim Cmd As New SqlCommand("UPDATE Trainers SET Active=0 WHERE TrainerID=@TrainerID", con)
+                    Cmd.Parameters.AddWithValue("@TrainerID", dgvTrainers.CurrentRow.Cells(0).Value)
+                    Cmd.ExecuteNonQuery()
+                    con.Close()
+                    MsgBox("تم حذف المدرب بنجاح", MsgBoxStyle.Information, "حذف")
+                    Load_Trainers()
+                Catch ex As Exception
+                    MsgBox("خطأ في الحذف: " & ex.Message, MsgBoxStyle.Critical, "خطأ")
+                Finally
+                    If con.State = ConnectionState.Open Then con.Close()
+                End Try
+            End If
+        End If
+    End Sub
+
+End Class

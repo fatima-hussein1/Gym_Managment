@@ -1,0 +1,19 @@
+﻿
+
+Public Class FrmAddTrainer
+    Private Sub FrmAddTrainer_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
+
+    Private Sub BtnAddTrainer_Click(sender As Object, e As EventArgs) Handles BtnAddTrainer.Click
+
+    End Sub
+
+    Private Sub BtnUpdateTrainer_Click(sender As Object, e As EventArgs) Handles BtnUpdateTrainer.Click
+
+    End Sub
+
+    Private Sub BtnNew_Click(sender As Object, e As EventArgs) Handles BtnNew.Click
+
+    End Sub
+End Class

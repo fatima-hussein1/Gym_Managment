@@ -1,0 +1,99 @@
+﻿Imports MaterialSkin
+Imports System.Drawing
+Imports Microsoft.Data.SqlClient
+
+Public Class frmlogin
+
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ' تهيئة MaterialSkinManager
+        Dim SkinManager As MaterialSkinManager = MaterialSkinManager.Instance
+
+        ' إضافة النموذج الحالي للمدير
+        SkinManager.AddFormToManage(Me)
+
+        ' تحديد السمة إلى داكنة (DARK) لواجهة احترافية
+        SkinManager.Theme = MaterialSkinManager.Themes.LIGHT
+
+        ' تغيير مخطط الألوان: استبدال Amber البرتقالي إلى Indigo حديث واحترافي
+        SkinManager.ColorScheme = New ColorScheme(
+            Primary.Indigo500,
+            Primary.Indigo700,
+            Primary.Indigo100,
+            Accent.LightBlue200,
+            TextShade.WHITE
+        )
+
+        ' تعيين خط Times New Roman بحجم 14 على الفورم وكل الأدوات
+        Dim appFont As New Font("Times New Roman", 14.0F, FontStyle.Regular)
+        Me.Font = appFont
+        ApplyFontToControls(Me, appFont)
+    End Sub
+
+    Private Sub ApplyFontToControls(parent As Control, f As Font)
+        For Each c As Control In parent.Controls
+            Try
+                c.Font = f
+            Catch
+                ' Ignore controls that don't accept font changes
+            End Try
+            If c.HasChildren Then
+                ApplyFontToControls(c, f)
+            End If
+        Next
+    End Sub
+
+    Private Sub BtnOk_Click(sender As Object, e As EventArgs) Handles BtnOk.Click
+        Dim username = TextBox1.Text.Trim()
+        Dim password = TextBox2.Text
+
+        If username = "" Or password = "" Then
+            MessageBox.Show("أدخل اسم المستخدم وكلمة المرور.", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
+
+        Try
+            OpenCon()
+            Dim sql = "SELECT u.UserID, u.Username, u.PasswordHash, u.FullName, u.RoleID, r.RoleName, u.IsActive FROM Users u LEFT JOIN Roles r ON u.RoleID=r.RoleID WHERE u.Username=@username"
+            Dim cmd As New SqlCommand(sql, con)
+            cmd.Parameters.AddWithValue("@username", username)
+            Dim rdr As SqlDataReader = cmd.ExecuteReader()
+            If rdr.Read() Then
+                If Not Convert.ToBoolean(rdr("IsActive")) Then
+                    MessageBox.Show("المستخدم معطل. اتصل بالمسؤول.", "ممنوع", MessageBoxButtons.OK, MessageBoxIcon.Stop)
+                    rdr.Close()
+                    CloseCon()
+                    Return
+                End If
+
+                Dim stored As String = rdr("PasswordHash").ToString()
+                ' Compare plaintext password directly to stored value (no hashing)
+                If stored = password Then
+                    ' Successful login
+                    CurrentUserID = Convert.ToInt32(rdr("UserID"))
+                    CurrentUsername = rdr("Username").ToString()
+                    CurrentFullName = rdr("FullName").ToString()
+                    CurrentRoleID = Convert.ToInt32(rdr("RoleID"))
+                    CurrentRoleName = If(rdr("RoleName") Is DBNull.Value, String.Empty, rdr("RoleName").ToString())
+                    rdr.Close()
+                    CloseCon()
+
+                    ' Open main form
+                    Dim main As New FrmMain()
+                    main.Show()
+                    Me.Hide()
+                Else
+                    MessageBox.Show("بيانات الدخول غير صحيحة.", "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    rdr.Close()
+                    CloseCon()
+                End If
+            Else
+                MessageBox.Show("بيانات الدخول غير صحيحة.", "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                rdr.Close()
+                CloseCon()
+            End If
+        Catch ex As Exception
+            MessageBox.Show("خطأ أثناء عملية الدخول: " & ex.Message)
+            CloseCon()
+        End Try
+    End Sub
+End Class

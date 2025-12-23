@@ -1,0 +1,133 @@
+﻿Imports System.Data.SqlClient
+Imports System.IO
+
+Public Class FrmAddMember
+    ' متغير لتحديد ما إذا كنا في وضع الإضافة (0) أو التعديل (رقم العضو)
+    Public Member_ID As Integer = 0
+
+    Private Sub FrmAddMember_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ' إذا كان معرف العضو 0 فهذا يعني إضافة جديدة، نقوم بتفريغ الحقول
+        If Member_ID = 0 Then
+            CLEARITEMS()
+        End If
+    End Sub
+
+    ' دالة لتفريغ الحقول
+    Public Sub CLEARITEMS()
+        TxtName.Text = ""
+        TxtPhone.Text = ""
+        DtpDate.Value = Now
+        PicMember.Image = Nothing
+        TxtName.Focus()
+    End Sub
+
+
+
+    ' دالة إضافة عضو جديد
+    Public Sub Insert_Member()
+
+        With Cmd
+            .Connection = con
+            .CommandType = CommandType.Text
+            .CommandText = "Insert Into Members (FirstName, LastName, PhoneNumber, RegistrationDate, UserNumber, Active) values (@FirstName, @LastName, @PhoneNumber, @RegistrationDate, @UserNumber, @Active)"
+            .Parameters.Clear()
+
+            ' Assuming TxtName contains full name, splitting for FirstName/LastName or just using it as FirstName
+            ' Adjust based on your actual TxtName usage. Here assuming FirstName = TxtName.Text
+            .Parameters.AddWithValue("@name", SqlDbType.NVarChar).Value = TxtName.Text
+            .Parameters.AddWithValue("@PhoneNumber", SqlDbType.NVarChar).Value = TxtPhone.Text
+            .Parameters.AddWithValue("@joinDate", SqlDbType.Date).Value = DtpDate.Value
+            .Parameters.AddWithValue("@memberpic", SqlDbType.Int).Value = 0 ' Default or generate one
+            .Parameters.AddWithValue("@Active", SqlDbType.Bit).Value = 1
+            .Parameters.AddWithValue("@UserID", SqlDbType.Int).Value = UserID
+
+        End With
+
+        If con.State = ConnectionState.Closed Then con.Open()
+        Cmd.ExecuteNonQuery()
+        con.Close()
+        MsgBox("تم إضافة العضو بنجاح", MsgBoxStyle.Information, "حفظ")
+        Cmd = Nothing
+    End Sub
+
+    ' زر الحفظ
+    Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnAddMember.Click
+        If TxtName.Text = vbNullString Then
+            MessageBox.Show("عذرا ، قم بتعبئة حقل الاسم", "تنبيه ", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.RightAlign)
+            Exit Sub
+        End If
+
+        Insert_Member()
+
+        ' تحديث الجدول في الواجهة الرئيسية للأعضاء
+        With FrmManagememberr
+            .Load_Members()
+        End With
+
+        ' تفريغ الحقول لإضافة عضو آخر أو إغلاق النافذة حسب رغبتك
+        CLEARITEMS()
+        ' Me.Close() ' فعل هذا السطر إذا أردت إغلاق النافذة بعد الحفظ
+    End Sub
+
+    ' دالة تعديل بيانات العضو
+    Public Sub Update_Member()
+        With Cmd
+            .Connection = con
+            .CommandType = CommandType.Text
+            .CommandText = "Update Members Set Name = @Name, PhoneNumber = @PhoneNumber, JoinDate = @JoinDate, memberPic = @memberPic Where MemberID = @MemberID"
+            .Parameters.Clear()
+
+            .Parameters.AddWithValue("@Name", SqlDbType.NVarChar).Value = TxtName.Text
+            .Parameters.AddWithValue("@PhoneNumber", SqlDbType.NVarChar).Value = TxtPhone.Text
+            .Parameters.AddWithValue("@JoinDate", SqlDbType.Date).Value = DtpDate.Value
+
+            Dim ms As New MemoryStream
+            If PicMember.Image IsNot Nothing Then
+                PicMember.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Png)
+                .Parameters.AddWithValue("@memberPic", SqlDbType.Image).Value = ms.ToArray()
+            Else
+                .Parameters.AddWithValue("@memberPic", SqlDbType.Image).Value = DBNull.Value
+            End If
+
+            .Parameters.AddWithValue("@MemberID", SqlDbType.Int).Value = Member_ID
+        End With
+
+        If con.State = 1 Then con.Close()
+        con.Open()
+        Cmd.ExecuteNonQuery()
+        con.Close()
+        MsgBox("تم تعديل بيانات العضو بنجاح", MsgBoxStyle.Information, "تعديل")
+        Cmd = Nothing
+    End Sub
+
+    ' زر التعديل
+    Private Sub BtnUpdate_Click(sender As Object, e As EventArgs) Handles BtnUpdateMember.Click
+        If TxtName.Text = vbNullString Then
+            MsgBox("الرجاء إدخال الاسم", vbExclamation, "خطأ إدخال")
+            Exit Sub
+        End If
+
+        Update_Member()
+
+        With FrmManagememberr
+            .Load_Members()
+        End With
+        Me.Close()
+    End Sub
+
+    ' الكود الموجود مسبقاً لاختيار الصورة
+    Private Sub PicMember_Click(sender As Object, e As EventArgs) Handles PicMember.Click
+        OpenFileDialog1.Filter = "Image Files|*.jpg;*.png;*.bmp;*.gif;*.ico"
+        If OpenFileDialog1.ShowDialog() = DialogResult.OK Then
+            PicMember.Image = Image.FromFile(OpenFileDialog1.FileName)
+        End If
+    End Sub
+
+    Private Sub DateTimePicker1_ValueChanged(sender As Object, e As EventArgs) Handles DtpDate.ValueChanged
+
+    End Sub
+
+    Private Sub BtnAddMember_Click(sender As Object, e As EventArgs) Handles BtnAddMember.Click
+
+    End Sub
+End Class

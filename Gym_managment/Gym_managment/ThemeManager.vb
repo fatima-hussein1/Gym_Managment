@@ -1,0 +1,46 @@
+Imports MaterialSkin
+Imports System.Drawing
+
+Module ThemeManager
+
+    Public Enum ThemeMode
+        Light
+        Dark
+    End Enum
+
+    Private _mode As ThemeMode = ThemeMode.Dark
+
+    Public Property Mode As ThemeMode
+        Get
+            Return _mode
+        End Get
+        Set(value As ThemeMode)
+            _mode = value
+            ' Persistence removed to avoid missing My.Settings in this project configuration
+        End Set
+    End Property
+
+    Public Sub Initialize()
+        ' No persistence available in this project setup; keep default or change programmatically
+    End Sub
+
+    Public Sub ApplyTheme(frm As MaterialSkin.Controls.MaterialForm)
+        Dim mgr = MaterialSkinManager.Instance
+        mgr.AddFormToManage(frm)
+        If _mode = ThemeMode.Dark Then
+            mgr.Theme = MaterialSkinManager.Themes.DARK
+        Else
+            mgr.Theme = MaterialSkinManager.Themes.LIGHT
+        End If
+        mgr.ColorScheme = New ColorScheme(Primary.Indigo500, Primary.Indigo700, Primary.Indigo100, Accent.LightBlue200, TextShade.WHITE)
+    End Sub
+
+    Public Sub ToggleTheme(frm As MaterialSkin.Controls.MaterialForm)
+        If _mode = ThemeMode.Dark Then
+            Mode = ThemeMode.Light
+        Else
+            Mode = ThemeMode.Dark
+        End If
+        ApplyTheme(frm)
+    End Sub
+End Module

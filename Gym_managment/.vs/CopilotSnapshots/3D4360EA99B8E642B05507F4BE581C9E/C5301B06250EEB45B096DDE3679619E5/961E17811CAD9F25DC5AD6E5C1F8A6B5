@@ -1,0 +1,99 @@
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+Partial Class FrmLogin
+    'Inherits System.Windows.Forms.Form
+    Inherits MaterialSkin.Controls.MaterialForm
+
+    'Form overrides dispose to clean up the component list.
+    <System.Diagnostics.DebuggerNonUserCode()>
+    Protected Overrides Sub Dispose(disposing As Boolean)
+        Try
+            If disposing AndAlso components IsNot Nothing Then
+                components.Dispose()
+            End If
+        Finally
+            MyBase.Dispose(disposing)
+        End Try
+    End Sub
+
+    'Required by the Windows Form Designer
+    Private components As System.ComponentModel.IContainer
+
+    'NOTE: The following procedure is required by the Windows Form Designer
+    'It can be modified using the Windows Form Designer.
+    'Do not modify it using the code editor.
+    <System.Diagnostics.DebuggerStepThrough()>
+    Private Sub InitializeComponent()
+        GroupBox1 = New GroupBox()
+        MaterialButton1 = New MaterialSkin.Controls.MaterialButton()
+        MaterialButton2 = New MaterialSkin.Controls.MaterialButton()
+        GroupBox1.SuspendLayout()
+        SuspendLayout()
+        ' 
+        ' GroupBox1
+        ' 
+        GroupBox1.Controls.Add(MaterialButton1)
+        GroupBox1.Controls.Add(MaterialButton2)
+        GroupBox1.Location = New Point(195, 81)
+        GroupBox1.Name = "GroupBox1"
+        GroupBox1.Size = New Size(523, 262)
+        GroupBox1.TabIndex = 0
+        GroupBox1.TabStop = False
+        GroupBox1.Text = "GroupBox1"
+        ' 
+        ' MaterialButton1
+        ' 
+        MaterialButton1.AutoSizeMode = AutoSizeMode.GrowAndShrink
+        MaterialButton1.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default
+        MaterialButton1.Depth = 0
+        MaterialButton1.HighEmphasis = True
+        MaterialButton1.Icon = Nothing
+        MaterialButton1.Location = New Point(330, 171)
+        MaterialButton1.Margin = New Padding(4, 6, 4, 6)
+        MaterialButton1.MouseState = MaterialSkin.MouseState.HOVER
+        MaterialButton1.Name = "MaterialButton1"
+        MaterialButton1.NoAccentTextColor = Color.Empty
+        MaterialButton1.Size = New Size(158, 36)
+        MaterialButton1.TabIndex = 1
+        MaterialButton1.Text = "MaterialButton1"
+        MaterialButton1.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained
+        MaterialButton1.UseAccentColor = False
+        MaterialButton1.UseVisualStyleBackColor = True
+        ' 
+        ' MaterialButton2
+        ' 
+        MaterialButton2.AutoSizeMode = AutoSizeMode.GrowAndShrink
+        MaterialButton2.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default
+        MaterialButton2.Depth = 0
+        MaterialButton2.HighEmphasis = True
+        MaterialButton2.Icon = Nothing
+        MaterialButton2.Location = New Point(106, 171)
+        MaterialButton2.Margin = New Padding(4, 6, 4, 6)
+        MaterialButton2.MouseState = MaterialSkin.MouseState.HOVER
+        MaterialButton2.Name = "MaterialButton2"
+        MaterialButton2.NoAccentTextColor = Color.Empty
+        MaterialButton2.Size = New Size(158, 36)
+        MaterialButton2.TabIndex = 2
+        MaterialButton2.Text = "MaterialButton2"
+        MaterialButton2.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained
+        MaterialButton2.UseAccentColor = False
+        MaterialButton2.UseVisualStyleBackColor = True
+        ' 
+        ' frmlogin
+        ' 
+        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
+        AutoScaleMode = AutoScaleMode.Font
+        ClientSize = New Size(896, 593)
+        Controls.Add(GroupBox1)
+        Name = "frmlogin"
+        RightToLeft = RightToLeft.Yes
+        Text = "Form1"
+        GroupBox1.ResumeLayout(False)
+        GroupBox1.PerformLayout()
+        ResumeLayout(False)
+    End Sub
+
+    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents MaterialButton1 As MaterialSkin.Controls.MaterialButton
+    Friend WithEvents MaterialButton2 As MaterialSkin.Controls.MaterialButton
+
+End Class

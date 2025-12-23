@@ -1,0 +1,87 @@
+﻿Imports System.ComponentModel
+Imports System.Data.SqlClient
+Imports System.IO
+Imports System.ServiceProcess
+Imports MaterialSkin
+Imports System.Drawing
+Public Class FrmMain
+
+
+
+    Private Title As String = " منظومة إدارة فواتير المبيعات"
+    Private SWBTNItem, SWInvoClick, SWStoreClick As Boolean
+    Private SWInvoText, SWStoreText, StrBack As String
+
+    'Private R As New ResizeControls()
+
+    Private Sub BtnInvoReport_Click(sender As Object, e As EventArgs) Handles BtnSubscription.Click
+        'OpenForm(FrmInvoReport, BtnInvoReport)
+
+    End Sub
+
+
+    'Private DTYear As New DataTable
+    Private Sub HideOpenForms()
+        For Each BB As Button In Panel1.Controls
+            If BB.BackColor <> DefaultBackColor Then
+                BB.BackColor = DefaultBackColor
+                BB.ForeColor = Color.Black
+                BB.Font = New Font("Hacen Saudi Arabia", 10)
+
+            End If
+        Next
+        Me.Text = Title
+
+        For Each FF As Form In Application.OpenForms
+            If FF.Name <> "FrmMain" Then
+                FF.Hide()
+                FF.Visible = False
+
+                'Exit Sub
+            End If
+        Next
+    End Sub
+
+    Private Sub FrmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ' تهيئة MaterialSkinManager
+        Dim SkinManager As MaterialSkinManager = MaterialSkinManager.Instance
+
+        ' إضافة النموذج الحالي للمدير
+        SkinManager.AddFormToManage(Me)
+
+        ' تحديد السمة إلى داكنة (DARK) لواجهة احترافية
+        SkinManager.Theme = MaterialSkinManager.Themes.LIGHT
+
+        ' تغيير مخطط الألوان: استبدال Amber البرتقالي إلى Indigo حديث واحترافية
+        SkinManager.ColorScheme = New ColorScheme(
+            Primary.Indigo500,
+            Primary.Indigo700,
+            Primary.Indigo100,
+            Accent.LightBlue200,
+            TextShade.WHITE
+        )
+
+        ' تعيين خط Times New Roman بحجم 14 على الفورم وكل الأدوات
+        Dim appFont As New Font("Times New Roman", 14.0F, FontStyle.Regular)
+        Me.Font = appFont
+        ApplyFontToControls(Me, appFont)
+    End Sub
+
+    Private Sub BtnStore_Click(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Private Sub ApplyFontToControls(parent As Control, f As Font)
+        For Each c As Control In parent.Controls
+            Try
+                c.Font = f
+            Catch
+                ' ignore
+            End Try
+            If c.HasChildren Then
+                ApplyFontToControls(c, f)
+            End If
+        Next
+    End Sub
+
+End Class

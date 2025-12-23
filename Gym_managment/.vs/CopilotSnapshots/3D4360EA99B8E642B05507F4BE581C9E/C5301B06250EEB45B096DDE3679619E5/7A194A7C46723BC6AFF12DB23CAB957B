@@ -1,0 +1,25 @@
+﻿Imports MaterialSkin
+
+Public Class frmlogin
+
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ' تهيئة MaterialSkinManager
+        Dim SkinManager As MaterialSkinManager = MaterialSkinManager.Instance
+
+        ' إضافة النموذج الحالي للمدير
+        SkinManager.AddFormToManage(Me)
+
+        ' تحديد السمة إلى داكنة (DARK) لواجهة احترافية
+        SkinManager.Theme = MaterialSkinManager.Themes.DARK
+
+        ' تغيير مخطط الألوان: استبدال Amber البرتقالي إلى Indigo حديث واحترافي
+        SkinManager.ColorScheme = New ColorScheme(
+            Primary.Indigo500,
+            Primary.Indigo700,
+            Primary.Indigo100,
+            Accent.LightBlue200,
+            TextShade.WHITE
+        )
+    End Sub
+
+End Class

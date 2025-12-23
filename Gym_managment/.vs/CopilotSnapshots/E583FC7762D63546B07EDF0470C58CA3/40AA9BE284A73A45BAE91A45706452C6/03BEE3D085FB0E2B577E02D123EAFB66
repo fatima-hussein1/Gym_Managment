@@ -1,0 +1,60 @@
+﻿Imports MaterialSkin
+Imports System.Drawing
+Imports System.Data
+Imports Microsoft.Data.SqlClient
+
+Public Class FrmManagememberr
+
+    Private DTMembers As New DataTable
+
+    Private Sub FrmManageTrainer_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim SkinManager As MaterialSkinManager = MaterialSkinManager.Instance
+
+        SkinManager.AddFormToManage(Me)
+
+        SkinManager.ColorScheme = New ColorScheme(
+            Primary.Indigo500,
+            Primary.Indigo700,
+            Primary.Indigo100,
+            Accent.LightBlue200,
+            TextShade.WHITE
+        )
+
+        Dim appFont As New Font("Times New Roman", 14.0F, FontStyle.Regular)
+        UIHelpers.SetLtrAndFont(Me, appFont)
+
+        '' تصحيح الاتجاه ليكون من اليمين لليسار (لإلغاء تأثير SetLtr)
+        'DGVProduct.RightToLeft = RightToLeft.Yes
+
+        Load_Members()
+    End Sub
+
+    Public Sub Load_Members()
+        DGVProduct.Rows.Clear()
+        DTMembers.Clear()
+        Try
+
+            SQLQuery = "SELECT * FROM Members where Active=1 "
+            DA = New SqlDataAdapter(SQLQuery, con)
+            DA.Fill(DTMembers)
+
+            For i As Integer = 0 To DTMembers.Rows.Count - 1
+                DGVProduct.Rows.Add()
+
+                DGVProduct.Item(0, i).Value = DTMembers.Rows(i).Item(0) ' ID
+                DGVProduct.Item(1, i).Value = DTMembers.Rows(i).Item(1) ' First name
+                DGVProduct.Item(2, i).Value = DTMembers.Rows(i).Item(2) ' Last name
+                DGVProduct.Item(3, i).Value = DTMembers.Rows(i).Item(3) ' Phone
+                DGVProduct.Item(4, i).Value = DTMembers.Rows(i).Item(4) ' Registration date
+                DGVProduct.Item(5, i).Value = DTMembers.Rows(i).Item(5) ' User number or other
+
+            Next
+        Catch ex As Exception
+            MsgBox("فشل في الاتصال بقواعد البيانات: " & ex.Message, MsgBoxStyle.Critical, "خطأ في الاتصال")
+        End Try
+    End Sub
+
+    Private Sub BtnAddMember_Click(sender As Object, e As EventArgs) Handles BtnAddMember.Click
+
+    End Sub
+End Class

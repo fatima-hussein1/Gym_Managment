@@ -1,0 +1,83 @@
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+Partial Class FrmMessage
+    Inherits System.Windows.Forms.Form
+
+    'Form overrides dispose to clean up the component list.
+    <System.Diagnostics.DebuggerNonUserCode()> _
+    Protected Overrides Sub Dispose(ByVal disposing As Boolean)
+        Try
+            If disposing AndAlso components IsNot Nothing Then
+                components.Dispose()
+            End If
+        Finally
+            MyBase.Dispose(disposing)
+        End Try
+    End Sub
+
+    'Required by the Windows Form Designer
+    Private components As System.ComponentModel.IContainer
+
+    'NOTE: The following procedure is required by the Windows Form Designer
+    'It can be modified using the Windows Form Designer.  
+    'Do not modify it using the code editor.
+    <System.Diagnostics.DebuggerStepThrough()> _
+    Private Sub InitializeComponent()
+        Me.PanelMain = New System.Windows.Forms.Panel()
+        Me.BtnOK = New System.Windows.Forms.Button()
+        Me.LblMessage = New System.Windows.Forms.Label()
+        Me.PanelMain.SuspendLayout()
+        Me.SuspendLayout()
+        '
+        'PanelMain
+        '
+        Me.PanelMain.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.PanelMain.Location = New System.Drawing.Point(0, 0)
+        Me.PanelMain.Name = "PanelMain"
+        Me.PanelMain.Size = New System.Drawing.Size(500, 180)
+        Me.PanelMain.TabIndex = 0
+        '
+        'BtnOK
+        '
+        Me.BtnOK.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.BtnOK.Location = New System.Drawing.Point(370, 130)
+        Me.BtnOK.Name = "BtnOK"
+        Me.BtnOK.Size = New System.Drawing.Size(100, 30)
+        Me.BtnOK.TabIndex = 1
+        Me.BtnOK.Text = "موافق"
+        Me.BtnOK.UseVisualStyleBackColor = True
+        '
+        'LblMessage
+        '
+        Me.LblMessage.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.LblMessage.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblMessage.ForeColor = System.Drawing.Color.Black
+        Me.LblMessage.Location = New System.Drawing.Point(20, 20)
+        Me.LblMessage.Name = "LblMessage"
+        Me.LblMessage.Size = New System.Drawing.Size(450, 90)
+        Me.LblMessage.TabIndex = 2
+        Me.LblMessage.Text = ""
+        Me.LblMessage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'FrmMessage
+        '
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.ClientSize = New System.Drawing.Size(500, 180)
+        Me.Controls.Add(Me.BtnOK)
+        Me.Controls.Add(Me.LblMessage)
+        Me.Controls.Add(Me.PanelMain)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Name = "FrmMessage"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.Text = "Message"
+        Me.PanelMain.ResumeLayout(False)
+        Me.ResumeLayout(False)
+
+    End Sub
+
+    Friend WithEvents PanelMain As System.Windows.Forms.Panel
+    Friend WithEvents BtnOK As System.Windows.Forms.Button
+    Friend WithEvents LblMessage As System.Windows.Forms.Label
+End Class

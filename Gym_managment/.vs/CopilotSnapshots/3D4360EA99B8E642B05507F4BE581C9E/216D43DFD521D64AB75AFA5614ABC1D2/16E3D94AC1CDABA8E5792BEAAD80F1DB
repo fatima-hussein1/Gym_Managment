@@ -1,0 +1,77 @@
+﻿Imports Microsoft.Data.SqlClient
+Imports MaterialSkin
+Imports System.Drawing
+
+Public Class FrmMembers
+
+    Private Sub FrmMembers_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim SkinManager As MaterialSkinManager = MaterialSkinManager.Instance
+        SkinManager.AddFormToManage(Me)
+        SkinManager.Theme = MaterialSkinManager.Themes.DARK
+        SkinManager.ColorScheme = New ColorScheme(Primary.Indigo500, Primary.Indigo700, Primary.Indigo100, Accent.LightBlue200, TextShade.WHITE)
+
+        ' Set LTR and Times New Roman
+        Dim appFont As New Font("Times New Roman", 12.0F)
+        UIHelpers.SetLtrAndFont(Me, appFont)
+
+        LoadMembers()
+    End Sub
+
+    Private Sub LoadMembers()
+        Try
+            OpenCon()
+            Dim dt As New DataTable()
+            Dim sql As String = "SELECT MemberID, FirstName, LastName, PhoneNumber, JoinDate, PhotoPath FROM Members"
+            Dim da As New SqlDataAdapter(sql, con)
+            da.Fill(dt)
+            dgvMembers.DataSource = dt
+            CloseCon()
+        Catch ex As Exception
+            MessageBox.Show("خطأ في جلب بيانات الأعضاء: " & ex.Message)
+        End Try
+    End Sub
+
+    Private Sub btnRefresh_Click(sender As Object, e As EventArgs) Handles btnRefresh.Click
+        LoadMembers()
+    End Sub
+
+    Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
+        Dim f As New FrmMemberEdit()
+        If f.ShowDialog() = DialogResult.OK Then
+            LoadMembers()
+        End If
+    End Sub
+
+    Private Sub btnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click
+        If dgvMembers.SelectedRows.Count = 0 Then
+            MessageBox.Show("اختر عضواً للتعديل")
+            Return
+        End If
+        Dim id As Integer = dgvMembers.SelectedRows(0).Cells("MemberID").Value
+        Dim f As New FrmMemberEdit()
+        f.LoadMember(id)
+        If f.ShowDialog() = DialogResult.OK Then
+            LoadMembers()
+        End If
+    End Sub
+
+    Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
+        If dgvMembers.SelectedRows.Count = 0 Then
+            MessageBox.Show("اختر عضواً للحذف")
+            Return
+        End If
+        Dim id As Integer = dgvMembers.SelectedRows(0).Cells("MemberID").Value
+        If MessageBox.Show("هل تريد حذف العضو؟", "تأكيد", MessageBoxButtons.YesNo) = DialogResult.Yes Then
+            Try
+                OpenCon()
+                Dim cmd As New SqlCommand("DELETE FROM Members WHERE MemberID=@id", con)
+                cmd.Parameters.AddWithValue("@id", id)
+                cmd.ExecuteNonQuery()
+                CloseCon()
+                LoadMembers()
+            Catch ex As Exception
+                MessageBox.Show("خطأ في حذف العضو: " & ex.Message)
+            End Try
+        End If
+    End Sub
+End Class

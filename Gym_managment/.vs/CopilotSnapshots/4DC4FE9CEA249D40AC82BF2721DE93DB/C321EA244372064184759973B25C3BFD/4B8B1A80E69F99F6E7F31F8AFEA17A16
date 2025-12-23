@@ -1,0 +1,186 @@
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+Partial Class FrmPackages
+    Inherits MaterialSkin.Controls.MaterialForm
+
+    Private components As System.ComponentModel.IContainer
+
+    <System.Diagnostics.DebuggerStepThrough()>
+    Private Sub InitializeComponent()
+        BtnNew = New Button()
+        BtnUpdatePack = New Button()
+        GroupBox1 = New GroupBox()
+        TxtDuration = New TextBox()
+        TxtpackName = New TextBox()
+        Label3 = New Label()
+        Label2 = New Label()
+        Label1 = New Label()
+        BtnAddPack = New Button()
+        CheckBox1 = New CheckBox()
+        Label4 = New Label()
+        TxtPrice = New TextBox()
+        GroupBox1.SuspendLayout()
+        SuspendLayout()
+        ' 
+        ' BtnNew
+        ' 
+        BtnNew.BackColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
+        BtnNew.FlatStyle = FlatStyle.Popup
+        BtnNew.Font = New Font("Times New Roman", 12.0F)
+        BtnNew.Image = My.Resources.Resources.icons8_erase_48
+        BtnNew.ImageAlign = ContentAlignment.MiddleRight
+        BtnNew.Location = New Point(72, 379)
+        BtnNew.Name = "BtnNew"
+        BtnNew.Size = New Size(191, 77)
+        BtnNew.TabIndex = 19
+        BtnNew.Text = "جديد"
+        BtnNew.UseVisualStyleBackColor = False
+        ' 
+        ' BtnUpdatePack
+        ' 
+        BtnUpdatePack.BackColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
+        BtnUpdatePack.FlatStyle = FlatStyle.Popup
+        BtnUpdatePack.Font = New Font("Times New Roman", 12.0F)
+        BtnUpdatePack.Image = My.Resources.Resources.icons8_edit_64__2_
+        BtnUpdatePack.ImageAlign = ContentAlignment.MiddleRight
+        BtnUpdatePack.Location = New Point(337, 379)
+        BtnUpdatePack.Name = "BtnUpdatePack"
+        BtnUpdatePack.Size = New Size(203, 77)
+        BtnUpdatePack.TabIndex = 18
+        BtnUpdatePack.Text = "تعديل"
+        BtnUpdatePack.UseVisualStyleBackColor = False
+        ' 
+        ' GroupBox1
+        ' 
+        GroupBox1.Controls.Add(TxtPrice)
+        GroupBox1.Controls.Add(Label4)
+        GroupBox1.Controls.Add(CheckBox1)
+        GroupBox1.Controls.Add(TxtDuration)
+        GroupBox1.Controls.Add(TxtpackName)
+        GroupBox1.Controls.Add(Label3)
+        GroupBox1.Controls.Add(Label2)
+        GroupBox1.Controls.Add(Label1)
+        GroupBox1.Font = New Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        GroupBox1.Location = New Point(72, 77)
+        GroupBox1.Name = "GroupBox1"
+        GroupBox1.RightToLeft = RightToLeft.Yes
+        GroupBox1.Size = New Size(784, 272)
+        GroupBox1.TabIndex = 16
+        GroupBox1.TabStop = False
+        ' 
+        ' TxtDuration
+        ' 
+        TxtDuration.Font = New Font("Times New Roman", 13.8F)
+        TxtDuration.Location = New Point(385, 90)
+        TxtDuration.Name = "TxtDuration"
+        TxtDuration.Size = New Size(208, 34)
+        TxtDuration.TabIndex = 5
+        ' 
+        ' TxtpackName
+        ' 
+        TxtpackName.Font = New Font("Times New Roman", 13.8F)
+        TxtpackName.Location = New Point(385, 48)
+        TxtpackName.Name = "TxtpackName"
+        TxtpackName.Size = New Size(208, 34)
+        TxtpackName.TabIndex = 4
+        ' 
+        ' Label3
+        ' 
+        Label3.AutoSize = True
+        Label3.Font = New Font("Times New Roman", 13.8F)
+        Label3.Location = New Point(638, 142)
+        Label3.Name = "Label3"
+        Label3.Size = New Size(86, 26)
+        Label3.TabIndex = 2
+        Label3.Text = "سعر الباقة"
+        ' 
+        ' Label2
+        ' 
+        Label2.AutoSize = True
+        Label2.Font = New Font("Times New Roman", 13.8F)
+        Label2.Location = New Point(647, 99)
+        Label2.Name = "Label2"
+        Label2.Size = New Size(77, 26)
+        Label2.TabIndex = 1
+        Label2.Text = "مدة الباقة"
+        ' 
+        ' Label1
+        ' 
+        Label1.AutoSize = True
+        Label1.Font = New Font("Times New Roman", 13.8F)
+        Label1.Location = New Point(668, 56)
+        Label1.Name = "Label1"
+        Label1.Size = New Size(48, 26)
+        Label1.TabIndex = 0
+        Label1.Text = "الباقة"
+        ' 
+        ' BtnAddPack
+        ' 
+        BtnAddPack.BackColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
+        BtnAddPack.FlatStyle = FlatStyle.Popup
+        BtnAddPack.Font = New Font("Times New Roman", 12.0F)
+        BtnAddPack.Image = My.Resources.Resources.icons8_add_file_40
+        BtnAddPack.ImageAlign = ContentAlignment.MiddleRight
+        BtnAddPack.Location = New Point(621, 379)
+        BtnAddPack.Name = "BtnAddPack"
+        BtnAddPack.Size = New Size(217, 77)
+        BtnAddPack.TabIndex = 17
+        BtnAddPack.Text = "إضافة "
+        BtnAddPack.UseVisualStyleBackColor = False
+        ' 
+        ' CheckBox1
+        ' 
+        CheckBox1.AutoSize = True
+        CheckBox1.Checked = True
+        CheckBox1.CheckState = CheckState.Checked
+        CheckBox1.Location = New Point(563, 188)
+        CheckBox1.Name = "CheckBox1"
+        CheckBox1.Size = New Size(18, 17)
+        CheckBox1.TabIndex = 7
+        CheckBox1.UseVisualStyleBackColor = True
+        ' 
+        ' Label4
+        ' 
+        Label4.AutoSize = True
+        Label4.Font = New Font("Times New Roman", 13.8F)
+        Label4.Location = New Point(631, 179)
+        Label4.Name = "Label4"
+        Label4.Size = New Size(85, 26)
+        Label4.TabIndex = 8
+        Label4.Text = "حالة الباقة"
+        ' 
+        ' TxtPrice
+        ' 
+        TxtPrice.Font = New Font("Times New Roman", 13.8F)
+        TxtPrice.Location = New Point(385, 139)
+        TxtPrice.Name = "TxtPrice"
+        TxtPrice.Size = New Size(208, 34)
+        TxtPrice.TabIndex = 9
+        ' 
+        ' FrmPackages
+        ' 
+        ClientSize = New Size(928, 532)
+        Controls.Add(BtnNew)
+        Controls.Add(BtnUpdatePack)
+        Controls.Add(GroupBox1)
+        Controls.Add(BtnAddPack)
+        Name = "FrmPackages"
+        RightToLeft = RightToLeft.Yes
+        RightToLeftLayout = True
+        GroupBox1.ResumeLayout(False)
+        GroupBox1.PerformLayout()
+        ResumeLayout(False)
+    End Sub
+
+    Friend WithEvents BtnNew As Button
+    Friend WithEvents BtnUpdatePack As Button
+    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents TxtDuration As TextBox
+    Friend WithEvents TxtpackName As TextBox
+    Friend WithEvents Label3 As Label
+    Friend WithEvents Label2 As Label
+    Friend WithEvents Label1 As Label
+    Friend WithEvents BtnAddPack As Button
+    Friend WithEvents TxtPrice As TextBox
+    Friend WithEvents Label4 As Label
+    Friend WithEvents CheckBox1 As CheckBox
+End Class

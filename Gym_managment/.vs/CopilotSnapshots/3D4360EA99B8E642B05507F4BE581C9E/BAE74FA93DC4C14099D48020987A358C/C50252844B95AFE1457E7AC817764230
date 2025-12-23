@@ -1,0 +1,29 @@
+﻿Imports MaterialSkin
+Imports System.Drawing
+
+Public Class FrmManagememberr
+
+    Private Sub FrmManageTrainer_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim SkinManager As MaterialSkinManager = MaterialSkinManager.Instance
+
+        ' إضافة النموذج الحالي للمدير
+        SkinManager.AddFormToManage(Me)
+
+        ' تحديد السمة إلى داكنة (DARK) لواجهة احترافية
+        SkinManager.Theme = MaterialSkinManager.Themes.LIGHT
+
+        ' تغيير مخطط الألوان: استبدال Amber البرتقالي إلى Indigo حديث واحترافي
+        SkinManager.ColorScheme = New ColorScheme(
+            Primary.Indigo500,
+            Primary.Indigo700,
+            Primary.Indigo100,
+            Accent.LightBlue200,
+            TextShade.WHITE
+        )
+
+        ' تعيين خط Times New Roman بحجم 14 على الفورم وكل الأدوات
+        Dim appFont As New Font("Times New Roman", 14.0F, FontStyle.Regular)
+        UIHelpers.SetLtrAndFont(Me, appFont)
+    End Sub
+
+End Class

@@ -1,0 +1,133 @@
+﻿Imports System.ComponentModel
+Imports System.Data
+Imports Microsoft.Data.SqlClient
+Imports System.Net.NetworkInformation
+Imports System.Text
+Imports Microsoft.Win32
+Imports System.Net
+Imports System.Web
+Imports System.IO
+Imports MaterialSkin
+Imports System.Drawing
+Imports Microsoft.Data.SqlClient
+
+Public Class FrmLogin
+
+    Private DTUser As New DataTable
+    Private DS As New DataSet
+    Private DT As New DataTable, RandomPass As String
+    Private R As New ResizeControls()
+    Private SWForm As Boolean = False
+    Private swactive As Boolean = False
+
+    Private Sub FrmLogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ThemeManager.Initialize()
+        ThemeManager.ApplyTheme(Me)
+
+        ' تعيين خط Times New Roman بحجم 14 على الفورم وكل الأدوات
+        Dim appFont As New Font("Times New Roman", 14.0F, FontStyle.Regular)
+        Me.Font = appFont
+        ApplyFontToControls(Me, appFont)
+
+        SWForm = True
+
+        Try
+            ' Select users and alias columns to match older schema expected by the login logic
+            SQLQuery = "SELECT UserID AS ID, Username AS UserName, PasswordHash AS UserPass, FullName AS UserJob, IsActive, RoleID FROM Users WHERE 1=1"
+            DA = New SqlDataAdapter(SQLQuery, con)
+            DT = New DataTable
+            DA.Fill(DT)
+
+            ' Bind to combo (control CmbUserName declared in designer)
+            CmbUserName.DataSource = DT
+            CmbUserName.DisplayMember = "UserName"
+            CmbUserName.ValueMember = "ID"
+
+            SWForm = False
+        Catch ex As Exception
+            MsgBox("فشل في الإتصال بقاعدة البيانات: " & ex.Message, MsgBoxStyle.Critical, "خطأ إتصال")
+        End Try
+    End Sub
+
+    Private Sub ApplyFontToControls(parent As Control, f As Font)
+        For Each c As Control In parent.Controls
+            Try
+                c.Font = f
+            Catch
+                ' Ignore controls that don't accept font changes
+            End Try
+            If c.HasChildren Then
+                ApplyFontToControls(c, f)
+            End If
+        Next
+    End Sub
+
+    Private Sub CmbUserName_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles CmbUserName.SelectionChangeCommitted
+        TxtPasswprd.Text = ""
+        TxtPasswprd.Focus()
+    End Sub
+
+    Private Sub FrmLogin_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+        ' no-op
+    End Sub
+
+    Private Sub BtnOk_Click(sender As Object, e As EventArgs) Handles BtnOk.Click
+        If CmbUserName.Text.Trim = "" Then
+            MsgBox("يرجى ادخال اسم المستخدم", MsgBoxStyle.Exclamation + vbOKOnly, "خطأ في الدخول")
+            CmbUserName.Focus()
+            Exit Sub
+        End If
+        If TxtPasswprd.Text.Trim = "" Then
+            MsgBox("يرجى ادخال كلمة المرور", MsgBoxStyle.Exclamation + vbOKOnly, "خطأ في الدخول")
+            TxtPasswprd.Focus()
+            Exit Sub
+        End If
+
+        Try
+            ' Use DataTable filter to check credentials (UserPass currently holds PasswordHash or plaintext depending on DB)
+            Dim filter As String = "UserName='" & CmbUserName.Text.Replace("'", "''") & "' AND UserPass='" & TxtPasswprd.Text.Replace("'", "''") & "'"
+            Dim ItemRows() As DataRow = DT.Select(filter)
+            If ItemRows.Length > 0 Then
+                ' Map to global current user variables
+                CurrentUserID = Convert.ToInt32(ItemRows(0)("ID"))
+                CurrentUsername = ItemRows(0)("UserName").ToString()
+                CurrentFullName = If(ItemRows(0)("UserJob") Is DBNull.Value, CurrentUsername, ItemRows(0)("UserJob").ToString())
+
+                ' Load permissions into global DTUserPermission
+                Try
+                    DTUserPermission.Clear()
+                    SQLQuery = "SELECT * FROM PermissionTable WHERE UserID=" & CurrentUserID
+                    DA = New SqlDataAdapter(SQLQuery, con)
+                    DA.Fill(DTUserPermission)
+                Catch ex As Exception
+                    MsgBox("خطأ في تحميل صلاحيات المستخدم: " & ex.Message, MsgBoxStyle.Critical, "خطأ إتصال بقاعدة البيانات")
+                End Try
+
+                SWForm = False
+                swactive = True
+                SetPermission()
+                Me.Dispose()
+            Else
+                MsgBox("كلمة المرور غير صحيحة  يرجى اعادة المحاولة", MsgBoxStyle.Exclamation, "خطأ في الدخول")
+                TxtPasswprd.Text = ""
+                TxtPasswprd.Focus()
+            End If
+        Catch ex As Exception
+            MsgBox("خطأ أثناء عملية الدخول: " & ex.Message, MsgBoxStyle.Critical, "خطأ")
+        End Try
+    End Sub
+
+    Private Sub CmbUserName_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CmbUserName.SelectedIndexChanged
+        ' optional
+    End Sub
+
+    Private Sub FrmLogin_HandleCreated(sender As Object, e As EventArgs) Handles Me.HandleCreated
+        R.Container = Me
+    End Sub
+
+    ' Minimal SetPermission placeholder to avoid missing reference. Modify as needed to apply permissions to UI.
+    Private Sub SetPermission()
+        ' Example: enable/disable UI items based on DTUserPermission
+        ' Implement real permission application in your main form.
+    End Sub
+End Class

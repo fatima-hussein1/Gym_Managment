@@ -1,0 +1,154 @@
+﻿Imports Microsoft.Data.SqlClient
+Imports System.ComponentModel
+Imports System.Net.NetworkInformation
+Imports System.Text
+Imports Microsoft.Win32
+Imports System.Net
+Imports System.Web
+Imports System.IO
+
+Public Class FrmLogin
+
+    Private DTUser As New DataTable
+    Private DS As New DataSet
+    Private DT As New DataTable, RandomPass As String
+    Private R As New ResizeControls()
+
+    Private Sub FrmLogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        SWForm = True
+        Try
+            ' Ensure connection open
+            If con Is Nothing OrElse con.State <> ConnectionState.Open Then
+                OpenCon()
+            End If
+
+            SQLQuery = "SELECT * FROM UserTable WHERE lockedout=0"
+            DA = New SqlDataAdapter(SQLQuery, con)
+            DT = New DataTable
+            DA.Fill(DT)
+            CmbUserName.DataSource = DT
+            CmbUserName.DisplayMember = "UserName"
+            CmbUserName.ValueMember = "ID"
+            If My.Settings.SelectedUser <= CmbUserName.Items.Count - 1 Then
+                CmbUserName.SelectedIndex = My.Settings.SelectedUser
+            Else
+                My.Settings.SelectedUser = -1
+                My.Settings.Save()
+            End If
+        Catch ex As Exception
+            MsgBox("فشل في جلب بيانات المستخدمين أو الإتصال: " & ex.Message, MsgBoxStyle.Critical, "خطأ إتصال")
+        Finally
+            Try
+                CloseCon()
+            Catch
+            End Try
+            SWForm = False
+        End Try
+    End Sub
+
+    Private Sub CmbUserName_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles CmbUserName.SelectionChangeCommitted
+        My.Settings.SelectedUser = CmbUserName.SelectedIndex
+        My.Settings.Save()
+        TxtPasswprd.Text = ""
+        TxtPasswprd.Focus()
+    End Sub
+
+    Private Sub FrmLogin_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+        My.Settings.SelectedUser = CmbUserName.SelectedIndex
+        My.Settings.Save()
+    End Sub
+
+    Private Sub BtnOK_Click(sender As Object, e As EventArgs) Handles BtnOk.Click
+        If CmbUserName.Text.Trim = "" Then
+            MsgBox("يرجى ادخال اسم المستخدم", MsgBoxStyle.Exclamation + vbOKOnly, "خطأ في الدخول")
+            CmbUserName.Focus()
+            Exit Sub
+        End If
+        If TxtPasswprd.Text.Trim = "" Then
+            MsgBox("يرجى ادخال كلمة المرور", MsgBoxStyle.Exclamation + vbOKOnly, "خطأ في الدخول")
+            TxtPasswprd.Focus()
+            Exit Sub
+        End If
+
+        Dim row As DataRow = Nothing
+
+        ' Try centralized Auth module if available
+        Try
+            OpenCon()
+        Catch ex As Exception
+            MsgBox("فشل في فتح الاتصال: " & ex.Message, MsgBoxStyle.Critical, "خطأ")
+            Exit Sub
+        End Try
+
+        Dim authenticated As Boolean = False
+        Try
+            Using cmd As New SqlCommand("SELECT TOP 1 ID, UserName, UserPass, Userjob, LockedOut FROM UserTable WHERE UserName = @u AND UserPass = @p AND LockedOut = 0", con)
+                cmd.Parameters.AddWithValue("@u", CmbUserName.Text.Trim)
+                cmd.Parameters.AddWithValue("@p", TxtPasswprd.Text)
+                Using rdr As SqlDataReader = cmd.ExecuteReader()
+                    If rdr.Read() Then
+                        ' If LockedOut column exists and is true -> deny
+                        If Not rdr.IsDBNull(rdr.GetOrdinal("LockedOut")) Then
+                            Dim locked = Convert.ToBoolean(rdr("LockedOut"))
+                            If locked Then
+                                MsgBox("الحساب مقفل. تواصل مع المسؤول.", MsgBoxStyle.Exclamation, "مرفوض")
+                                TxtPasswprd.Text = ""
+                                TxtPasswprd.Focus()
+                                Return
+                            End If
+                        End If
+
+                        UserID = Convert.ToInt32(rdr("ID"))
+                        UserName = Convert.ToString(rdr("UserName"))
+                        UserPassword = Convert.ToString(rdr("UserPass"))
+                        UserJob = If(rdr.IsDBNull(rdr.GetOrdinal("Userjob")), "", Convert.ToString(rdr("Userjob")))
+                        authenticated = True
+                    End If
+                End Using
+            End Using
+
+            If authenticated Then
+                ' Load permissions
+                Try
+                    DTUserPermission.Clear()
+                    Using cmd2 As New SqlCommand("SELECT * FROM PermissionTable WHERE UserID = @id", con)
+                        cmd2.Parameters.AddWithValue("@id", UserID)
+                        Using daPerm As New SqlDataAdapter(cmd2)
+                            daPerm.Fill(DTUserPermission)
+                        End Using
+                    End Using
+                Catch ex As Exception
+                    MsgBox("خطأ في تحميل صلاحيات المستخدم: " & ex.Message, MsgBoxStyle.Critical, "خطأ")
+                End Try
+
+                SWForm = False
+                swactive = True
+                Try
+                    'SetPermission()
+                Catch
+                End Try
+
+                Me.Dispose()
+            Else
+                MsgBox("كلمة المرور غير صحيحة  يرجى اعادة المحاولة", MsgBoxStyle.Exclamation, "خطأ في الدخول")
+                TxtPasswprd.Text = ""
+                TxtPasswprd.Focus()
+            End If
+        Catch ex As Exception
+            MsgBox("خطأ أثناء المصادقة: " & ex.Message, MsgBoxStyle.Critical, "خطأ")
+        Finally
+            Try
+                CloseCon()
+            Catch
+            End Try
+        End Try
+    End Sub
+
+    Private Sub CmbUserName_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CmbUserName.SelectedIndexChanged
+
+    End Sub
+
+    Private Sub FrmLogin_HandleCreated(sender As Object, e As EventArgs) Handles Me.HandleCreated
+        R.Container = Me
+    End Sub
+End Class

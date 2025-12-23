@@ -1,0 +1,110 @@
+﻿Imports Microsoft.Data.SqlClient
+'Imports MaterialSkin
+Imports System.Drawing
+
+Partial Public Class FrmTrainers
+
+    Private DTTrainers As New DataTable
+
+
+    Private Sub FrmTrainers_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        Load_Trainers()
+    End Sub
+
+
+    Public Sub Load_Trainers()
+        dgvTrainers.Rows.Clear()
+        DTTrainers.Clear()
+        Try
+
+            SQLQuery = "SELECT * FROM Trainers where Active =1 "
+            DA = New SqlDataAdapter(SQLQuery, con)
+            DA.Fill(DTTrainers)
+
+            For i As Integer = 0 To DTTrainers.Rows.Count - 1
+                dgvTrainers.Rows.Add()
+
+                dgvTrainers.Item(0, i).Value = DTTrainers.Rows(i).Item(0) ' ID
+                dgvTrainers.Item(1, i).Value = DTTrainers.Rows(i).Item(1) '  name
+                dgvTrainers.Item(3, i).Value = DTTrainers.Rows(i).Item(2) ' Phone
+                dgvTrainers.Item(4, i).Value = DTTrainers.Rows(i).Item(3) ' Registration date
+                dgvTrainers.Item(5, i).Value = DTTrainers.Rows(i).Item(5) ' User 
+
+                If Not IsDBNull(DTTrainers.Rows(i).Item("PicTrainer")) Then
+                    Dim imgData As Byte() = DirectCast(DTTrainers.Rows(i).Item("PicTrainer"), Byte())
+                    Using ms As New IO.MemoryStream(imgData)
+                        dgvTrainers.Item(6, i).Value = Image.FromStream(ms)
+                    End Using
+                Else
+                    dgvTrainers.Item(6, i).Value = Nothing
+                End If
+
+
+
+            Next
+        Catch ex As Exception
+            MsgBox("فشل في الاتصال بقواعد البيانات: " & ex.Message, MsgBoxStyle.Critical, "خطأ في الاتصال")
+        End Try
+    End Sub
+
+    Private Sub btnAdd_Click(sender As Object, e As EventArgs)
+        'Dim f As New FrmTrainerEdit()
+        'If f.ShowDialog() = DialogResult.OK Then
+        '    LoadTrainers()
+        'End If
+    End Sub
+
+    'Private Sub btnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click
+    '    If dgvTrainers.SelectedRows.Count = 0 Then
+    '        MessageBox.Show("اختر مدرباً للتعديل", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    '        Return
+    '    End If
+
+    '    Dim val = dgvTrainers.SelectedRows(0).Cells("TrainerID").Value
+    '    If val Is Nothing OrElse IsDBNull(val) Then
+    '        MessageBox.Show("معرّف المدرب غير موجود", "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error)
+    '        Return
+    '    End If
+
+    '    Dim id As Integer = Convert.ToInt32(val)
+    '    Dim f As New FrmTrainerEdit()
+    '    f.LoadTrainer(id)
+    '    If f.ShowDialog() = DialogResult.OK Then
+    '        LoadTrainers()
+    '    End If
+    'End Sub
+
+    'Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
+    '    If dgvTrainers.SelectedRows.Count = 0 Then
+    '        MessageBox.Show("اختر مدرباً للحذف", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    '        Return
+    '    End If
+
+    '    Dim val = dgvTrainers.SelectedRows(0).Cells("TrainerID").Value
+    '    If val Is Nothing OrElse IsDBNull(val) Then
+    '        MessageBox.Show("معرّف المدرب غير موجود", "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error)
+    '        Return
+    '    End If
+
+    '    Dim id As Integer = Convert.ToInt32(val)
+    '    If MessageBox.Show("هل تريد حذف المدرب؟", "تأكيد", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+    '        Try
+    '            OpenCon()
+    '            Using cmd As New SqlCommand("DELETE FROM Trainers WHERE TrainerID = @id", con)
+    '                cmd.Parameters.AddWithValue("@id", id)
+    '                cmd.ExecuteNonQuery()
+    '            End Using
+    '            CloseCon()
+    '            LoadTrainers()
+    '        Catch ex As Exception
+    '            Try
+    '                CloseCon()
+    '            Catch
+    '            End Try
+    '            MessageBox.Show("خطأ في حذف المدرب: " & ex.Message, "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error)
+    '        End Try
+    '    End If
+    'End Sub
+
+End Class

@@ -1,0 +1,25 @@
+﻿Imports MaterialSkin
+Imports System.Drawing
+
+Public Class FrmManagememberr
+
+    Private Sub FrmManageTrainer_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim SkinManager As MaterialSkinManager = MaterialSkinManager.Instance
+
+        SkinManager.AddFormToManage(Me)
+
+
+
+        SkinManager.ColorScheme = New ColorScheme(
+            Primary.Indigo500,
+            Primary.Indigo700,
+            Primary.Indigo100,
+            Accent.LightBlue200,
+            TextShade.WHITE
+        )
+
+        Dim appFont As New Font("Times New Roman", 14.0F, FontStyle.Regular)
+        UIHelpers.SetLtrAndFont(Me, appFont)
+    End Sub
+
+End Class

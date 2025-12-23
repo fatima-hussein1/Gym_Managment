@@ -1,0 +1,267 @@
+﻿Imports System.ComponentModel
+Imports Microsoft.Data.SqlClient
+Imports System.IO
+Imports MaterialSkin
+Imports System.Drawing
+
+Partial Public Class FrmMain
+
+    Private Title As String = " منظومة إدارة مراكز تجميل"
+    Private SWBTNItem, SWInvoClick, SWStoreClick As Boolean
+    Private SWInvoText, SWStoreText, StrBack As String
+
+    Private R As New ResizeControls()
+
+    Private Sub FrmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ThemeManager.Initialize()
+        ThemeManager.ApplyTheme(Me)
+
+        ' تعيين خط Times New Roman بحجم 14 على الفورم وكل الأدوات
+        Dim appFont As New Font("Times New Roman", 14.0F, FontStyle.Regular)
+        Me.Font = appFont
+        ApplyFontToControls(Me, appFont)
+
+        ' Initialize radio buttons state
+        If ThemeManager.Mode = ThemeManager.ThemeMode.Dark Then
+            If rbDark IsNot Nothing Then rbDark.Checked = True
+        Else
+            If rbLight IsNot Nothing Then rbLight.Checked = True
+        End If
+    End Sub
+
+    Private Sub rbDark_CheckedChanged(sender As Object, e As EventArgs) Handles rbDark.CheckedChanged
+        If rbDark.Checked Then
+            ThemeManager.Mode = ThemeManager.ThemeMode.Dark
+            ThemeManager.ApplyTheme(Me)
+        End If
+    End Sub
+
+    Private Sub rbLight_CheckedChanged(sender As Object, e As EventArgs) Handles rbLight.CheckedChanged
+        If rbLight.Checked Then
+            ThemeManager.Mode = ThemeManager.ThemeMode.Light
+            ThemeManager.ApplyTheme(Me)
+        End If
+    End Sub
+
+    Private Sub BtnCautch_Click(sender As Object, e As EventArgs) Handles BtnCautch.Click
+        'OpenForm(frm, BtnCautch)
+    End Sub
+
+    Private Sub OpenForm(F As Form, B As Button)
+        If F.Visible = True Then
+            HideOpenForms()
+        Else
+            HideOpenForms()
+            F.TopLevel = False
+            F.Parent = PnlMain ' mapped MainPnl -> PnlMain
+            F.BringToFront()
+            F.Show()
+            F.Visible = True
+            F.Size = PnlMain.Size
+            F.Dock = DockStyle.Fill
+
+            Me.Text = Title & " - " & B.Text
+            B.BackColor = Color.White
+            B.ForeColor = Color.Black
+            B.Font = New Font("Hacen Saudi Arabia", 11, FontStyle.Regular)
+
+        End If
+    End Sub
+
+    Private Sub HideOpenForms()
+        For Each BB As Button In Panel1.Controls ' mapped Panel3 -> Panel1
+            If BB.BackColor <> DefaultBackColor Then
+                BB.BackColor = DefaultBackColor
+                BB.ForeColor = Color.Black
+                BB.Font = New Font("Hacen Saudi Arabia", 11, FontStyle.Regular)
+
+            End If
+        Next
+        Me.Text = Title
+
+        For Each FF As Form In Application.OpenForms
+            If FF.Name <> "FrmMain" Then
+                FF.Hide()
+                FF.Visible = False
+            End If
+        Next
+    End Sub
+
+    Private Sub CloseOpenForms()
+        For Each BB As Button In Panel1.Controls
+            BB.BackColor = DefaultBackColor
+            BB.ForeColor = Color.Black
+            BB.Font = New Font("Hacen Saudi Arabia", 11, FontStyle.Regular)
+        Next
+        Me.Text = Title
+
+        For i = Application.OpenForms.Count - 1 To 1 Step -1
+            Dim F As Form = Application.OpenForms(i)
+            If F.Name <> "FrmMain" Then
+                F.Close()
+            End If
+        Next i
+    End Sub
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        If Timer1.Tag >= 1 Then
+            Timer1.Tag = Timer1.Tag + 1
+        End If
+        If Timer1.Tag = 5 Then
+            Timer1.Tag = 0
+            TSLMessage.Visible = False
+            StatusStrip1.BackColor = Color.FromArgb(192, 192, 255)
+        End If
+        TSLDateTime.Text = Now
+        TSLUserName.Text = CurrentUsername & " - " & CurrentRoleName
+
+        'If swactive = True Then
+        '    UserTrafficRegister("FrmMain", 1)
+        '    swactive = False
+        'End If
+
+    End Sub
+
+    Private Sub ApplyFontToControls(parent As Control, f As Font)
+        For Each c As Control In parent.Controls
+            Try
+                c.Font = f
+            Catch
+                ' ignore
+            End Try
+            If c.HasChildren Then
+                ApplyFontToControls(c, f)
+            End If
+        Next
+    End Sub
+
+    Private Sub TsmSettings_Click(sender As Object, e As EventArgs) Handles TsmSettings.Click
+        ' Toggle theme when settings menu clicked
+        ThemeManager.ToggleTheme(Me)
+        If ThemeManager.Mode = ThemeManager.ThemeMode.Dark Then
+            If rbDark IsNot Nothing Then rbDark.Checked = True
+        Else
+            If rbLight IsNot Nothing Then rbLight.Checked = True
+        End If
+    End Sub
+
+    Private Sub FrmMain_Shown(sender As Object, e As EventArgs) Handles Me.Shown
+        FrmLogin.ShowDialog()
+    End Sub
+
+    Private Sub BtnCustomer_Click(sender As Object, e As EventArgs) Handles BtnCustomer.Click
+        OpenForm(FrmTrainers, BtnCautch)
+
+    End Sub
+
+    Sub count_invoice()
+        Try
+            Dim str = "select COUNT(id) from Service_InvoTable where InvoDate = @d"
+            Dim cmd As New SqlCommand(str, con)
+            cmd.Parameters.AddWithValue("@d", Format(Date.Now, "yyyy/MM/dd"))
+            Dim da As New SqlDataAdapter(cmd)
+            Dim dta As New DataTable("Service_InvoTable")
+            da.Fill(dta)
+
+            Dim sumdebit As Decimal = 0.0
+            If dta.Rows.Count > 0 AndAlso Not IsDBNull(dta.Rows(0).Item(0)) Then sumdebit = dta.Rows(0).Item(0)
+            If Me.Controls.ContainsKey("Servicecount") Then
+                Dim lbl = TryCast(Me.Controls.Find("Servicecount", True).FirstOrDefault(), System.Windows.Forms.Label)
+                If lbl IsNot Nothing Then lbl.Text = Val(sumdebit)
+            End If
+        Catch ex As Exception
+            ' ignore or log
+        End Try
+    End Sub
+
+    Sub count_Service()
+        Try
+            Dim str = "select COUNT(id) from ServiceTable"
+            Dim cmd As New SqlCommand(str, con)
+            Dim da As New SqlDataAdapter(cmd)
+            Dim dta As New DataTable("ServiceTable")
+            da.Fill(dta)
+
+            Dim cuscount As Decimal = 0.0
+            If dta.Rows.Count > 0 AndAlso Not IsDBNull(dta.Rows(0).Item(0)) Then cuscount = dta.Rows(0).Item(0)
+            If Me.Controls.ContainsKey("CustomerCount") Then
+                Dim lbl = TryCast(Me.Controls.Find("CustomerCount", True).FirstOrDefault(), System.Windows.Forms.Label)
+                If lbl IsNot Nothing Then lbl.Text = Val(cuscount)
+            End If
+        Catch ex As Exception
+        End Try
+    End Sub
+
+    Sub count_Customer()
+        Try
+            Dim str = "select COUNT(id) from CustomerTable"
+            Dim cmd As New SqlCommand(str, con)
+            Dim da As New SqlDataAdapter(cmd)
+            Dim dta As New DataTable("CustomerTable")
+            da.Fill(dta)
+
+            Dim cuscount As Decimal = 0.0
+            If dta.Rows.Count > 0 AndAlso Not IsDBNull(dta.Rows(0).Item(0)) Then cuscount = dta.Rows(0).Item(0)
+            If Me.Controls.ContainsKey("CustomerCount") Then
+                Dim lbl = TryCast(Me.Controls.Find("CustomerCount", True).FirstOrDefault(), System.Windows.Forms.Label)
+                If lbl IsNot Nothing Then lbl.Text = Val(cuscount)
+            End If
+        Catch ex As Exception
+        End Try
+    End Sub
+
+    'Public Sub GetTreasury()
+'    Try
+'        dtTreasury = New DataTable
+'        SQLQuery = "Select * From treasury_nameTABLE"
+'        DA = New SqlDataAdapter(SQLQuery, con)
+'        DA.Fill(dtTreasury)
+'        If TreasuryName IsNot Nothing Then
+'            With TreasuryName
+'                .DataSource = dtTreasury
+'                .ValueMember = "treasury_id"
+'                .DisplayMember = "treasury_name"
+'                .SelectedIndex = -1
+'            End With
+'        End If
+'    Catch ex As Exception
+'        MsgBox("خطأ في تحميل بيانات الخزينة" + ex.Message, MsgBoxStyle.Critical, "خطأ إتصال بقواعد البيانات")
+'    End Try
+'End Sub
+
+'Private Sub UserConnectMonitor()
+'    If CurrentUserID = 0 Then
+'        Exit Sub
+'    End If
+
+'    Try
+'        Cmd = New SqlCommand("UserConnectMonitor", con)
+'        Cmd.CommandType = CommandType.StoredProcedure
+'        Dim param As SqlParameter
+'        param = New SqlParameter("@UserID", CurrentUserID)
+'        Cmd.Parameters.Add(param)
+'        Cmd.Parameters.Add("@MsgCount", SqlDbType.Int).Direction = ParameterDirection.Output
+'        Cmd.Parameters.Add("@UserLockedOut", SqlDbType.Int).Direction = ParameterDirection.Output
+
+'        OpenCon()
+'        Cmd.ExecuteNonQuery()
+'        CloseCon()
+
+'        Dim MsgCount As Integer = Cmd.Parameters("@MsgCount").Value.ToString()
+
+'        If MsgCount <> 0 And FrmMessenger.IsHandleCreated = False And MsgCount <> Val(LbLTotalMsgCount.Text) Then
+'            LbLTotalMsgCount.Text = MsgCount
+'        ElseIf MsgCount = 0 Then
+'            LbLTotalMsgCount.Text = ""
+'        End If
+'        Dim UserLockedOut As Integer = Cmd.Parameters("@UserLockedOut").Value.ToString()
+'        If UserLockedOut = 1 Then
+'            MsgBox("تم ايقافك عن العمل على المنظومة من قبل المسؤول", MsgBoxStyle.Critical, "ايقاف")
+'            Close()
+'        End If
+'    Catch ex As Exception
+'        CloseCon()
+'        MsgBox("خطأ في تحديث بيانت اتصال المستخدم" + ex.Message, MsgBoxStyle.Critical, "خطأ إتصال بقواعد البيانات")
+'    End Try
+
+'End Sub

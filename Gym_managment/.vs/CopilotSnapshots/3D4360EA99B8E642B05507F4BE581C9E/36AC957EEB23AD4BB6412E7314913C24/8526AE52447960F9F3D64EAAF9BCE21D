@@ -1,0 +1,352 @@
+﻿
+Imports System.ComponentModel
+Imports System.Data.SqlClient
+Imports System.IO
+Imports System.ServiceProcess
+Imports MaterialSkin
+Imports System.Drawing
+Public Class FrmMain
+
+
+
+    Private Title As String = " منظومة إدارة فواتير المبيعات"
+    Private SWBTNItem, SWInvoClick, SWStoreClick As Boolean
+    Private SWInvoText, SWStoreText, StrBack As String
+
+    'Private R As New ResizeControls()
+
+    Private Sub BtnInvoReport_Click(sender As Object, e As EventArgs) Handles BtnSubscription.Click
+        'OpenForm(FrmInvoReport, BtnInvoReport)
+
+    End Sub
+
+
+    'Private DTYear As New DataTable
+    Private Sub HideOpenForms()
+        For Each BB As Button In Panel1.Controls
+            If BB.BackColor <> DefaultBackColor Then
+                BB.BackColor = DefaultBackColor
+                BB.ForeColor = Color.Black
+                BB.Font = New Font("Hacen Saudi Arabia", 10)
+
+            End If
+        Next
+        Me.Text = Title
+
+        For Each FF As Form In Application.OpenForms
+            If FF.Name <> "FrmMain" Then
+                FF.Hide()
+                FF.Visible = False
+
+                'Exit Sub
+            End If
+        Next
+    End Sub
+
+    Private Sub FrmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ' تهيئة MaterialSkinManager
+        Dim SkinManager As MaterialSkinManager = MaterialSkinManager.Instance
+
+        ' إضافة النموذج الحالي للمدير
+        SkinManager.AddFormToManage(Me)
+
+        ' تحديد السمة إلى داكنة (DARK) لواجهة احترافية
+        SkinManager.Theme = MaterialSkinManager.Themes.LIGHT
+
+        ' تغيير مخطط الألوان: استبدال Amber البرتقالي إلى Indigo حديث واحترافي
+        SkinManager.ColorScheme = New ColorScheme(
+            Primary.Indigo500,
+            Primary.Indigo700,
+            Primary.Indigo100,
+            Accent.LightBlue200,
+            TextShade.WHITE
+        )
+
+        ' تعيين خط Times New Roman بحجم 14 على الفورم وكل الأدوات
+        Dim appFont As New Font("Times New Roman", 14.0F, FontStyle.Regular)
+        Me.Font = appFont
+        ApplyFontToControls(Me, appFont)
+    End Sub
+
+    Private Sub BtnStore_Click(sender As Object, e As EventArgs)
+
+    End Sub
+
+
+
+    'Private Sub UserConnectMonitor()
+    '    If UserID = 0 Then
+    '        Exit Sub
+    '    End If
+
+    '    Try
+    '        CMD = New SqlCommand("UserConnectMonitor", con)    'يقوم بتسجيل اخر توقيت لاتصال المستخدم بالشبكة هل مازال متصل أو لا وإذا لم يتصل خلال زمن معين يتم فصل الإتصال عنه
+    '        CMD.CommandType = CommandType.StoredProcedure
+    '        Dim param As SqlParameter
+    '        param = New SqlParameter("@UserID", UserID)
+    '        CMD.Parameters.Add(param)
+    '        CMD.Parameters.Add("@MsgCount", SqlDbType.Int).Direction = ParameterDirection.Output
+    '        CMD.Parameters.Add("@UserLockedOut", SqlDbType.Int).Direction = ParameterDirection.Output
+
+    '        con.Open()
+    '        CMD.ExecuteNonQuery()
+    '        con.Close()
+    '        'هذا الجزء خاص بجلب عدد الرسائل الغير مقروءة والتنبيه لها
+    '        Dim MsgCount As Integer = CMD.Parameters("@MsgCount").Value.ToString()
+
+    '        If MsgCount <> 0 And FrmMessenger.IsHandleCreated = False And MsgCount <> Val(LbLTotalMsgCount.Text) Then
+    '            My.Computer.Audio.Play(My.Resources.ns, AudioPlayMode.Background)
+    '            LbLTotalMsgCount.Text = MsgCount
+    '        ElseIf MsgCount = 0 Then
+    '            LbLTotalMsgCount.Text = ""
+    '        End If
+    '        Dim UserLockedOut As Integer = CMD.Parameters("@UserLockedOut").Value.ToString()
+    '        If UserLockedOut = 1 Then
+    '            MsgBox("تم ايقافك عن العمل على المنظومة من قبل المسؤول", MsgBoxStyle.Critical, "ايقاف")
+    '            Close()
+    '        End If
+    '    Catch ex As Exception
+    '        con.Close()
+    '        MsgBox("خطأ في تحديث بيانت اتصال المستخدم" + ex.Message, MsgBoxStyle.Critical, "خطأ إتصال بقواعد البيانات")
+    '    End Try
+
+    'End Sub
+
+
+
+
+    'Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+    '    If Timer1.Tag >= 1 Then
+    '        Timer1.Tag = Timer1.Tag + 1
+    '    End If
+    '    If Timer1.Tag = 5 Then
+    '        Timer1.Tag = 0
+    '        TSLMessage.Visible = False
+    '        StatusStrip1.BackColor = Color.FromArgb(192, 192, 255)
+    '    End If
+    '    TSLDateTime.Text = Now
+    '    TSLUserName.Text = UserName & " - " & UserJob
+
+    '    FrmInvoice.DTPTime.Value = Now
+    '    'FrmUpdateInvo.DTPTime.Value = Now
+
+    '    'ConMonitorCount += 1
+    '    'If ConMonitorCount = 10 Then
+    '    '    UserConnectMonitor()
+    '    '    ConMonitorCount = 0
+    '    'End If
+
+    '    If swactive = True Then
+    '        UserTrafficRegister("FrmMain", 1)
+    '        swactive = False
+    '    End If
+
+    'End Sub
+
+    'Private Sub TsmDeletedElements_Click(sender As Object, e As EventArgs) Handles TsmDeletedElements.Click
+
+    '    If UserID = 1 Then
+    '        FrmDelElement.ShowDialog()
+    '    Else
+
+    '        MsgBox("ليس لديك صلاحية للدخول لشاشة إدارة البيانات المحذوفة ", MsgBoxStyle.Information, "تحذير مستوى الصلاحية")
+
+    '    End If
+
+
+    'End Sub
+
+    'Private Sub TSMAbout_Click(sender As Object, e As EventArgs) Handles TSMAbout.Click
+    '    FrmSysMonitor.ShowDialog()
+    'End Sub
+
+    'Private Sub OpenForm(F As Form, B As Button)
+    '    'If F.IsHandleCreated = True Then ' إختبار إذا كان الفورم مفتوح
+    '    If F.Visible = True Then ' إختبار إذا كان الفورم مفتوح
+    '        HideOpenForms()
+    '    Else
+    '        HideOpenForms()
+    '        F.TopLevel = False
+    '        F.Parent = PnlMain
+    '        F.BringToFront()
+    '        F.Show()
+    '        F.Visible = True
+    '        F.Size = PnlMain.Size
+    '        F.Dock = DockStyle.Fill
+
+    '        Me.Text = Title & " - " & B.Text
+    '        B.BackColor = Color.White
+    '        B.ForeColor = Color.Black
+    '        B.Font = New Font("Hacen Saudi Arabia", 12, FontStyle.Bold)
+
+    '    End If
+    'End Sub
+
+    'Private Sub TSMRestart_Click(sender As Object, e As EventArgs) Handles TSMRestart.Click
+    '    'If MsgBox("هل أنت متأكد تريد تسجيل الخروج", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "تسجيل خروج") = MsgBoxResult.Yes Then
+    '    '    CloseOpenForms()
+    '    '    UserTrafficRegister("FrmMain", 0)
+    '    '    UserID = 0
+    '    '    UserName = vbNullString
+    '    '    UserPassword = vbNullString
+    '    '    UserJob = vbNullString
+    '    '    DTUserPermission.Clear()
+    '    '    LbLTotalMsgCount.Text = ""
+    '    '    FrmLogin.ShowDialog()
+    '    'End If
+
+    '    FrmChart.Show()
+    'End Sub
+
+    'Private Sub MenuStrip1_ItemClicked(sender As Object, e As ToolStripItemClickedEventArgs) Handles MenuStrip1.ItemClicked
+
+    'End Sub
+
+    'Private Sub FrmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    '    'Me.Width = 1012
+    '    'Me.Height = 700
+    '    'LbLTotalMsgCount.Visible = False
+    '    'PicMassenger.Visible = False
+
+    '    'Dim LeftMargin As Integer
+    '    'LeftMargin = (Me.Width / 3)
+
+    '    'TSMControl.Margin = New Padding(0, 0, Me.Width / 3, 0)
+    'End Sub
+
+    'Private Sub TsmUserControl_Click(sender As Object, e As EventArgs) Handles TsmUserControl.Click
+    '    'If UserPerm = True Then
+    '    '    FrmUserControl.ShowDialog()
+    '    'Else
+    '    '    FrmValidatePassword.ShowDialog()
+    '    '    MsgBox("ليس لديك صلاحيات للدخول إلي لوحة تحكم المستخدمين", MsgBoxStyle.Information, " تحديد مستوي الصلاحية")
+    '    'End If
+    '    FrmUserControl.ShowDialog()
+
+    'End Sub
+
+    'Private Sub TsmMonitor_Click(sender As Object, e As EventArgs) Handles TsmMonitor.Click
+    '    'If UserID = 1 Then
+    '    FrmSysMonitor.ShowDialog()
+    '    'Else
+    '    '    FrmValidatePassword.ShowDialog()
+    '    '    MsgBox("ليس لديك صلاحية للدخول لشاشة المراقبة ", MsgBoxStyle.Information, "تحذير مستوى الصلاحية")
+
+    '    'End If
+
+    'End Sub
+
+    'Private Sub TsmChangePassword_Click(sender As Object, e As EventArgs) Handles TsmChangePassword.Click
+    '    FrmChangePassword.ShowDialog()
+
+    'End Sub
+
+    'Private Sub PnlMain_Paint(sender As Object, e As PaintEventArgs) Handles PnlMain.Paint
+
+    'End Sub
+
+    'Private Sub PicSetChat_Click(sender As Object, e As EventArgs) Handles PicSetChat.Click
+    '    FrmMessenger.ShowDialog()
+    'End Sub
+
+    'Private Sub StatusStrip1_ItemClicked(sender As Object, e As ToolStripItemClickedEventArgs) Handles StatusStrip1.ItemClicked
+
+    'End Sub
+
+    'Private Sub TsmSettings_Click(sender As Object, e As EventArgs) Handles TsmSettings.Click
+    '    FrmSettings.ShowDialog()
+
+    'End Sub
+
+    ''Private Sub FrmMain_Resize(sender As Object, e As EventArgs) Handles Me.Resize
+
+    ''    TSMControl.Margin = New Padding(0, 0, Me.Width / 3, 0)
+
+
+    ''    'If Me.Width <= 1012 Then
+    ''    '    Me.Width = 1012
+    ''    'End If
+    ''    'If Me.Height <= 678 Then
+    ''    '    Me.Height = 678
+    ''    'End If
+
+    ''    'Dim PP As New Padding
+    ''    'PP.Left = 0
+    ''End Sub
+
+    'Private Sub FrmMain_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+    '    If vbYes = MsgBox("هل تريد إغلاق المنظومة", vbYesNo + vbQuestion, "تأكيد طلب إغلاق") Then
+
+
+
+    '        If My.Settings.BackupClosing = True Then
+    '            'BackupDatabase()
+    '            NotifyIcon1.ShowBalloonTip(1000, "تم النسخ الاحتياطي", "تم إجراء النسخ الاحتياطي بنجاح.", ToolTipIcon.Info)
+    '        End If
+
+    '        'My.Settings.FrmMainSize = Me.Size
+    '        'My.Settings.FrmMainLocation = Me.Location
+    '        'My.Settings.Save()
+
+    '        'My.Settings.FrmMainSize = Me.Size
+    '        'My.Settings.FrmMainLocation = Me.Location
+    '        My.Settings.Save()
+
+    '    Else
+    '        e.Cancel = True
+    '    End If
+    'End Sub
+
+    'Private Sub NotifyIcon1_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles NotifyIcon1.MouseDoubleClick
+
+    'End Sub
+
+    'Private Sub Timer2_Tick(sender As Object, e As EventArgs) Handles Timer2.Tick
+
+    'End Sub
+
+    'Private Sub ToolTip1_Popup(sender As Object, e As PopupEventArgs) Handles ToolTip1.Popup
+
+    'End Sub
+
+    'Private Sub TsmInventory_Click(sender As Object, e As EventArgs) Handles TsmInventory.Click
+    '    FrmChart.ShowDialog()
+    'End Sub
+
+    'Private Sub HhhhToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles HhhhToolStripMenuItem.Click
+    '    FrmInvoice.ShowDialog()
+    'End Sub
+
+    'Private Sub CloseOpenForms()
+    '    For Each BB As Button In Panel1.Controls
+    '        BB.BackColor = DefaultBackColor
+    '        BB.ForeColor = Color.Black
+    '        BB.Font = New Font("Hacen Saudi Arabia", 10)
+    '    Next
+    '    Me.Text = Title
+
+    '    For i = Application.OpenForms.Count - 1 To 1 Step -1
+    '        Dim F As Form = Application.OpenForms(i)
+    '        If F.Name <> "FrmMain" Then
+    '            F.Close()
+    '        End If
+    '    Next i
+    'End Sub
+
+    'Private Sub FrmMain_Shown(sender As Object, e As EventArgs) Handles Me.Shown
+    '    FrmLogin.ShowDialog()
+
+    '    'If SWForm = True Then
+    '    '    Close()
+    '    'End If
+
+    'End Sub
+
+    'Private Sub FrmMain_Resize(sender As Object, e As EventArgs) Handles Me.Resize
+    '    R.ResizeControls()
+    'End Sub
+
+    'Private Sub FrmMain_HandleCreated(sender As Object, e As EventArgs) Handles Me.HandleCreated
+    '    R.Container = Me
+    'End Sub
+End Class
