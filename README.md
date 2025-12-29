@@ -1,5 +1,7 @@
 # Gym_Managment
-![Gym Management Preview](Gym_managment/Gym_managment/Gym_managment/Resources/9436687.jpg)
+![Gym Management Preview]
+
+(Gym_managment/Gym_managment/Gym_managment/Resources/9436687.jpg)
 # 🏋️‍♂️ Gym Management System  
 ## منظومة إدارة نادي رياضي
 
@@ -85,10 +87,6 @@
 
 ## 👩‍💻 فريق العمل
 **إعداد الطالبات:**
-- منال أشرف عبد الواحد  
-- فاطمة الزهراء حسين الزياني  
-
-
-## 📄 الترخيص
-هذا المشروع أُنجز لأغراض أكاديمية، ويمكن تطويره أو إعادة استخدامه لأغراض تعليمية مع الإشارة إلى المصدر.
+- منال أشرف   
+- فاطمة الزهراء  
 
