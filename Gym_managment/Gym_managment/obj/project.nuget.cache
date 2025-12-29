@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "JyGf+fRgsCk=",
+  "dgSpecHash": "IQ+QLfm7EvI=",
   "success": true,
   "projectFilePath": "C:\\Users\\شركة دليل التقنية\\source\\repos\\Gym_managment\\Gym_managment\\Gym_managment.vbproj",
   "expectedPackageFiles": [
     "C:\\Users\\شركة دليل التقنية\\.nuget\\packages\\azure.core\\1.47.1\\azure.core.1.47.1.nupkg.sha512",
     "C:\\Users\\شركة دليل التقنية\\.nuget\\packages\\azure.identity\\1.14.2\\azure.identity.1.14.2.nupkg.sha512",
+    "C:\\Users\\شركة دليل التقنية\\.nuget\\packages\\guna.ui2.winforms\\2.0.4.7\\guna.ui2.winforms.2.0.4.7.nupkg.sha512",
     "C:\\Users\\شركة دليل التقنية\\.nuget\\packages\\materialskin.2\\2.3.1\\materialskin.2.2.3.1.nupkg.sha512",
     "C:\\Users\\شركة دليل التقنية\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\8.0.0\\microsoft.bcl.asyncinterfaces.8.0.0.nupkg.sha512",
     "C:\\Users\\شركة دليل التقنية\\.nuget\\packages\\microsoft.bcl.cryptography\\9.0.4\\microsoft.bcl.cryptography.9.0.4.nupkg.sha512",
@@ -28,6 +29,7 @@
     "C:\\Users\\شركة دليل التقنية\\.nuget\\packages\\microsoft.sqlserver.server\\1.0.0\\microsoft.sqlserver.server.1.0.0.nupkg.sha512",
     "C:\\Users\\شركة دليل التقنية\\.nuget\\packages\\system.clientmodel\\1.5.1\\system.clientmodel.1.5.1.nupkg.sha512",
     "C:\\Users\\شركة دليل التقنية\\.nuget\\packages\\system.identitymodel.tokens.jwt\\7.7.1\\system.identitymodel.tokens.jwt.7.7.1.nupkg.sha512",
+    "C:\\Users\\شركة دليل التقنية\\.nuget\\packages\\system.management\\7.0.0\\system.management.7.0.0.nupkg.sha512",
     "C:\\Users\\شركة دليل التقنية\\.nuget\\packages\\system.memory.data\\8.0.1\\system.memory.data.8.0.1.nupkg.sha512"
   ],
   "logs": []

@@ -1,7 +1,6 @@
 ﻿Imports System.ComponentModel
 Imports Microsoft.Data.SqlClient
 Imports System.IO
-Imports MaterialSkin
 Imports System.Drawing
 
 Partial Public Class FrmMain
@@ -58,14 +57,12 @@ Partial Public Class FrmMain
     End Sub
 
     Private Sub HideOpenForms()
-        For Each c As Control In Panel1.Controls
-            If TypeOf c Is Button Then
-                Dim BB As Button = DirectCast(c, Button)
-                If BB.BackColor <> DefaultBackColor Then
-                    BB.BackColor = DefaultBackColor
-                    BB.ForeColor = Color.Black
-                    BB.Font = New Font("Hacen Saudi Arabia", 11, FontStyle.Regular)
-                End If
+        ' iterate only actual Button controls to avoid InvalidCastException
+        For Each BB As Button In Panel1.Controls.OfType(Of Button)()
+            If BB.BackColor <> DefaultBackColor Then
+                BB.BackColor = DefaultBackColor
+                BB.ForeColor = Color.Black
+                BB.Font = New Font("Hacen Saudi Arabia", 11, FontStyle.Regular)
             End If
         Next
         Me.Text = Title
@@ -79,7 +76,7 @@ Partial Public Class FrmMain
     End Sub
 
     Private Sub CloseOpenForms()
-        For Each BB As Button In Panel1.Controls
+        For Each BB As Button In Panel1.Controls.OfType(Of Button)()
             BB.BackColor = DefaultBackColor
             BB.ForeColor = Color.Black
             BB.Font = New Font("Hacen Saudi Arabia", 11, FontStyle.Regular)
@@ -93,6 +90,7 @@ Partial Public Class FrmMain
             End If
         Next i
     End Sub
+
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         If Timer1.Tag >= 1 Then
@@ -115,17 +113,6 @@ Partial Public Class FrmMain
 
 
 
-    Private Sub TsmSettings_Click(sender As Object, e As EventArgs) Handles TsmSettings.Click
-        ' Toggle theme when settings menu clicked
-        ThemeManager.ToggleTheme(Me)
-        If msTheme IsNot Nothing Then
-            msTheme.Checked = (ThemeManager.Mode = ThemeManager.ThemeMode.Dark)
-        End If
-    End Sub
-
-    Private Sub FrmMain_Shown(sender As Object, e As EventArgs) Handles Me.Shown
-        FrmLogin.ShowDialog()
-    End Sub
 
     Private Sub BtnCustomer_Click(sender As Object, e As EventArgs) Handles BtnCustomer.Click
         OpenForm(FrmManagememberr, BtnCustomer)
@@ -149,6 +136,52 @@ Partial Public Class FrmMain
     End Sub
 
     Private Sub TSMChangepassword_Click(sender As Object, e As EventArgs) Handles TSMChangepassword.Click
+
+    End Sub
+
+    Private Sub ApplyFontToControls(parent As Control, f As Font)
+        For Each c As Control In parent.Controls
+            ' Attempt to set the simple Font (works for most controls)
+            Try
+                c.Font = f
+            Catch
+                ' ignore individual failures (consider logging during development)
+            End Try
+
+            ' ToolStrip and its items are not Controls in the Controls collection;
+            ' if present as a Control subclass, set each ToolStripItem's font.
+            If TypeOf c Is ToolStrip Then
+                Dim ts As ToolStrip = DirectCast(c, ToolStrip)
+                For Each item As ToolStripItem In ts.Items
+                    Try
+                        item.Font = f
+                    Catch
+                    End Try
+                Next
+            End If
+
+            ' DataGridView requires setting cell/header/default styles explicitly
+            If TypeOf c Is DataGridView Then
+                Dim dgv As DataGridView = DirectCast(c, DataGridView)
+                Try
+                    dgv.DefaultCellStyle.Font = f
+                    dgv.ColumnHeadersDefaultCellStyle.Font = f
+                    dgv.RowsDefaultCellStyle.Font = f
+                    dgv.RowTemplate.DefaultCellStyle.Font = f
+                Catch
+                End Try
+            End If
+
+            ' Some third-party controls (MaterialSkin) may ignore Font;
+            ' handle them here if the library exposes APIs, otherwise change design or library.
+            If c.HasChildren Then
+                ApplyFontToControls(c, f)
+            End If
+        Next
+    End Sub
+
+    Private Sub TSMTreasury_Click(sender As Object, e As EventArgs) Handles TSMTreasury.Click
+        FrmTreasury.Show()
 
     End Sub
 End Class

@@ -1,7 +1,6 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Public Class FrmMain
-    'Inherits System.Windows.Forms.Form
-    Inherits MaterialSkin.Controls.MaterialForm
+    Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()>
@@ -24,19 +23,25 @@ Partial Public Class FrmMain
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
+        Dim CustomizableEdges1 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges2 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges7 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges8 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges3 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges4 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges5 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges6 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         TSLMessage = New ToolStripStatusLabel()
         TSLDateTime = New ToolStripStatusLabel()
         StatusStrip1 = New StatusStrip()
         TSLUserName = New ToolStripStatusLabel()
-        Panel1 = New Panel()
+        Panel1 = New Guna.UI2.WinForms.Guna2Panel()
         BtnTrainingBooking = New Button()
         BtnMemberSubscription = New Button()
         BtnSubscribtion = New Button()
         BtnCautch = New Button()
         BtnCustomer = New Button()
         BtnSubscription = New Button()
-        msTheme = New MaterialSkin.Controls.MaterialSwitch()
-        lblTheme = New Label()
         ToolTip1 = New ToolTip(components)
         Timer2 = New Timer(components)
         NotifyIcon1 = New NotifyIcon(components)
@@ -54,16 +59,30 @@ Partial Public Class FrmMain
         MenuStrip1 = New MenuStrip()
         المستخدمينToolStripMenuItem = New ToolStripMenuItem()
         PnlMain = New Panel()
+        Guna2Elipse1 = New Guna.UI2.WinForms.Guna2Elipse(components)
+        Guna2ShadowForm1 = New Guna.UI2.WinForms.Guna2ShadowForm(components)
+        Guna2DragControl1 = New Guna.UI2.WinForms.Guna2DragControl(components)
+        Guna2PanelTop = New Guna.UI2.WinForms.Guna2Panel()
+        Guna2ControlBoxMin = New Guna.UI2.WinForms.Guna2ControlBox()
+        Guna2ControlBoxClose = New Guna.UI2.WinForms.Guna2ControlBox()
+        Guna2ElipseBtnCustomer = New Guna.UI2.WinForms.Guna2Elipse(components)
+        Guna2ElipseBtnCautch = New Guna.UI2.WinForms.Guna2Elipse(components)
+        Guna2ElipseBtnSubscribtion = New Guna.UI2.WinForms.Guna2Elipse(components)
+        Guna2ElipseBtnMemberSubscription = New Guna.UI2.WinForms.Guna2Elipse(components)
+        Guna2ElipseBtnTrainingBooking = New Guna.UI2.WinForms.Guna2Elipse(components)
+        Guna2ElipseBtnSubscription = New Guna.UI2.WinForms.Guna2Elipse(components)
+        الإدارةالماليةToolStripMenuItem = New ToolStripMenuItem()
+        TSMTreasury = New ToolStripMenuItem()
         StatusStrip1.SuspendLayout()
         Panel1.SuspendLayout()
         MenuStrip1.SuspendLayout()
-        PnlMain.SuspendLayout()
+        Guna2PanelTop.SuspendLayout()
         SuspendLayout()
         ' 
         ' TSLMessage
         ' 
         TSLMessage.DisplayStyle = ToolStripItemDisplayStyle.Text
-        TSLMessage.Font = New Font("Microsoft Sans Serif", 12.0F, FontStyle.Bold)
+        TSLMessage.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold)
         TSLMessage.ForeColor = Color.FromArgb(CByte(255), CByte(193), CByte(7))
         TSLMessage.Margin = New Padding(100, 3, 0, 2)
         TSLMessage.Name = "TSLMessage"
@@ -73,7 +92,7 @@ Partial Public Class FrmMain
         ' 
         ' TSLDateTime
         ' 
-        TSLDateTime.Font = New Font("Microsoft Sans Serif", 11.0F)
+        TSLDateTime.Font = New Font("Microsoft Sans Serif", 11F)
         TSLDateTime.ForeColor = Color.White
         TSLDateTime.Margin = New Padding(10, 3, 50, 2)
         TSLDateTime.Name = "TSLDateTime"
@@ -83,19 +102,19 @@ Partial Public Class FrmMain
         ' StatusStrip1
         ' 
         StatusStrip1.BackColor = Color.FromArgb(CByte(25), CByte(118), CByte(210))
-        StatusStrip1.Font = New Font("Microsoft Sans Serif", 11.0F)
+        StatusStrip1.Font = New Font("Microsoft Sans Serif", 11F)
         StatusStrip1.ImageScalingSize = New Size(20, 20)
         StatusStrip1.Items.AddRange(New ToolStripItem() {TSLDateTime, TSLUserName, TSLMessage})
-        StatusStrip1.Location = New Point(3, 1069)
+        StatusStrip1.Location = New Point(0, 1072)
         StatusStrip1.Name = "StatusStrip1"
         StatusStrip1.Padding = New Padding(1, 0, 19, 0)
-        StatusStrip1.Size = New Size(1825, 30)
+        StatusStrip1.Size = New Size(1831, 30)
         StatusStrip1.TabIndex = 33
         StatusStrip1.Text = "StatusStrip1"
         ' 
         ' TSLUserName
         ' 
-        TSLUserName.Font = New Font("Microsoft Sans Serif", 11.0F)
+        TSLUserName.Font = New Font("Microsoft Sans Serif", 11F)
         TSLUserName.ForeColor = Color.White
         TSLUserName.Name = "TSLUserName"
         TSLUserName.Size = New Size(112, 24)
@@ -103,27 +122,29 @@ Partial Public Class FrmMain
         ' 
         ' Panel1
         ' 
-        Panel1.BackColor = Color.FromArgb(CByte(245), CByte(247), CByte(250))
+        Panel1.BackColor = Color.FromArgb(CByte(0), CByte(9), CByte(43))
         Panel1.Controls.Add(BtnTrainingBooking)
         Panel1.Controls.Add(BtnMemberSubscription)
         Panel1.Controls.Add(BtnSubscribtion)
         Panel1.Controls.Add(BtnCautch)
         Panel1.Controls.Add(BtnCustomer)
         Panel1.Controls.Add(BtnSubscription)
+        Panel1.CustomizableEdges = CustomizableEdges1
         Panel1.Location = New Point(3, 142)
         Panel1.Margin = New Padding(3, 4, 3, 4)
         Panel1.Name = "Panel1"
+        Panel1.ShadowDecoration.CustomizableEdges = CustomizableEdges2
         Panel1.Size = New Size(314, 792)
         Panel1.TabIndex = 31
         ' 
         ' BtnTrainingBooking
         ' 
-        BtnTrainingBooking.BackColor = Color.White
-        BtnTrainingBooking.FlatAppearance.BorderColor = Color.FromArgb(CByte(21), CByte(101), CByte(192))
-        BtnTrainingBooking.FlatAppearance.BorderSize = 0
-        BtnTrainingBooking.FlatStyle = FlatStyle.Popup
-        BtnTrainingBooking.Font = New Font("Times New Roman", 12.0F)
-        BtnTrainingBooking.ForeColor = Color.Black
+        BtnTrainingBooking.BackColor = Color.Transparent
+        BtnTrainingBooking.FlatAppearance.BorderColor = Color.FromArgb(CByte(193), CByte(20), CByte(137))
+        BtnTrainingBooking.FlatAppearance.BorderSize = 2
+        BtnTrainingBooking.FlatStyle = FlatStyle.Flat
+        BtnTrainingBooking.Font = New Font("Times New Roman", 13.8F)
+        BtnTrainingBooking.ForeColor = Color.White
         BtnTrainingBooking.Image = My.Resources.Resources.icons8_schedule_64
         BtnTrainingBooking.ImageAlign = ContentAlignment.MiddleLeft
         BtnTrainingBooking.Location = New Point(17, 412)
@@ -132,16 +153,17 @@ Partial Public Class FrmMain
         BtnTrainingBooking.Size = New Size(279, 81)
         BtnTrainingBooking.TabIndex = 5
         BtnTrainingBooking.Text = "جدول مواعيد المدربين"
+        BtnTrainingBooking.TextAlign = ContentAlignment.MiddleRight
         BtnTrainingBooking.UseVisualStyleBackColor = False
         ' 
         ' BtnMemberSubscription
         ' 
-        BtnMemberSubscription.BackColor = Color.White
-        BtnMemberSubscription.FlatAppearance.BorderColor = Color.FromArgb(CByte(21), CByte(101), CByte(192))
-        BtnMemberSubscription.FlatAppearance.BorderSize = 0
-        BtnMemberSubscription.FlatStyle = FlatStyle.Popup
-        BtnMemberSubscription.Font = New Font("Times New Roman", 12.0F)
-        BtnMemberSubscription.ForeColor = Color.Black
+        BtnMemberSubscription.BackColor = Color.Transparent
+        BtnMemberSubscription.FlatAppearance.BorderColor = Color.FromArgb(CByte(193), CByte(20), CByte(137))
+        BtnMemberSubscription.FlatAppearance.BorderSize = 2
+        BtnMemberSubscription.FlatStyle = FlatStyle.Flat
+        BtnMemberSubscription.Font = New Font("Times New Roman", 13.8F)
+        BtnMemberSubscription.ForeColor = Color.White
         BtnMemberSubscription.Image = My.Resources.Resources.icons8_add_member_50
         BtnMemberSubscription.ImageAlign = ContentAlignment.MiddleLeft
         BtnMemberSubscription.Location = New Point(17, 323)
@@ -150,60 +172,64 @@ Partial Public Class FrmMain
         BtnMemberSubscription.Size = New Size(279, 81)
         BtnMemberSubscription.TabIndex = 4
         BtnMemberSubscription.Text = "إشتراكات الأعضاء"
+        BtnMemberSubscription.TextAlign = ContentAlignment.MiddleRight
         BtnMemberSubscription.UseVisualStyleBackColor = False
         ' 
         ' BtnSubscribtion
         ' 
-        BtnSubscribtion.BackColor = Color.White
-        BtnSubscribtion.FlatAppearance.BorderColor = Color.FromArgb(CByte(21), CByte(101), CByte(192))
-        BtnSubscribtion.FlatAppearance.BorderSize = 0
-        BtnSubscribtion.FlatStyle = FlatStyle.Popup
-        BtnSubscribtion.Font = New Font("Times New Roman", 12.0F)
-        BtnSubscribtion.ForeColor = Color.Black
+        BtnSubscribtion.BackColor = Color.Transparent
+        BtnSubscribtion.FlatAppearance.BorderColor = Color.FromArgb(CByte(193), CByte(20), CByte(137))
+        BtnSubscribtion.FlatAppearance.BorderSize = 2
+        BtnSubscribtion.FlatStyle = FlatStyle.Flat
+        BtnSubscribtion.Font = New Font("Times New Roman", 13.8F)
+        BtnSubscribtion.ForeColor = Color.White
         BtnSubscribtion.Image = My.Resources.Resources.icons8_chat_64
         BtnSubscribtion.ImageAlign = ContentAlignment.MiddleLeft
-        BtnSubscribtion.Location = New Point(17, 222)
+        BtnSubscribtion.Location = New Point(17, 225)
         BtnSubscribtion.Margin = New Padding(3, 4, 3, 4)
         BtnSubscribtion.Name = "BtnSubscribtion"
         BtnSubscribtion.Size = New Size(279, 81)
         BtnSubscribtion.TabIndex = 3
         BtnSubscribtion.Text = " الإشتراكات"
+        BtnSubscribtion.TextAlign = ContentAlignment.MiddleRight
         BtnSubscribtion.UseVisualStyleBackColor = False
         ' 
         ' BtnCautch
         ' 
-        BtnCautch.BackColor = Color.White
-        BtnCautch.FlatAppearance.BorderColor = Color.FromArgb(CByte(21), CByte(101), CByte(192))
-        BtnCautch.FlatAppearance.BorderSize = 0
-        BtnCautch.FlatStyle = FlatStyle.Popup
-        BtnCautch.Font = New Font("Times New Roman", 12.0F)
-        BtnCautch.ForeColor = Color.Black
+        BtnCautch.BackColor = Color.Transparent
+        BtnCautch.FlatAppearance.BorderColor = Color.FromArgb(CByte(193), CByte(20), CByte(137))
+        BtnCautch.FlatAppearance.BorderSize = 2
+        BtnCautch.FlatStyle = FlatStyle.Flat
+        BtnCautch.Font = New Font("Times New Roman", 13.8F)
+        BtnCautch.ForeColor = Color.White
         BtnCautch.Image = My.Resources.Resources.icons8_gym_64__1_
         BtnCautch.ImageAlign = ContentAlignment.MiddleLeft
-        BtnCautch.Location = New Point(17, 121)
+        BtnCautch.Location = New Point(14, 117)
         BtnCautch.Margin = New Padding(3, 4, 3, 4)
         BtnCautch.Name = "BtnCautch"
-        BtnCautch.Size = New Size(279, 81)
+        BtnCautch.Size = New Size(282, 90)
         BtnCautch.TabIndex = 2
         BtnCautch.Text = "المدربين"
+        BtnCautch.TextAlign = ContentAlignment.MiddleRight
         BtnCautch.UseVisualStyleBackColor = False
         ' 
         ' BtnCustomer
         ' 
-        BtnCustomer.BackColor = Color.White
-        BtnCustomer.FlatAppearance.BorderColor = Color.FromArgb(CByte(21), CByte(101), CByte(192))
-        BtnCustomer.FlatAppearance.BorderSize = 0
-        BtnCustomer.FlatStyle = FlatStyle.Popup
-        BtnCustomer.Font = New Font("Times New Roman", 12.0F)
-        BtnCustomer.ForeColor = Color.Black
+        BtnCustomer.BackColor = Color.Transparent
+        BtnCustomer.FlatAppearance.BorderColor = Color.FromArgb(CByte(193), CByte(20), CByte(137))
+        BtnCustomer.FlatAppearance.BorderSize = 2
+        BtnCustomer.FlatStyle = FlatStyle.Flat
+        BtnCustomer.Font = New Font("Times New Roman", 13.8F)
+        BtnCustomer.ForeColor = Color.White
         BtnCustomer.Image = My.Resources.Resources.icons8_member_80
         BtnCustomer.ImageAlign = ContentAlignment.MiddleLeft
-        BtnCustomer.Location = New Point(17, 32)
+        BtnCustomer.Location = New Point(17, 28)
         BtnCustomer.Margin = New Padding(3, 4, 3, 4)
         BtnCustomer.Name = "BtnCustomer"
         BtnCustomer.Size = New Size(276, 81)
         BtnCustomer.TabIndex = 0
         BtnCustomer.Text = " الأعضاء"
+        BtnCustomer.TextAlign = ContentAlignment.MiddleRight
         BtnCustomer.UseVisualStyleBackColor = False
         ' 
         ' BtnSubscription
@@ -212,7 +238,7 @@ Partial Public Class FrmMain
         BtnSubscription.FlatAppearance.BorderColor = Color.FromArgb(CByte(21), CByte(101), CByte(192))
         BtnSubscription.FlatAppearance.BorderSize = 0
         BtnSubscription.FlatStyle = FlatStyle.Flat
-        BtnSubscription.Font = New Font("Times New Roman", 12.0F, FontStyle.Bold)
+        BtnSubscription.Font = New Font("Times New Roman", 12F, FontStyle.Bold)
         BtnSubscription.ForeColor = Color.Black
         BtnSubscription.Location = New Point(894, 28)
         BtnSubscription.Margin = New Padding(3, 4, 3, 4)
@@ -221,31 +247,6 @@ Partial Public Class FrmMain
         BtnSubscription.TabIndex = 1
         BtnSubscription.Text = "الإشتراكات"
         BtnSubscription.UseVisualStyleBackColor = False
-        ' 
-        ' msTheme
-        ' 
-        msTheme.AutoSize = True
-        msTheme.Depth = 0
-        msTheme.Font = New Font("Times New Roman", 14.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        msTheme.Location = New Point(1046, 83)
-        msTheme.Margin = New Padding(0)
-        msTheme.MouseLocation = New Point(-1, -1)
-        msTheme.MouseState = MaterialSkin.MouseState.HOVER
-        msTheme.Name = "msTheme"
-        msTheme.Ripple = True
-        msTheme.Size = New Size(58, 37)
-        msTheme.TabIndex = 10
-        msTheme.UseVisualStyleBackColor = True
-        ' 
-        ' lblTheme
-        ' 
-        lblTheme.AutoSize = True
-        lblTheme.Font = New Font("Times New Roman", 14.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        lblTheme.Location = New Point(1107, 83)
-        lblTheme.Name = "lblTheme"
-        lblTheme.Size = New Size(94, 27)
-        lblTheme.TabIndex = 11
-        lblTheme.Text = "وضع داكن"
         ' 
         ' Timer1
         ' 
@@ -288,7 +289,8 @@ Partial Public Class FrmMain
         ' TSMControl
         ' 
         TSMControl.DropDownItems.AddRange(New ToolStripItem() {TSMChangepassword})
-        TSMControl.Font = New Font("Times New Roman", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        TSMControl.Font = New Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        TSMControl.ForeColor = Color.White
         TSMControl.Name = "TSMControl"
         TSMControl.Size = New Size(86, 55)
         TSMControl.Text = "الإعدادات"
@@ -296,7 +298,7 @@ Partial Public Class FrmMain
         ' TSMChangepassword
         ' 
         TSMChangepassword.Name = "TSMChangepassword"
-        TSMChangepassword.Size = New Size(210, 26)
+        TSMChangepassword.Size = New Size(224, 26)
         TSMChangepassword.Text = "تغيير كلمة المرور"
         ' 
         ' TsmDeletedElements
@@ -307,21 +309,22 @@ Partial Public Class FrmMain
         ' MenuStrip1
         ' 
         MenuStrip1.AutoSize = False
-        MenuStrip1.BackColor = Color.White
-        MenuStrip1.Font = New Font("Microsoft Sans Serif", 12.0F)
+        MenuStrip1.BackColor = Color.FromArgb(CByte(0), CByte(9), CByte(43))
+        MenuStrip1.Font = New Font("Microsoft Sans Serif", 12F)
         MenuStrip1.ImageScalingSize = New Size(20, 20)
-        MenuStrip1.Items.AddRange(New ToolStripItem() {المستخدمينToolStripMenuItem, TSMControl})
-        MenuStrip1.Location = New Point(3, 64)
+        MenuStrip1.Items.AddRange(New ToolStripItem() {المستخدمينToolStripMenuItem, TSMControl, الإدارةالماليةToolStripMenuItem})
+        MenuStrip1.Location = New Point(0, 0)
         MenuStrip1.Name = "MenuStrip1"
         MenuStrip1.Padding = New Padding(8, 2, 0, 2)
         MenuStrip1.RightToLeft = RightToLeft.Yes
-        MenuStrip1.Size = New Size(1825, 59)
+        MenuStrip1.Size = New Size(1831, 59)
         MenuStrip1.TabIndex = 30
         MenuStrip1.Text = "MenuStrip1"
         ' 
         ' المستخدمينToolStripMenuItem
         ' 
-        المستخدمينToolStripMenuItem.Font = New Font("Times New Roman", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        المستخدمينToolStripMenuItem.Font = New Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        المستخدمينToolStripMenuItem.ForeColor = Color.White
         المستخدمينToolStripMenuItem.Image = My.Resources.Resources.icons8_users_47
         المستخدمينToolStripMenuItem.Name = "المستخدمينToolStripMenuItem"
         المستخدمينToolStripMenuItem.Size = New Size(118, 55)
@@ -332,26 +335,124 @@ Partial Public Class FrmMain
         PnlMain.BackColor = Color.WhiteSmoke
         PnlMain.BackgroundImageLayout = ImageLayout.Stretch
         PnlMain.BorderStyle = BorderStyle.FixedSingle
-        PnlMain.Controls.Add(lblTheme)
-        PnlMain.Controls.Add(msTheme)
         PnlMain.Dock = DockStyle.Fill
-        PnlMain.Location = New Point(3, 64)
+        PnlMain.Location = New Point(0, 0)
         PnlMain.Margin = New Padding(3, 4, 3, 4)
         PnlMain.Name = "PnlMain"
-        PnlMain.Size = New Size(1825, 1035)
+        PnlMain.Size = New Size(1831, 1102)
         PnlMain.TabIndex = 32
+        ' 
+        ' Guna2Elipse1
+        ' 
+        Guna2Elipse1.TargetControl = Me
+        ' 
+        ' Guna2ShadowForm1
+        ' 
+        Guna2ShadowForm1.BorderRadius = 10
+        Guna2ShadowForm1.ShadowColor = Color.FromArgb(CByte(193), CByte(20), CByte(137))
+        Guna2ShadowForm1.TargetForm = Me
+        ' 
+        ' Guna2DragControl1
+        ' 
+        Guna2DragControl1.ContainerControl = Me
+        Guna2DragControl1.DockIndicatorTransparencyValue = 0.6R
+        Guna2DragControl1.TargetControl = Guna2PanelTop
+        Guna2DragControl1.UseTransparentDrag = True
+        ' 
+        ' Guna2PanelTop
+        ' 
+        Guna2PanelTop.BackColor = Color.FromArgb(CByte(0), CByte(9), CByte(43))
+        Guna2PanelTop.Controls.Add(Guna2ControlBoxMin)
+        Guna2PanelTop.Controls.Add(Guna2ControlBoxClose)
+        Guna2PanelTop.CustomizableEdges = CustomizableEdges7
+        Guna2PanelTop.Dock = DockStyle.Top
+        Guna2PanelTop.Location = New Point(0, 59)
+        Guna2PanelTop.Name = "Guna2PanelTop"
+        Guna2PanelTop.ShadowDecoration.CustomizableEdges = CustomizableEdges8
+        Guna2PanelTop.Size = New Size(1831, 10)
+        Guna2PanelTop.TabIndex = 100
+        ' 
+        ' Guna2ControlBoxMin
+        ' 
+        Guna2ControlBoxMin.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        Guna2ControlBoxMin.ControlBoxType = Guna.UI2.WinForms.Enums.ControlBoxType.MinimizeBox
+        Guna2ControlBoxMin.CustomizableEdges = CustomizableEdges3
+        Guna2ControlBoxMin.FillColor = Color.FromArgb(CByte(0), CByte(9), CByte(43))
+        Guna2ControlBoxMin.IconColor = Color.White
+        Guna2ControlBoxMin.Location = New Point(57, 6)
+        Guna2ControlBoxMin.Name = "Guna2ControlBoxMin"
+        Guna2ControlBoxMin.ShadowDecoration.CustomizableEdges = CustomizableEdges4
+        Guna2ControlBoxMin.Size = New Size(45, 36)
+        Guna2ControlBoxMin.TabIndex = 1
+        ' 
+        ' Guna2ControlBoxClose
+        ' 
+        Guna2ControlBoxClose.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        Guna2ControlBoxClose.CustomizableEdges = CustomizableEdges5
+        Guna2ControlBoxClose.FillColor = Color.FromArgb(CByte(0), CByte(9), CByte(43))
+        Guna2ControlBoxClose.HoverState.FillColor = Color.Red
+        Guna2ControlBoxClose.IconColor = Color.White
+        Guna2ControlBoxClose.Location = New Point(6, 6)
+        Guna2ControlBoxClose.Name = "Guna2ControlBoxClose"
+        Guna2ControlBoxClose.ShadowDecoration.CustomizableEdges = CustomizableEdges6
+        Guna2ControlBoxClose.Size = New Size(45, 36)
+        Guna2ControlBoxClose.TabIndex = 0
+        ' 
+        ' Guna2ElipseBtnCustomer
+        ' 
+        Guna2ElipseBtnCustomer.BorderRadius = 20
+        Guna2ElipseBtnCustomer.TargetControl = BtnCustomer
+        ' 
+        ' Guna2ElipseBtnCautch
+        ' 
+        Guna2ElipseBtnCautch.BorderRadius = 20
+        Guna2ElipseBtnCautch.TargetControl = BtnCautch
+        ' 
+        ' Guna2ElipseBtnSubscribtion
+        ' 
+        Guna2ElipseBtnSubscribtion.BorderRadius = 20
+        Guna2ElipseBtnSubscribtion.TargetControl = BtnSubscribtion
+        ' 
+        ' Guna2ElipseBtnMemberSubscription
+        ' 
+        Guna2ElipseBtnMemberSubscription.BorderRadius = 20
+        Guna2ElipseBtnMemberSubscription.TargetControl = BtnMemberSubscription
+        ' 
+        ' Guna2ElipseBtnTrainingBooking
+        ' 
+        Guna2ElipseBtnTrainingBooking.BorderRadius = 20
+        Guna2ElipseBtnTrainingBooking.TargetControl = BtnTrainingBooking
+        ' 
+        ' Guna2ElipseBtnSubscription
+        ' 
+        Guna2ElipseBtnSubscription.BorderRadius = 20
+        Guna2ElipseBtnSubscription.TargetControl = BtnSubscription
+        ' 
+        ' الإدارةالماليةToolStripMenuItem
+        ' 
+        الإدارةالماليةToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {TSMTreasury})
+        الإدارةالماليةToolStripMenuItem.Name = "الإدارةالماليةToolStripMenuItem"
+        الإدارةالماليةToolStripMenuItem.Size = New Size(111, 55)
+        الإدارةالماليةToolStripMenuItem.Text = "الإدارة المالية"
+        ' 
+        ' TSMTreasury
+        ' 
+        TSMTreasury.Name = "TSMTreasury"
+        TSMTreasury.Size = New Size(224, 30)
+        TSMTreasury.Text = "الخزينة"
         ' 
         ' FrmMain
         ' 
-        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(245), CByte(247), CByte(250))
         ClientSize = New Size(1831, 1102)
+        Controls.Add(Guna2PanelTop)
         Controls.Add(StatusStrip1)
         Controls.Add(Panel1)
         Controls.Add(MenuStrip1)
         Controls.Add(PnlMain)
-        FormBorderStyle = FormBorderStyle.FixedSingle
+        FormBorderStyle = FormBorderStyle.None
         Margin = New Padding(3, 4, 3, 4)
         Name = "FrmMain"
         RightToLeft = RightToLeft.Yes
@@ -362,8 +463,7 @@ Partial Public Class FrmMain
         Panel1.ResumeLayout(False)
         MenuStrip1.ResumeLayout(False)
         MenuStrip1.PerformLayout()
-        PnlMain.ResumeLayout(False)
-        PnlMain.PerformLayout()
+        Guna2PanelTop.ResumeLayout(False)
         ResumeLayout(False)
         PerformLayout()
 
@@ -373,7 +473,7 @@ Partial Public Class FrmMain
     Friend WithEvents TSLDateTime As ToolStripStatusLabel
     Friend WithEvents StatusStrip1 As StatusStrip
     Friend WithEvents TSLUserName As ToolStripStatusLabel
-    Friend WithEvents Panel1 As Panel
+    Friend WithEvents Panel1 As Guna.UI2.WinForms.Guna2Panel
     Friend WithEvents BtnCautch As Button
     Friend WithEvents BtnCustomer As Button
     Friend WithEvents BtnSubscription As Button
@@ -395,8 +495,20 @@ Partial Public Class FrmMain
     Friend WithEvents BtnMemberSubscription As Button
     Friend WithEvents BtnSubscribtion As Button
     Friend WithEvents المستخدمينToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents msTheme As MaterialSkin.Controls.MaterialSwitch
-    Friend WithEvents lblTheme As Label
     Friend WithEvents BtnTrainingBooking As Button
     Friend WithEvents TSMChangepassword As ToolStripMenuItem
+    Private WithEvents Guna2Elipse1 As Guna.UI2.WinForms.Guna2Elipse
+    Private WithEvents Guna2ShadowForm1 As Guna.UI2.WinForms.Guna2ShadowForm
+    Private WithEvents Guna2DragControl1 As Guna.UI2.WinForms.Guna2DragControl
+    Private WithEvents Guna2PanelTop As Guna.UI2.WinForms.Guna2Panel
+    Private WithEvents Guna2ControlBoxClose As Guna.UI2.WinForms.Guna2ControlBox
+    Private WithEvents Guna2ControlBoxMin As Guna.UI2.WinForms.Guna2ControlBox
+    Private WithEvents Guna2ElipseBtnCustomer As Guna.UI2.WinForms.Guna2Elipse
+    Private WithEvents Guna2ElipseBtnCautch As Guna.UI2.WinForms.Guna2Elipse
+    Private WithEvents Guna2ElipseBtnSubscribtion As Guna.UI2.WinForms.Guna2Elipse
+    Private WithEvents Guna2ElipseBtnMemberSubscription As Guna.UI2.WinForms.Guna2Elipse
+    Private WithEvents Guna2ElipseBtnTrainingBooking As Guna.UI2.WinForms.Guna2Elipse
+    Private WithEvents Guna2ElipseBtnSubscription As Guna.UI2.WinForms.Guna2Elipse
+    Friend WithEvents الإدارةالماليةToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents TSMTreasury As ToolStripMenuItem
 End Class

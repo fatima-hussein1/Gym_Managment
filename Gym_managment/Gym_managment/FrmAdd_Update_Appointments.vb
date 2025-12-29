@@ -2,11 +2,25 @@
 Imports System.Drawing
 Imports Microsoft.Data.SqlClient
 Imports System.ComponentModel
+Imports Guna.UI2.WinForms
+Imports System.Globalization
 
 Public Class FrmAdd_Update_Appointments
+
+    Public Sub New()
+        ' واجهة عربية + تقويم ميلادي (منع ظهور الهجري مثل 1444)
+        Dim arGreg As New CultureInfo("ar-SA")
+        arGreg.DateTimeFormat.Calendar = New GregorianCalendar(GregorianCalendarTypes.USEnglish)
+        Threading.Thread.CurrentThread.CurrentCulture = arGreg
+        Threading.Thread.CurrentThread.CurrentUICulture = arGreg
+
+        InitializeComponent()
+    End Sub
+
     <Browsable(False), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)>
     Public Property SelectedDate As Date
-    Dim btnTrainer As New Button
+
+    Private trainerButtons As New List(Of Guna2Button)()
 
     Private SelectedTrainerId As Integer = 0
     Private SelectedTrainerName As String = ""
@@ -14,17 +28,17 @@ Public Class FrmAdd_Update_Appointments
 
     Private Sub FrmAdd_Update_Appointments_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If SelectedDate <> Date.MinValue Then
-            Me.Text = "مواعيد المدربين - " & SelectedDate.ToString("yyyy/MM/dd")
+            Me.Text = "مواعيد المدربين - " & SelectedDate.ToString("dd-MM-yyyy", CultureInfo.InvariantCulture)
         End If
 
         loadall_Trainer()
 
         If SelectedDate <> Date.MinValue Then
-        Me.Text = "مواعيد المدربين - " & SelectedDate.ToString("yyyy/MM/dd")
-        DtpDate.Value = SelectedDate
-    End If
+            Me.Text = "مواعيد المدربين - " & SelectedDate.ToString("dd-MM-yyyy", CultureInfo.InvariantCulture)
+            DtpDate.Value = SelectedDate
+        End If
 
-    loadall_Trainer()
+        loadall_Trainer()
 
         If SelectedAppointmentId > 0 Then
             LoadAppointmentForEdit(SelectedAppointmentId)
@@ -87,6 +101,7 @@ Public Class FrmAdd_Update_Appointments
         Try
             FlowLayoutPanel3.AutoScroll = True
             FlowLayoutPanel3.Controls.Clear()
+            trainerButtons.Clear()
 
             If con.State = ConnectionState.Open Then
                 con.Close()
@@ -98,24 +113,30 @@ Public Class FrmAdd_Update_Appointments
                 rdr = cmd.ExecuteReader()
 
                 While rdr.Read()
-                    btnTrainer = New Button()
+                    Dim btnTrainer As New Guna2Button()
 
                     btnTrainer.Width = 220
                     btnTrainer.Height = 50
                     btnTrainer.Text = rdr("Name").ToString()
                     btnTrainer.Tag = rdr("TrainerID").ToString()
-                    btnTrainer.FlatStyle = FlatStyle.Flat
-                    btnTrainer.FlatAppearance.BorderSize = 0
 
-                    btnTrainer.BackColor = Color.FromArgb(52, 152, 219)
+                    btnTrainer.Animated = True
+                    btnTrainer.BorderRadius = 10
+                    btnTrainer.FillColor = Color.FromArgb(0, 9, 43)
+                    btnTrainer.BorderColor = Color.FromArgb(234, 153, 149)
+                    btnTrainer.BorderThickness = 2
                     btnTrainer.ForeColor = Color.White
-
+                    btnTrainer.Font = New Font("Segoe UI", 10.0F, FontStyle.Bold)
+                    btnTrainer.TextAlign = HorizontalAlignment.Center
                     btnTrainer.Cursor = Cursors.Hand
-                    btnTrainer.Font = New Font("Hacen Algeria", 10.8!, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-                    btnTrainer.TextAlign = ContentAlignment.MiddleCenter
+
+                    btnTrainer.HoverState.FillColor = Color.FromArgb(193, 20, 137)
+                    btnTrainer.HoverState.BorderColor = Color.FromArgb(193, 20, 137)
+                    btnTrainer.PressedColor = Color.FromArgb(193, 20, 137)
 
                     AddHandler btnTrainer.Click, AddressOf _SelectEmp_click
 
+                    trainerButtons.Add(btnTrainer)
                     FlowLayoutPanel3.Controls.Add(btnTrainer)
                 End While
             End Using
@@ -147,6 +168,7 @@ Public Class FrmAdd_Update_Appointments
         Try
             FlowLayoutPanel3.AutoScroll = True
             FlowLayoutPanel3.Controls.Clear()
+            trainerButtons.Clear()
 
             If con.State = ConnectionState.Open Then
                 con.Close()
@@ -167,24 +189,30 @@ Public Class FrmAdd_Update_Appointments
                 rdr = cmd.ExecuteReader()
 
                 While rdr.Read()
-                    btnTrainer = New Button()
+                    Dim btnTrainer As New Guna2Button()
 
                     btnTrainer.Width = 220
                     btnTrainer.Height = 50
                     btnTrainer.Text = rdr("Name").ToString()
                     btnTrainer.Tag = rdr("TrainerID").ToString()
-                    btnTrainer.FlatStyle = FlatStyle.Flat
-                    btnTrainer.FlatAppearance.BorderSize = 0
 
-                    btnTrainer.BackColor = Color.FromArgb(52, 152, 219)
+                    btnTrainer.Animated = True
+                    btnTrainer.BorderRadius = 10
+                    btnTrainer.FillColor = Color.FromArgb(0, 9, 43)
+                    btnTrainer.BorderColor = Color.FromArgb(234, 153, 149)
+                    btnTrainer.BorderThickness = 2
                     btnTrainer.ForeColor = Color.White
-
+                    btnTrainer.Font = New Font("Segoe UI", 10.0F, FontStyle.Bold)
+                    btnTrainer.TextAlign = HorizontalAlignment.Center
                     btnTrainer.Cursor = Cursors.Hand
-                    btnTrainer.Font = New Font("Hacen Algeria", 10.8!, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-                    btnTrainer.TextAlign = ContentAlignment.MiddleCenter
+
+                    btnTrainer.HoverState.FillColor = Color.FromArgb(193, 20, 137)
+                    btnTrainer.HoverState.BorderColor = Color.FromArgb(193, 20, 137)
+                    btnTrainer.PressedColor = Color.FromArgb(193, 20, 137)
 
                     AddHandler btnTrainer.Click, AddressOf _SelectEmp_click
 
+                    trainerButtons.Add(btnTrainer)
                     FlowLayoutPanel3.Controls.Add(btnTrainer)
                 End While
             End Using
@@ -280,8 +308,18 @@ Public Class FrmAdd_Update_Appointments
     End Sub
 
     Private Sub _SelectEmp_click(sender As Object, e As EventArgs)
-        Dim btn = TryCast(sender, Button)
+        Dim btn = TryCast(sender, Guna2Button)
         If btn Is Nothing Then Return
+
+        For Each b In trainerButtons
+            b.FillColor = Color.FromArgb(0, 9, 43)
+            b.BorderColor = Color.FromArgb(234, 153, 149)
+            b.ForeColor = Color.White
+        Next
+
+        btn.FillColor = Color.FromArgb(193, 20, 137)
+        btn.BorderColor = Color.FromArgb(193, 20, 137)
+        btn.ForeColor = Color.White
 
         SelectedTrainerId = CInt(btn.Tag)
         SelectedTrainerName = btn.Text

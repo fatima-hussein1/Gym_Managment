@@ -1,10 +1,4 @@
-ï»¿Imports Microsoft.Data.SqlClient
-Imports System.ComponentModel
-Imports System.Net.NetworkInformation
-Imports System.Text
-Imports Microsoft.Win32
-Imports System.Net
-Imports System.Web
+Imports Microsoft.Data.SqlClient
 Imports System.IO
 
 Public Class FrmLogin
@@ -12,7 +6,7 @@ Public Class FrmLogin
     Private DTUser As New DataTable
     Private DS As New DataSet
     Private DT As New DataTable, RandomPass As String
-    Private R As New ResizeControls()
+    'Private R As New ResizeControls()
 
     Private Sub FrmLogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         SWForm = True
@@ -35,7 +29,7 @@ Public Class FrmLogin
                 My.Settings.Save()
             End If
         Catch ex As Exception
-            ShowAppMessage("ÙØ´Ù„ ÙÙŠ Ø¬Ù„Ø¨ Ø¨ÙŠØ§Ù†Ø§Øª Ø§Ù„Ù…Ø³ØªØ®Ø¯Ù…ÙŠÙ† Ø£Ùˆ Ø§Ù„Ø¥ØªØµØ§Ù„: " & ex.Message, AppMessageType.Error)
+            ShowAppMessage("İÔá İí ÌáÈ ÈíÇäÇÊ ÇáãÓÊÎÏãíä Ãæ ÇáÅÊÕÇá: " & ex.Message, AppMessageType.Error)
         Finally
             Try
                 CloseCon()
@@ -57,14 +51,14 @@ Public Class FrmLogin
         My.Settings.Save()
     End Sub
 
-    Private Sub BtnOK_Click(sender As Object, e As EventArgs) Handles BtnOk.Click
+    Private Sub BtnOK_Click(sender As Object, e As EventArgs) Handles BtnOK.Click
         If CmbUserName.Text.Trim = "" Then
-            ShowAppMessage("ÙŠØ±Ø¬Ù‰ Ø§Ø¯Ø®Ø§Ù„ Ø§Ø³Ù… Ø§Ù„Ù…Ø³ØªØ®Ø¯Ù…", AppMessageType.Warning)
+            ShowAppMessage("íÑÌì ÇÏÎÇá ÇÓã ÇáãÓÊÎÏã", AppMessageType.Warning)
             CmbUserName.Focus()
             Exit Sub
         End If
         If TxtPasswprd.Text.Trim = "" Then
-            ShowAppMessage("ÙŠØ±Ø¬Ù‰ Ø§Ø¯Ø®Ø§Ù„ ÙƒÙ„Ù…Ø© Ø§Ù„Ù…Ø±ÙˆØ±", AppMessageType.Warning)
+            ShowAppMessage("íÑÌì ÇÏÎÇá ßáãÉ ÇáãÑæÑ", AppMessageType.Warning)
             TxtPasswprd.Focus()
             Exit Sub
         End If
@@ -72,11 +66,13 @@ Public Class FrmLogin
         Try
             OpenCon()
         Catch ex As Exception
-            ShowAppMessage("ÙØ´Ù„ ÙÙŠ ÙØªØ­ Ø§Ù„Ø§ØªØµØ§Ù„: " & ex.Message, AppMessageType.Error)
+            ShowAppMessage("İÔá İí İÊÍ ÇáÇÊÕÇá: " & ex.Message, AppMessageType.Error)
             Exit Sub
         End Try
+
         Dim userRoleId As Integer = 0
         Dim authenticated As Boolean = False
+
         Try
             Using cmd As New SqlCommand("
     SELECT TOP 1 ID, UserName, UserPass, Userjob, LockedOut, RoleID
@@ -91,7 +87,7 @@ Public Class FrmLogin
                         If Not rdr.IsDBNull(rdr.GetOrdinal("LockedOut")) Then
                             Dim locked = Convert.ToBoolean(rdr("LockedOut"))
                             If locked Then
-                                ShowAppMessage("Ø§Ù„Ø­Ø³Ø§Ø¨ Ù…Ù‚ÙÙ„. ØªÙˆØ§ØµÙ„ Ù…Ø¹ Ø§Ù„Ù…Ø³Ø¤ÙˆÙ„.", AppMessageType.Warning)
+                                ShowAppMessage("ÇáÍÓÇÈ ãŞİá. ÊæÇÕá ãÚ ÇáãÓÄæá.", AppMessageType.Warning)
                                 TxtPasswprd.Text = ""
                                 TxtPasswprd.Focus()
                                 Return
@@ -118,20 +114,23 @@ Public Class FrmLogin
                         End Using
                     End Using
                 Catch ex As Exception
-                    ShowAppMessage("Ø®Ø·Ø£ ÙÙŠ ØªØ­Ù…ÙŠÙ„ ØµÙ„Ø§Ø­ÙŠØ§Øª Ø§Ù„Ù…Ø³ØªØ®Ø¯Ù…: " & ex.Message, AppMessageType.Error)
+                    ShowAppMessage("ÎØÃ İí ÊÍãíá ÕáÇÍíÇÊ ÇáãÓÊÎÏã: " & ex.Message, AppMessageType.Error)
                 End Try
 
                 SWForm = False
                 swactive = True
-                'SetPermission()
-                Me.Dispose()
+
+                Dim main As New FrmMain()
+                main.Show()
+                Me.Hide()
+
             Else
-                ShowAppMessage("ÙƒÙ„Ù…Ø© Ø§Ù„Ù…Ø±ÙˆØ± ØºÙŠØ± ØµØ­ÙŠØ­Ø©  ÙŠØ±Ø¬Ù‰ Ø§Ø¹Ø§Ø¯Ø© Ø§Ù„Ù…Ø­Ø§ÙˆÙ„Ø©", AppMessageType.Warning)
+                ShowAppMessage("ßáãÉ ÇáãÑæÑ ÛíÑ ÕÍíÍÉ  íÑÌì ÇÚÇÏÉ ÇáãÍÇæáÉ", AppMessageType.Warning)
                 TxtPasswprd.Text = ""
                 TxtPasswprd.Focus()
             End If
         Catch ex As Exception
-            ShowAppMessage("Ø®Ø·Ø£  Ø§ØªØµØ§Ù„ Ø¨Ù‚Ø§Ø¹Ø¯Ø© Ø§Ù„Ø¨ÙŠØ§Ù†Ø§Øª: " & ex.Message, AppMessageType.Error)
+            ShowAppMessage("ÎØÃ  ÇÊÕÇá ÈŞÇÚÏÉ ÇáÈíÇäÇÊ: " & ex.Message, AppMessageType.Error)
         Finally
             Try
                 CloseCon()
@@ -144,7 +143,7 @@ Public Class FrmLogin
 
     End Sub
 
-    Private Sub FrmLogin_HandleCreated(sender As Object, e As EventArgs) Handles Me.HandleCreated
-        R.Container = Me
-    End Sub
+    'Private Sub FrmLogin_HandleCreated(sender As Object, e As EventArgs) Handles Me.HandleCreated
+    '    R.Container = Me
+    'End Sub
 End Class

@@ -1,25 +1,12 @@
 ﻿Imports System.Data.SqlClient
 Imports System.IO
 Imports Microsoft.Data.SqlClient
-Imports MaterialSkin
 
 Public Class FrmAddTrainer
 
     Public Trainer_ID As Integer = 0
 
     Private Sub FrmAddTrainer_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim SkinManager As MaterialSkinManager = MaterialSkinManager.Instance
-
-        SkinManager.AddFormToManage(Me)
-
-        SkinManager.ColorScheme = New ColorScheme(
-            Primary.Indigo500,
-            Primary.Indigo700,
-            Primary.Indigo100,
-            Accent.LightBlue200,
-            TextShade.WHITE
-        )
-
         If Trainer_ID = 0 Then
             CLEARITEMS()
         End If

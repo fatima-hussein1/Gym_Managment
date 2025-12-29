@@ -156,4 +156,9 @@ Public Class FrmManageMemberPackages
             End Try
         End If
     End Sub
+
+    Private Sub BtnAddMemberSubscription_Click(sender As Object, e As EventArgs) Handles BtnAddMemberSubscription.Click
+        FrmAddSubscriptionMember.ShowDialog()
+
+    End Sub
 End Class

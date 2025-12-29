@@ -27,7 +27,14 @@ Partial Public Class FrmTrainers
                 dgvTrainers.Item(0, i).Value = DTTrainers.Rows(i).Item("TrainerID")
                 dgvTrainers.Item(1, i).Value = DTTrainers.Rows(i).Item("Name")
                 dgvTrainers.Item(2, i).Value = DTTrainers.Rows(i).Item("PhoneNumber")
-                dgvTrainers.Item(3, i).Value = DTTrainers.Rows(i).Item("HireDate")
+
+                If Not IsDBNull(DTTrainers.Rows(i).Item("HireDate")) Then
+                    Dim hireDate As Date = CDate(DTTrainers.Rows(i).Item("HireDate"))
+                    dgvTrainers.Item(3, i).Value = hireDate.ToString("dd-MM-yyyy", Globalization.CultureInfo.InvariantCulture)
+                Else
+                    dgvTrainers.Item(3, i).Value = ""
+                End If
+
                 dgvTrainers.Item(4, i).Value = DTTrainers.Rows(i).Item("UserID")
 
                 If Not IsDBNull(DTTrainers.Rows(i).Item("PicTrainer")) Then

@@ -28,22 +28,27 @@ Partial Class DayCell
         ' 
         ' LblDayNumber
         ' 
-        LblDayNumber.AutoSize = True
-        LblDayNumber.Location = New Point(184, 109)
+        LblDayNumber.Dock = DockStyle.Top
+        LblDayNumber.Height = 26
         LblDayNumber.Name = "LblDayNumber"
-        LblDayNumber.Size = New Size(53, 20)
         LblDayNumber.TabIndex = 0
-        LblDayNumber.Text = "Label1"
+        LblDayNumber.Text = ""
+        LblDayNumber.TextAlign = ContentAlignment.MiddleRight
+        LblDayNumber.Font = New Font("Segoe UI", 10.0F, FontStyle.Bold)
+        LblDayNumber.ForeColor = Color.White
+        LblDayNumber.BackColor = Color.Transparent
+        LblDayNumber.Padding = New Padding(0, 0, 6, 0)
         ' 
         ' DayCell
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
+        BackColor = Color.FromArgb(0, 9, 43)
+        BorderStyle = BorderStyle.FixedSingle
         Controls.Add(LblDayNumber)
         Name = "DayCell"
-        Size = New Size(349, 285)
+        Size = New Size(110, 90)
         ResumeLayout(False)
-        PerformLayout()
     End Sub
 
     Friend WithEvents LblDayNumber As Label

@@ -7,6 +7,9 @@
     <Compile Update="FrmAddMember.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="FrmAddSubscriptionMember.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="FrmAddTrainer.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -37,7 +40,13 @@
     <Compile Update="FrmProfile.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="FrmSelectMember.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="FrmTrainers.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FrmTreasury.vb">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

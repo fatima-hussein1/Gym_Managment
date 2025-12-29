@@ -11,13 +11,13 @@ Public Class FrmChangePassword
         Me.Dispose()
     End Sub
 
-    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
-        If CheckBox1.Checked = True Then
+    Private Sub ToggleShowPassword_CheckedChanged(sender As Object, e As EventArgs) Handles ToggleShowPassword.CheckedChanged
+        If ToggleShowPassword.Checked Then
             TxtOldPass.PasswordChar = vbNullChar
             TxtNewPass.PasswordChar = vbNullChar
         Else
-            TxtOldPass.PasswordChar = "●"
-            TxtNewPass.PasswordChar = "●"
+            TxtOldPass.PasswordChar = "●"c
+            TxtNewPass.PasswordChar = "●"c
         End If
     End Sub
 
@@ -27,7 +27,7 @@ Public Class FrmChangePassword
         End If
     End Sub
 
-    Private Sub GroupBox1_Enter(sender As Object, e As EventArgs) Handles GroupBox1.Enter
+    Private Sub GroupBox1_Enter(sender As Object, e As EventArgs)
     End Sub
 
     Private Sub PiczoomPass1_Click(sender As Object, e As EventArgs) Handles PiczoomPass1.Click
@@ -47,6 +47,10 @@ Public Class FrmChangePassword
 
     Private Sub PiczoomPass2_MouseLeave(sender As Object, e As EventArgs) Handles PiczoomPass2.MouseLeave
         TxtNewPass.PasswordChar = "●"
+
+    End Sub
+
+    Private Sub PiczoomPass2_Click(sender As Object, e As EventArgs) Handles PiczoomPass2.Click
 
     End Sub
 

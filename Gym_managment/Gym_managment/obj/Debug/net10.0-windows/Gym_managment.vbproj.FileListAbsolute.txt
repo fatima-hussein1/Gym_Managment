@@ -48,7 +48,6 @@ C:\Users\شركة دليل التقنية\source\repos\Gym_managment\Gym_managme
 C:\Users\شركة دليل التقنية\source\repos\Gym_managment\Gym_managment\bin\Debug\net10.0-windows\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
 C:\Users\شركة دليل التقنية\source\repos\Gym_managment\Gym_managment\obj\Debug\net10.0-windows\Gym_managment.vbproj.AssemblyReference.cache
 C:\Users\شركة دليل التقنية\source\repos\Gym_managment\Gym_managment\obj\Debug\net10.0-windows\Gym_managment.FrmAddMember.resources
-C:\Users\شركة دليل التقنية\source\repos\Gym_managment\Gym_managment\obj\Debug\net10.0-windows\Gym_managment.FrmLogin.resources
 C:\Users\شركة دليل التقنية\source\repos\Gym_managment\Gym_managment\obj\Debug\net10.0-windows\Gym_managment.FrmMain.resources
 C:\Users\شركة دليل التقنية\source\repos\Gym_managment\Gym_managment\obj\Debug\net10.0-windows\Gym_managment.FrmManagememberr.resources
 C:\Users\شركة دليل التقنية\source\repos\Gym_managment\Gym_managment\obj\Debug\net10.0-windows\Gym_managment.FrmTrainers.resources
@@ -72,3 +71,11 @@ C:\Users\شركة دليل التقنية\source\repos\Gym_managment\Gym_managme
 C:\Users\شركة دليل التقنية\source\repos\Gym_managment\Gym_managment\obj\Debug\net10.0-windows\Gym_managment.frmDisplayAppointment.resources
 C:\Users\شركة دليل التقنية\source\repos\Gym_managment\Gym_managment\obj\Debug\net10.0-windows\Gym_managment.FrmChangePassword.resources
 C:\Users\شركة دليل التقنية\source\repos\Gym_managment\Gym_managment\obj\Debug\net10.0-windows\Gym_managment.FrmProfile.resources
+C:\Users\شركة دليل التقنية\source\repos\Gym_managment\Gym_managment\bin\Debug\net10.0-windows\Guna.UI2.dll
+C:\Users\شركة دليل التقنية\source\repos\Gym_managment\Gym_managment\bin\Debug\net10.0-windows\System.Management.dll
+C:\Users\شركة دليل التقنية\source\repos\Gym_managment\Gym_managment\bin\Debug\net10.0-windows\runtimes\win\lib\net7.0\System.Management.dll
+C:\Users\شركة دليل التقنية\source\repos\Gym_managment\Gym_managment\obj\Debug\net10.0-windows\Gym_managment.sourcelink.json
+C:\Users\شركة دليل التقنية\source\repos\Gym_managment\Gym_managment\obj\Debug\net10.0-windows\Gym_managment.FrmLogin.resources
+C:\Users\شركة دليل التقنية\source\repos\Gym_managment\Gym_managment\obj\Debug\net10.0-windows\Gym_managment.FrmAddSubscriptionMember.resources
+C:\Users\شركة دليل التقنية\source\repos\Gym_managment\Gym_managment\obj\Debug\net10.0-windows\Gym_managment.FrmSelectMember.resources
+C:\Users\شركة دليل التقنية\source\repos\Gym_managment\Gym_managment\obj\Debug\net10.0-windows\Gym_managment.FrmTreasury.resources

@@ -1,5 +1,4 @@
-﻿Imports MaterialSkin
-Imports System.Drawing
+﻿Imports System.Drawing
 Imports System.Data
 Imports Microsoft.Data.SqlClient
 
@@ -8,19 +7,7 @@ Public Class FrmManagememberr
     Private DTMembers As New DataTable
 
     Private Sub FrmManageTrainer_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim SkinManager As MaterialSkinManager = MaterialSkinManager.Instance
-
-        SkinManager.AddFormToManage(Me)
-
-        SkinManager.ColorScheme = New ColorScheme(
-            Primary.Indigo500,
-            Primary.Indigo700,
-            Primary.Indigo100,
-            Accent.LightBlue200,
-            TextShade.WHITE
-        )
-
-
+        ' تم تعطيل MaterialSkin لأن الفورم أصبح بتصميم Guna وليس MaterialForm
 
         Load_Members()
     End Sub

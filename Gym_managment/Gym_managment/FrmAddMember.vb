@@ -9,17 +9,17 @@ Public Class FrmAddMember
     Public Member_ID As Integer = 0
 
     Private Sub FrmAddMember_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim SkinManager As MaterialSkinManager = MaterialSkinManager.Instance
+        ' تم تعطيل MaterialSkin لأن الفورم أصبح بتصميم Guna وليس MaterialForm
+        'Dim SkinManager As MaterialSkinManager = MaterialSkinManager.Instance
+        'SkinManager.AddFormToManage(Me)
+        'SkinManager.ColorScheme = New ColorScheme(
+        '    Primary.Indigo500,
+        '    Primary.Indigo700,
+        '    Primary.Indigo100,
+        '    Accent.LightBlue200,
+        '    TextShade.WHITE
+        ')
 
-        SkinManager.AddFormToManage(Me)
-
-        SkinManager.ColorScheme = New ColorScheme(
-            Primary.Indigo500,
-            Primary.Indigo700,
-            Primary.Indigo100,
-            Accent.LightBlue200,
-            TextShade.WHITE
-        )
         If Member_ID = 0 Then
             CLEARITEMS()
         End If

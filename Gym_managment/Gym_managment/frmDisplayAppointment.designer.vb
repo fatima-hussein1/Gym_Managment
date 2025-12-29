@@ -22,230 +22,359 @@ Partial Class frmDisplayAppointment
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Panel1 = New Panel()
+        Dim CustomizableEdges5 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges6 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges1 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges2 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges3 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges4 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges9 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges10 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges7 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges8 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges15 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges16 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges11 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges12 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges13 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges14 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges17 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges18 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        PanelTop = New Guna.UI2.WinForms.Guna2Panel()
+        ControlBoxMin = New Guna.UI2.WinForms.Guna2ControlBox()
+        ControlBoxClose = New Guna.UI2.WinForms.Guna2ControlBox()
+        Sidebar = New Guna.UI2.WinForms.Guna2Panel()
+        flAppointments = New FlowLayoutPanel()
+        BtnAddAppointment = New Guna.UI2.WinForms.Guna2Button()
+        LblSelectedDate = New Label()
+        PanelHeader = New Guna.UI2.WinForms.Guna2Panel()
         lblMonthAndYear = New Label()
-        Panel2 = New Panel()
-        btnNextMonth = New Button()
-        btnPrevMonth = New Button()
-        Panel3 = New Panel()
-        Label1 = New Label()
-        Label5 = New Label()
-        Label7 = New Label()
-        Label4 = New Label()
-        Label6 = New Label()
-        Label3 = New Label()
-        Label2 = New Label()
+        btnPrevMonth = New Guna.UI2.WinForms.Guna2Button()
+        btnNextMonth = New Guna.UI2.WinForms.Guna2Button()
+        PanelDaysHeader = New Guna.UI2.WinForms.Guna2Panel()
+        LblTue = New Label()
+        LblMon = New Label()
+        LblSat = New Label()
+        LblSun = New Label()
+        LblWed = New Label()
+        LblThu = New Label()
+        LblFri = New Label()
         flDays = New FlowLayoutPanel()
-        Panel1.SuspendLayout()
-        Panel2.SuspendLayout()
-        Panel3.SuspendLayout()
+        PanelTop.SuspendLayout()
+        Sidebar.SuspendLayout()
+        PanelHeader.SuspendLayout()
+        PanelDaysHeader.SuspendLayout()
         SuspendLayout()
         ' 
-        ' Panel1
+        ' PanelTop
         ' 
-        Panel1.BackColor = Color.FromArgb(CByte(35), CByte(35), CByte(35))
-        Panel1.Controls.Add(lblMonthAndYear)
-        Panel1.Controls.Add(Panel2)
-        Panel1.Dock = DockStyle.Top
-        Panel1.Location = New Point(0, 0)
-        Panel1.Margin = New Padding(4, 5, 4, 5)
-        Panel1.Name = "Panel1"
-        Panel1.Size = New Size(1096, 111)
-        Panel1.TabIndex = 0
+        PanelTop.BackColor = Color.FromArgb(CByte(0), CByte(9), CByte(43))
+        PanelTop.Controls.Add(ControlBoxMin)
+        PanelTop.Controls.Add(ControlBoxClose)
+        PanelTop.CustomizableEdges = CustomizableEdges5
+        PanelTop.Dock = DockStyle.Top
+        PanelTop.Location = New Point(0, 0)
+        PanelTop.Name = "PanelTop"
+        PanelTop.ShadowDecoration.CustomizableEdges = CustomizableEdges6
+        PanelTop.Size = New Size(1078, 42)
+        PanelTop.TabIndex = 100
+        ' 
+        ' ControlBoxMin
+        ' 
+        ControlBoxMin.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        ControlBoxMin.ControlBoxType = Guna.UI2.WinForms.Enums.ControlBoxType.MinimizeBox
+        ControlBoxMin.CustomizableEdges = CustomizableEdges1
+        ControlBoxMin.FillColor = Color.FromArgb(CByte(0), CByte(9), CByte(43))
+        ControlBoxMin.IconColor = Color.White
+        ControlBoxMin.Location = New Point(39, 6)
+        ControlBoxMin.Name = "ControlBoxMin"
+        ControlBoxMin.ShadowDecoration.CustomizableEdges = CustomizableEdges2
+        ControlBoxMin.Size = New Size(45, 30)
+        ControlBoxMin.TabIndex = 1
+        ' 
+        ' ControlBoxClose
+        ' 
+        ControlBoxClose.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        ControlBoxClose.CustomizableEdges = CustomizableEdges3
+        ControlBoxClose.FillColor = Color.FromArgb(CByte(0), CByte(9), CByte(43))
+        ControlBoxClose.HoverState.FillColor = Color.Red
+        ControlBoxClose.IconColor = Color.White
+        ControlBoxClose.Location = New Point(-12, 6)
+        ControlBoxClose.Name = "ControlBoxClose"
+        ControlBoxClose.ShadowDecoration.CustomizableEdges = CustomizableEdges4
+        ControlBoxClose.Size = New Size(45, 30)
+        ControlBoxClose.TabIndex = 0
+        ' 
+        ' Sidebar
+        ' 
+        Sidebar.BorderColor = Color.FromArgb(CByte(234), CByte(153), CByte(149))
+        Sidebar.BorderThickness = 1
+        Sidebar.Controls.Add(flAppointments)
+        Sidebar.Controls.Add(BtnAddAppointment)
+        Sidebar.Controls.Add(LblSelectedDate)
+        Sidebar.CustomizableEdges = CustomizableEdges9
+        Sidebar.Dock = DockStyle.Left
+        Sidebar.FillColor = Color.FromArgb(CByte(0), CByte(9), CByte(43))
+        Sidebar.Location = New Point(0, 42)
+        Sidebar.Name = "Sidebar"
+        Sidebar.ShadowDecoration.CustomizableEdges = CustomizableEdges10
+        Sidebar.Size = New Size(276, 877)
+        Sidebar.TabIndex = 0
+        ' 
+        ' flAppointments
+        ' 
+        flAppointments.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
+        flAppointments.AutoScroll = True
+        flAppointments.BackColor = Color.FromArgb(CByte(0), CByte(9), CByte(43))
+        flAppointments.Font = New Font("Times New Roman", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        flAppointments.Location = New Point(3, 290)
+        flAppointments.Name = "flAppointments"
+        flAppointments.Size = New Size(267, 563)
+        flAppointments.TabIndex = 0
+        ' 
+        ' BtnAddAppointment
+        ' 
+        BtnAddAppointment.Animated = True
+        BtnAddAppointment.BorderRadius = 10
+        BtnAddAppointment.CustomizableEdges = CustomizableEdges7
+        BtnAddAppointment.FillColor = Color.FromArgb(CByte(193), CByte(20), CByte(137))
+        BtnAddAppointment.Font = New Font("Segoe UI", 9.0F, FontStyle.Bold)
+        BtnAddAppointment.ForeColor = Color.White
+        BtnAddAppointment.Location = New Point(28, 229)
+        BtnAddAppointment.Name = "BtnAddAppointment"
+        BtnAddAppointment.ShadowDecoration.CustomizableEdges = CustomizableEdges8
+        BtnAddAppointment.Size = New Size(226, 40)
+        BtnAddAppointment.TabIndex = 1
+        BtnAddAppointment.Text = "حجز موعد"
+        ' 
+        ' LblSelectedDate
+        ' 
+        LblSelectedDate.Font = New Font("Times New Roman", 12.0F)
+        LblSelectedDate.ForeColor = Color.White
+        LblSelectedDate.Location = New Point(12, 165)
+        LblSelectedDate.Name = "LblSelectedDate"
+        LblSelectedDate.Size = New Size(256, 30)
+        LblSelectedDate.TabIndex = 2
+        LblSelectedDate.TextAlign = ContentAlignment.MiddleLeft
+        ' 
+        ' PanelHeader
+        ' 
+        PanelHeader.BackColor = Color.FromArgb(CByte(0), CByte(9), CByte(43))
+        PanelHeader.BorderColor = Color.FromArgb(CByte(234), CByte(153), CByte(149))
+        PanelHeader.BorderThickness = 1
+        PanelHeader.Controls.Add(lblMonthAndYear)
+        PanelHeader.Controls.Add(btnPrevMonth)
+        PanelHeader.Controls.Add(btnNextMonth)
+        PanelHeader.CustomizableEdges = CustomizableEdges15
+        PanelHeader.Dock = DockStyle.Top
+        PanelHeader.Location = New Point(276, 42)
+        PanelHeader.Name = "PanelHeader"
+        PanelHeader.ShadowDecoration.CustomizableEdges = CustomizableEdges16
+        PanelHeader.Size = New Size(802, 80)
+        PanelHeader.TabIndex = 2
         ' 
         ' lblMonthAndYear
         ' 
         lblMonthAndYear.AutoSize = True
-        lblMonthAndYear.Font = New Font("Microsoft Sans Serif", 27.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        lblMonthAndYear.Font = New Font("Segoe UI", 18.0F, FontStyle.Bold)
         lblMonthAndYear.ForeColor = Color.White
-        lblMonthAndYear.Location = New Point(16, 28)
-        lblMonthAndYear.Margin = New Padding(4, 0, 4, 0)
+        lblMonthAndYear.Location = New Point(20, 20)
         lblMonthAndYear.Name = "lblMonthAndYear"
-        lblMonthAndYear.Size = New Size(320, 54)
-        lblMonthAndYear.TabIndex = 1
-        lblMonthAndYear.Text = "January, 2018"
-        ' 
-        ' Panel2
-        ' 
-        Panel2.Controls.Add(btnNextMonth)
-        Panel2.Controls.Add(btnPrevMonth)
-        Panel2.Dock = DockStyle.Right
-        Panel2.Location = New Point(432, 0)
-        Panel2.Margin = New Padding(4, 5, 4, 5)
-        Panel2.Name = "Panel2"
-        Panel2.Size = New Size(664, 111)
-        Panel2.TabIndex = 0
-        ' 
-        ' btnNextMonth
-        ' 
-        btnNextMonth.BackColor = Color.Transparent
-        btnNextMonth.BackgroundImageLayout = ImageLayout.Stretch
-        btnNextMonth.FlatStyle = FlatStyle.Popup
-        btnNextMonth.Image = My.Resources.Resources.icons8_next_page_641
-        btnNextMonth.Location = New Point(313, 16)
-        btnNextMonth.Margin = New Padding(4, 5, 4, 5)
-        btnNextMonth.Name = "btnNextMonth"
-        btnNextMonth.Size = New Size(85, 85)
-        btnNextMonth.TabIndex = 1
-        btnNextMonth.UseVisualStyleBackColor = False
+        lblMonthAndYear.Size = New Size(0, 41)
+        lblMonthAndYear.TabIndex = 0
         ' 
         ' btnPrevMonth
         ' 
-        btnPrevMonth.BackColor = Color.Transparent
-        btnPrevMonth.BackgroundImageLayout = ImageLayout.Stretch
-        btnPrevMonth.FlatStyle = FlatStyle.Popup
-        btnPrevMonth.Image = My.Resources.Resources.icons8_back_arrow_641
-        btnPrevMonth.Location = New Point(27, 16)
-        btnPrevMonth.Margin = New Padding(4, 5, 4, 5)
+        btnPrevMonth.Animated = True
+        btnPrevMonth.BorderColor = Color.FromArgb(CByte(234), CByte(153), CByte(149))
+        btnPrevMonth.BorderRadius = 10
+        btnPrevMonth.BorderThickness = 2
+        btnPrevMonth.CustomizableEdges = CustomizableEdges11
+        btnPrevMonth.FillColor = Color.FromArgb(CByte(0), CByte(9), CByte(43))
+        btnPrevMonth.Font = New Font("Segoe UI", 9.0F)
+        btnPrevMonth.ForeColor = Color.White
+        btnPrevMonth.Location = New Point(600, 18)
         btnPrevMonth.Name = "btnPrevMonth"
-        btnPrevMonth.Size = New Size(85, 85)
-        btnPrevMonth.TabIndex = 0
-        btnPrevMonth.UseVisualStyleBackColor = False
+        btnPrevMonth.ShadowDecoration.CustomizableEdges = CustomizableEdges12
+        btnPrevMonth.Size = New Size(45, 45)
+        btnPrevMonth.TabIndex = 1
+        btnPrevMonth.Text = "<"
         ' 
-        ' Panel3
+        ' btnNextMonth
         ' 
-        Panel3.Controls.Add(Label1)
-        Panel3.Controls.Add(Label5)
-        Panel3.Controls.Add(Label7)
-        Panel3.Controls.Add(Label4)
-        Panel3.Controls.Add(Label6)
-        Panel3.Controls.Add(Label3)
-        Panel3.Controls.Add(Label2)
-        Panel3.Dock = DockStyle.Top
-        Panel3.Location = New Point(0, 111)
-        Panel3.Margin = New Padding(4, 5, 4, 5)
-        Panel3.Name = "Panel3"
-        Panel3.Size = New Size(1096, 54)
-        Panel3.TabIndex = 1
+        btnNextMonth.Animated = True
+        btnNextMonth.BorderColor = Color.FromArgb(CByte(234), CByte(153), CByte(149))
+        btnNextMonth.BorderRadius = 10
+        btnNextMonth.BorderThickness = 2
+        btnNextMonth.CustomizableEdges = CustomizableEdges13
+        btnNextMonth.FillColor = Color.FromArgb(CByte(0), CByte(9), CByte(43))
+        btnNextMonth.Font = New Font("Segoe UI", 9.0F)
+        btnNextMonth.ForeColor = Color.White
+        btnNextMonth.Location = New Point(660, 18)
+        btnNextMonth.Name = "btnNextMonth"
+        btnNextMonth.ShadowDecoration.CustomizableEdges = CustomizableEdges14
+        btnNextMonth.Size = New Size(45, 45)
+        btnNextMonth.TabIndex = 2
+        btnNextMonth.Text = ">"
         ' 
-        ' Label1
+        ' PanelDaysHeader
         ' 
-        Label1.BackColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
-        Label1.Font = New Font("Microsoft Sans Serif", 13.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label1.Location = New Point(938, 3)
-        Label1.Margin = New Padding(4, 0, 4, 0)
-        Label1.Name = "Label1"
-        Label1.Size = New Size(136, 46)
-        Label1.TabIndex = 0
-        Label1.Text = "السبت"
-        Label1.TextAlign = ContentAlignment.MiddleCenter
+        PanelDaysHeader.BackColor = Color.FromArgb(CByte(0), CByte(9), CByte(43))
+        PanelDaysHeader.BorderColor = Color.FromArgb(CByte(234), CByte(153), CByte(149))
+        PanelDaysHeader.BorderThickness = 1
+        PanelDaysHeader.Controls.Add(LblTue)
+        PanelDaysHeader.Controls.Add(LblMon)
+        PanelDaysHeader.Controls.Add(LblSat)
+        PanelDaysHeader.Controls.Add(LblSun)
+        PanelDaysHeader.Controls.Add(LblWed)
+        PanelDaysHeader.Controls.Add(LblThu)
+        PanelDaysHeader.Controls.Add(LblFri)
+        PanelDaysHeader.CustomizableEdges = CustomizableEdges17
+        PanelDaysHeader.Dock = DockStyle.Top
+        PanelDaysHeader.Location = New Point(276, 122)
+        PanelDaysHeader.Name = "PanelDaysHeader"
+        PanelDaysHeader.RightToLeft = RightToLeft.No
+        PanelDaysHeader.ShadowDecoration.CustomizableEdges = CustomizableEdges18
+        PanelDaysHeader.Size = New Size(802, 40)
+        PanelDaysHeader.TabIndex = 1
         ' 
-        ' Label5
+        ' LblTue
         ' 
-        Label5.BackColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
-        Label5.Font = New Font("Microsoft Sans Serif", 13.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label5.Location = New Point(794, 5)
-        Label5.Margin = New Padding(4, 0, 4, 0)
-        Label5.Name = "Label5"
-        Label5.Size = New Size(136, 44)
-        Label5.TabIndex = 6
-        Label5.Text = "الأحد"
-        Label5.TextAlign = ContentAlignment.MiddleCenter
+        LblTue.BackColor = Color.FromArgb(CByte(193), CByte(20), CByte(137))
+        LblTue.Font = New Font("Times New Roman", 12.0F, FontStyle.Bold)
+        LblTue.ForeColor = Color.White
+        LblTue.Location = New Point(340, 3)
+        LblTue.Name = "LblTue"
+        LblTue.Size = New Size(120, 34)
+        LblTue.TabIndex = 3
+        LblTue.Text = "الثلاثاء"
+        LblTue.TextAlign = ContentAlignment.MiddleCenter
         ' 
-        ' Label7
+        ' LblMon
         ' 
-        Label7.BackColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
-        Label7.Font = New Font("Microsoft Sans Serif", 13.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label7.Location = New Point(492, 4)
-        Label7.Margin = New Padding(4, 0, 4, 0)
-        Label7.Name = "Label7"
-        Label7.Size = New Size(136, 46)
-        Label7.TabIndex = 4
-        Label7.Text = "الثلاثاء"
-        Label7.TextAlign = ContentAlignment.MiddleCenter
+        LblMon.BackColor = Color.FromArgb(CByte(193), CByte(20), CByte(137))
+        LblMon.Font = New Font("Times New Roman", 12.0F, FontStyle.Bold)
+        LblMon.ForeColor = Color.White
+        LblMon.Location = New Point(456, 3)
+        LblMon.Name = "LblMon"
+        LblMon.Size = New Size(118, 34)
+        LblMon.TabIndex = 2
+        LblMon.Text = "الإثنين"
+        LblMon.TextAlign = ContentAlignment.MiddleCenter
         ' 
-        ' Label4
+        ' LblSat
         ' 
-        Label4.BackColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
-        Label4.Font = New Font("Microsoft Sans Serif", 13.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label4.Location = New Point(336, 4)
-        Label4.Margin = New Padding(4, 0, 4, 0)
-        Label4.Name = "Label4"
-        Label4.Size = New Size(136, 46)
-        Label4.TabIndex = 3
-        Label4.Text = "الإربعاء"
-        Label4.TextAlign = ContentAlignment.MiddleCenter
+        LblSat.BackColor = Color.FromArgb(CByte(193), CByte(20), CByte(137))
+        LblSat.Font = New Font("Times New Roman", 12.0F, FontStyle.Bold)
+        LblSat.ForeColor = Color.White
+        LblSat.Location = New Point(688, 3)
+        LblSat.Name = "LblSat"
+        LblSat.Size = New Size(110, 34)
+        LblSat.TabIndex = 0
+        LblSat.Text = "السبت"
+        LblSat.TextAlign = ContentAlignment.MiddleCenter
         ' 
-        ' Label6
+        ' LblSun
         ' 
-        Label6.BackColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
-        Label6.Font = New Font("Microsoft Sans Serif", 13.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label6.Location = New Point(645, 5)
-        Label6.Margin = New Padding(4, 0, 4, 0)
-        Label6.Name = "Label6"
-        Label6.Size = New Size(141, 46)
-        Label6.TabIndex = 5
-        Label6.Text = "الإثنين"
-        Label6.TextAlign = ContentAlignment.MiddleCenter
+        LblSun.BackColor = Color.FromArgb(CByte(193), CByte(20), CByte(137))
+        LblSun.Font = New Font("Times New Roman", 12.0F, FontStyle.Bold)
+        LblSun.ForeColor = Color.White
+        LblSun.Location = New Point(572, 3)
+        LblSun.Name = "LblSun"
+        LblSun.Size = New Size(119, 34)
+        LblSun.TabIndex = 1
+        LblSun.Text = "الأحد"
+        LblSun.TextAlign = ContentAlignment.MiddleCenter
         ' 
-        ' Label3
+        ' LblWed
         ' 
-        Label3.BackColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
-        Label3.Font = New Font("Microsoft Sans Serif", 13.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label3.Location = New Point(186, 4)
-        Label3.Margin = New Padding(4, 0, 4, 0)
-        Label3.Name = "Label3"
-        Label3.Size = New Size(128, 46)
-        Label3.TabIndex = 2
-        Label3.Text = "الخميس"
-        Label3.TextAlign = ContentAlignment.MiddleCenter
+        LblWed.BackColor = Color.FromArgb(CByte(193), CByte(20), CByte(137))
+        LblWed.Font = New Font("Times New Roman", 12.0F, FontStyle.Bold)
+        LblWed.ForeColor = Color.White
+        LblWed.Location = New Point(224, 3)
+        LblWed.Name = "LblWed"
+        LblWed.Size = New Size(118, 34)
+        LblWed.TabIndex = 4
+        LblWed.Text = "الأربعاء"
+        LblWed.TextAlign = ContentAlignment.MiddleCenter
         ' 
-        ' Label2
+        ' LblThu
         ' 
-        Label2.BackColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
-        Label2.Font = New Font("Microsoft Sans Serif", 13.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label2.Location = New Point(33, 3)
-        Label2.Margin = New Padding(4, 0, 4, 0)
-        Label2.Name = "Label2"
-        Label2.Size = New Size(128, 46)
-        Label2.TabIndex = 1
-        Label2.Text = "الجمعة"
-        Label2.TextAlign = ContentAlignment.MiddleCenter
+        LblThu.BackColor = Color.FromArgb(CByte(193), CByte(20), CByte(137))
+        LblThu.Font = New Font("Times New Roman", 12.0F, FontStyle.Bold)
+        LblThu.ForeColor = Color.White
+        LblThu.Location = New Point(108, 3)
+        LblThu.Name = "LblThu"
+        LblThu.Size = New Size(118, 34)
+        LblThu.TabIndex = 5
+        LblThu.Text = "الخميس"
+        LblThu.TextAlign = ContentAlignment.MiddleCenter
+        ' 
+        ' LblFri
+        ' 
+        LblFri.BackColor = Color.FromArgb(CByte(193), CByte(20), CByte(137))
+        LblFri.Font = New Font("Times New Roman", 12.0F, FontStyle.Bold)
+        LblFri.ForeColor = Color.White
+        LblFri.Location = New Point(4, 3)
+        LblFri.Name = "LblFri"
+        LblFri.Size = New Size(105, 34)
+        LblFri.TabIndex = 6
+        LblFri.Text = "الجمعة"
+        LblFri.TextAlign = ContentAlignment.MiddleCenter
         ' 
         ' flDays
         ' 
-        flDays.BackColor = Color.FromArgb(CByte(35), CByte(35), CByte(35))
+        flDays.BackColor = Color.FromArgb(CByte(0), CByte(9), CByte(43))
         flDays.Dock = DockStyle.Fill
-        flDays.Location = New Point(0, 165)
-        flDays.Margin = New Padding(4, 5, 4, 5)
+        flDays.Location = New Point(276, 162)
         flDays.Name = "flDays"
         flDays.RightToLeft = RightToLeft.Yes
-        flDays.Size = New Size(1096, 751)
-        flDays.TabIndex = 2
+        flDays.Size = New Size(802, 757)
+        flDays.TabIndex = 0
         ' 
         ' frmDisplayAppointment
         ' 
-        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
-        AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(1096, 916)
+        BackColor = Color.FromArgb(CByte(0), CByte(9), CByte(43))
+        ClientSize = New Size(1078, 919)
         Controls.Add(flDays)
-        Controls.Add(Panel3)
-        Controls.Add(Panel1)
-        FormBorderStyle = FormBorderStyle.FixedDialog
-        Margin = New Padding(4, 5, 4, 5)
-        MaximizeBox = False
+        Controls.Add(PanelDaysHeader)
+        Controls.Add(PanelHeader)
+        Controls.Add(Sidebar)
+        Controls.Add(PanelTop)
+        FormBorderStyle = FormBorderStyle.None
         Name = "frmDisplayAppointment"
+        RightToLeft = RightToLeft.Yes
         StartPosition = FormStartPosition.CenterScreen
-        Panel1.ResumeLayout(False)
-        Panel1.PerformLayout()
-        Panel2.ResumeLayout(False)
-        Panel3.ResumeLayout(False)
+        PanelTop.ResumeLayout(False)
+        Sidebar.ResumeLayout(False)
+        PanelHeader.ResumeLayout(False)
+        PanelHeader.PerformLayout()
+        PanelDaysHeader.ResumeLayout(False)
         ResumeLayout(False)
 
     End Sub
 
-    Friend WithEvents Panel1 As Panel
+    Friend WithEvents PanelTop As Guna.UI2.WinForms.Guna2Panel
+    Friend WithEvents ControlBoxClose As Guna.UI2.WinForms.Guna2ControlBox
+    Friend WithEvents ControlBoxMin As Guna.UI2.WinForms.Guna2ControlBox
+    Friend WithEvents Sidebar As Guna.UI2.WinForms.Guna2Panel
+    Friend WithEvents LblSelectedDate As Label
+    Friend WithEvents flAppointments As FlowLayoutPanel
+    Friend WithEvents BtnAddAppointment As Guna.UI2.WinForms.Guna2Button
+
+    Friend WithEvents PanelHeader As Guna.UI2.WinForms.Guna2Panel
     Friend WithEvents lblMonthAndYear As Label
-    Friend WithEvents Panel2 As Panel
-    Friend WithEvents btnNextMonth As Button
-    Friend WithEvents btnPrevMonth As Button
-    Friend WithEvents Panel3 As Panel
-    Friend WithEvents Label5 As Label
-    Friend WithEvents Label6 As Label
-    Friend WithEvents Label7 As Label
-    Friend WithEvents Label4 As Label
-    Friend WithEvents Label3 As Label
-    Friend WithEvents Label2 As Label
-    Friend WithEvents Label1 As Label
+    Friend WithEvents btnPrevMonth As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents btnNextMonth As Guna.UI2.WinForms.Guna2Button
+
+    Friend WithEvents PanelDaysHeader As Guna.UI2.WinForms.Guna2Panel
+    Friend WithEvents LblSat As Label
+    Friend WithEvents LblSun As Label
+    Friend WithEvents LblMon As Label
+    Friend WithEvents LblTue As Label
+    Friend WithEvents LblWed As Label
+    Friend WithEvents LblThu As Label
+    Friend WithEvents LblFri As Label
+
     Friend WithEvents flDays As FlowLayoutPanel
 End Class
