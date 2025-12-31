@@ -39,17 +39,17 @@ Partial Class FrmChangePassword
         Dim CustomizableEdges14 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges15 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges16 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges17 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges18 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges23 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges24 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges19 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges20 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges21 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges22 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges17 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges18 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges19 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges20 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Label3 = New Label()
         Label1 = New Label()
         Label2 = New Label()
+        lblTitle = New Label()
+        lblShowPassword = New Label()
         TxtUserName = New Guna.UI2.WinForms.Guna2TextBox()
         TxtOldPass = New Guna.UI2.WinForms.Guna2TextBox()
         TxtNewPass = New Guna.UI2.WinForms.Guna2TextBox()
@@ -73,27 +73,58 @@ Partial Class FrmChangePassword
         ' 
         ' Label3
         ' 
+        Label3.AutoSize = True
+        Label3.Font = New Font("Segoe UI", 10.0F, FontStyle.Bold)
         Label3.ForeColor = Color.White
-        Label3.Location = New Point(0, 0)
+        Label3.Location = New Point(370, 168)
         Label3.Name = "Label3"
-        Label3.Size = New Size(100, 23)
+        Label3.Size = New Size(149, 23)
         Label3.TabIndex = 7
+        Label3.Text = "كلمة المرور الجديدة"
         ' 
         ' Label1
         ' 
+        Label1.AutoSize = True
+        Label1.Font = New Font("Segoe UI", 10.0F, FontStyle.Bold)
         Label1.ForeColor = Color.White
-        Label1.Location = New Point(0, 0)
+        Label1.Location = New Point(365, 95)
         Label1.Name = "Label1"
-        Label1.Size = New Size(100, 23)
+        Label1.Size = New Size(141, 23)
         Label1.TabIndex = 5
+        Label1.Text = "كلمة المرور الحالية"
         ' 
         ' Label2
         ' 
+        Label2.AutoSize = True
+        Label2.Font = New Font("Segoe UI", 10.0F, FontStyle.Bold)
         Label2.ForeColor = Color.White
-        Label2.Location = New Point(0, 0)
+        Label2.Location = New Point(394, 11)
         Label2.Name = "Label2"
-        Label2.Size = New Size(100, 23)
+        Label2.Size = New Size(112, 23)
         Label2.TabIndex = 4
+        Label2.Text = "اسم المستخدم"
+        ' 
+        ' lblTitle
+        ' 
+        lblTitle.AutoSize = True
+        lblTitle.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold)
+        lblTitle.ForeColor = Color.White
+        lblTitle.Location = New Point(350, 9)
+        lblTitle.Name = "lblTitle"
+        lblTitle.Size = New Size(152, 28)
+        lblTitle.TabIndex = 102
+        lblTitle.Text = "تغيير كلمة المرور"
+        ' 
+        ' lblShowPassword
+        ' 
+        lblShowPassword.AutoSize = True
+        lblShowPassword.Font = New Font("Segoe UI", 9.0F, FontStyle.Bold)
+        lblShowPassword.ForeColor = Color.White
+        lblShowPassword.Location = New Point(75, 357)
+        lblShowPassword.Name = "lblShowPassword"
+        lblShowPassword.Size = New Size(119, 20)
+        lblShowPassword.TabIndex = 103
+        lblShowPassword.Text = "إظهار كلمة المرور"
         ' 
         ' TxtUserName
         ' 
@@ -104,7 +135,7 @@ Partial Class FrmChangePassword
         TxtUserName.FillColor = Color.FromArgb(CByte(0), CByte(9), CByte(43))
         TxtUserName.Font = New Font("Segoe UI", 10.0F)
         TxtUserName.ForeColor = Color.White
-        TxtUserName.Location = New Point(162, 20)
+        TxtUserName.Location = New Point(26, 38)
         TxtUserName.Margin = New Padding(3, 4, 3, 4)
         TxtUserName.Name = "TxtUserName"
         TxtUserName.PlaceholderText = ""
@@ -112,7 +143,7 @@ Partial Class FrmChangePassword
         TxtUserName.RightToLeft = RightToLeft.Yes
         TxtUserName.SelectedText = ""
         TxtUserName.ShadowDecoration.CustomizableEdges = CustomizableEdges2
-        TxtUserName.Size = New Size(292, 36)
+        TxtUserName.Size = New Size(480, 36)
         TxtUserName.TabIndex = 2
         ' 
         ' TxtOldPass
@@ -124,7 +155,7 @@ Partial Class FrmChangePassword
         TxtOldPass.FillColor = Color.FromArgb(CByte(0), CByte(9), CByte(43))
         TxtOldPass.Font = New Font("Segoe UI", 10.0F)
         TxtOldPass.ForeColor = Color.White
-        TxtOldPass.Location = New Point(223, 82)
+        TxtOldPass.Location = New Point(86, 128)
         TxtOldPass.Margin = New Padding(3, 4, 3, 4)
         TxtOldPass.Name = "TxtOldPass"
         TxtOldPass.PasswordChar = "●"c
@@ -132,7 +163,7 @@ Partial Class FrmChangePassword
         TxtOldPass.RightToLeft = RightToLeft.Yes
         TxtOldPass.SelectedText = ""
         TxtOldPass.ShadowDecoration.CustomizableEdges = CustomizableEdges4
-        TxtOldPass.Size = New Size(231, 36)
+        TxtOldPass.Size = New Size(420, 36)
         TxtOldPass.TabIndex = 3
         ' 
         ' TxtNewPass
@@ -144,7 +175,7 @@ Partial Class FrmChangePassword
         TxtNewPass.FillColor = Color.FromArgb(CByte(0), CByte(9), CByte(43))
         TxtNewPass.Font = New Font("Segoe UI", 10.0F)
         TxtNewPass.ForeColor = Color.White
-        TxtNewPass.Location = New Point(223, 140)
+        TxtNewPass.Location = New Point(86, 204)
         TxtNewPass.Margin = New Padding(3, 4, 3, 4)
         TxtNewPass.Name = "TxtNewPass"
         TxtNewPass.PasswordChar = "●"c
@@ -152,43 +183,47 @@ Partial Class FrmChangePassword
         TxtNewPass.RightToLeft = RightToLeft.Yes
         TxtNewPass.SelectedText = ""
         TxtNewPass.ShadowDecoration.CustomizableEdges = CustomizableEdges6
-        TxtNewPass.Size = New Size(231, 36)
+        TxtNewPass.Size = New Size(420, 36)
         TxtNewPass.TabIndex = 6
         ' 
         ' BtnExit
         ' 
+        BtnExit.Animated = True
         BtnExit.BorderColor = Color.FromArgb(CByte(234), CByte(153), CByte(149))
         BtnExit.BorderRadius = 10
         BtnExit.BorderThickness = 2
         BtnExit.CustomizableEdges = CustomizableEdges7
         BtnExit.FillColor = Color.FromArgb(CByte(0), CByte(9), CByte(43))
-        BtnExit.Font = New Font("Segoe UI", 9.0F)
+        BtnExit.Font = New Font("Segoe UI", 10.0F, FontStyle.Bold)
         BtnExit.ForeColor = Color.White
-        BtnExit.Location = New Point(0, 0)
+        BtnExit.Location = New Point(170, 400)
         BtnExit.Name = "BtnExit"
         BtnExit.ShadowDecoration.CustomizableEdges = CustomizableEdges8
         BtnExit.Size = New Size(180, 45)
-        BtnExit.TabIndex = 0
+        BtnExit.TabIndex = 1
+        BtnExit.Text = "إغلاق"
         ' 
         ' BtnOK
         ' 
+        BtnOK.Animated = True
         BtnOK.BorderRadius = 10
         BtnOK.CustomizableEdges = CustomizableEdges9
         BtnOK.FillColor = Color.FromArgb(CByte(193), CByte(20), CByte(137))
-        BtnOK.Font = New Font("Segoe UI", 9.0F)
+        BtnOK.Font = New Font("Segoe UI", 10.0F, FontStyle.Bold)
         BtnOK.ForeColor = Color.White
-        BtnOK.Location = New Point(0, 0)
+        BtnOK.Location = New Point(360, 400)
         BtnOK.Name = "BtnOK"
         BtnOK.ShadowDecoration.CustomizableEdges = CustomizableEdges10
         BtnOK.Size = New Size(180, 45)
         BtnOK.TabIndex = 0
+        BtnOK.Text = "حفظ"
         ' 
         ' ToggleShowPassword
         ' 
         ToggleShowPassword.CheckedState.FillColor = Color.FromArgb(CByte(193), CByte(20), CByte(137))
         ToggleShowPassword.CheckedState.InnerColor = Color.FromArgb(CByte(0), CByte(9), CByte(43))
         ToggleShowPassword.CustomizableEdges = CustomizableEdges11
-        ToggleShowPassword.Location = New Point(485, 327)
+        ToggleShowPassword.Location = New Point(20, 355)
         ToggleShowPassword.Name = "ToggleShowPassword"
         ToggleShowPassword.ShadowDecoration.CustomizableEdges = CustomizableEdges12
         ToggleShowPassword.Size = New Size(45, 25)
@@ -200,23 +235,31 @@ Partial Class FrmChangePassword
         ' 
         ' PiczoomPass1
         ' 
+        PiczoomPass1.BackgroundImage = My.Resources.Resources.icons8_show_password_40
+        PiczoomPass1.BackgroundImageLayout = ImageLayout.Stretch
         PiczoomPass1.CustomizableEdges = CustomizableEdges13
+        PiczoomPass1.Image = My.Resources.Resources.icons8_show_password_401
         PiczoomPass1.ImageRotate = 0F
-        PiczoomPass1.Location = New Point(148, 128)
+        PiczoomPass1.Location = New Point(17, 122)
         PiczoomPass1.Name = "PiczoomPass1"
         PiczoomPass1.ShadowDecoration.CustomizableEdges = CustomizableEdges14
-        PiczoomPass1.Size = New Size(60, 48)
-        PiczoomPass1.TabIndex = 0
+        PiczoomPass1.Size = New Size(54, 42)
+        PiczoomPass1.SizeMode = PictureBoxSizeMode.Zoom
+        PiczoomPass1.TabIndex = 1
         PiczoomPass1.TabStop = False
         ' 
         ' PiczoomPass2
         ' 
-        PiczoomPass2.CustomizableEdges = CustomizableEdges15
+        PiczoomPass2.BackgroundImage = My.Resources.Resources.icons8_show_password_40
+        PiczoomPass2.BackgroundImageLayout = ImageLayout.Stretch
+        PiczoomPass2.CustomizableEdges = CustomizableEdges13
+        PiczoomPass2.Image = My.Resources.Resources.icons8_show_password_401
         PiczoomPass2.ImageRotate = 0F
-        PiczoomPass2.Location = New Point(148, 76)
+        PiczoomPass2.Location = New Point(17, 198)
         PiczoomPass2.Name = "PiczoomPass2"
-        PiczoomPass2.ShadowDecoration.CustomizableEdges = CustomizableEdges16
-        PiczoomPass2.Size = New Size(60, 42)
+        PiczoomPass2.ShadowDecoration.CustomizableEdges = CustomizableEdges14
+        PiczoomPass2.Size = New Size(54, 42)
+        PiczoomPass2.SizeMode = PictureBoxSizeMode.Zoom
         PiczoomPass2.TabIndex = 1
         PiczoomPass2.TabStop = False
         ' 
@@ -225,58 +268,59 @@ Partial Class FrmChangePassword
         Panel1.BorderColor = Color.FromArgb(CByte(234), CByte(153), CByte(149))
         Panel1.BorderRadius = 10
         Panel1.BorderThickness = 1
+        Panel1.Controls.Add(Label2)
+        Panel1.Controls.Add(TxtUserName)
+        Panel1.Controls.Add(Label1)
+        Panel1.Controls.Add(TxtOldPass)
+        Panel1.Controls.Add(Label3)
+        Panel1.Controls.Add(TxtNewPass)
         Panel1.Controls.Add(PiczoomPass1)
         Panel1.Controls.Add(PiczoomPass2)
-        Panel1.Controls.Add(TxtUserName)
-        Panel1.Controls.Add(TxtOldPass)
-        Panel1.Controls.Add(Label2)
-        Panel1.Controls.Add(Label1)
-        Panel1.Controls.Add(TxtNewPass)
-        Panel1.Controls.Add(Label3)
-        Panel1.CustomizableEdges = CustomizableEdges17
+        Panel1.CustomizableEdges = CustomizableEdges15
         Panel1.FillColor = Color.FromArgb(CByte(0), CByte(9), CByte(43))
-        Panel1.Location = New Point(34, 73)
+        Panel1.Location = New Point(20, 70)
         Panel1.Name = "Panel1"
-        Panel1.ShadowDecoration.CustomizableEdges = CustomizableEdges18
-        Panel1.Size = New Size(639, 205)
+        Panel1.ShadowDecoration.CustomizableEdges = CustomizableEdges16
+        Panel1.Size = New Size(520, 270)
         Panel1.TabIndex = 27
         ' 
         ' PanelTop
         ' 
-        PanelTop.BackColor = Color.FromArgb(CByte(0), CByte(9), CByte(43))
+        PanelTop.Controls.Add(lblTitle)
         PanelTop.Controls.Add(ControlBoxMin)
         PanelTop.Controls.Add(ControlBoxClose)
-        PanelTop.CustomizableEdges = CustomizableEdges23
+        PanelTop.CustomizableEdges = CustomizableEdges21
         PanelTop.Dock = DockStyle.Top
+        PanelTop.FillColor = Color.FromArgb(CByte(0), CByte(9), CByte(43))
         PanelTop.Location = New Point(0, 0)
         PanelTop.Name = "PanelTop"
-        PanelTop.ShadowDecoration.CustomizableEdges = CustomizableEdges24
-        PanelTop.Size = New Size(737, 42)
+        PanelTop.ShadowDecoration.CustomizableEdges = CustomizableEdges22
+        PanelTop.Size = New Size(560, 42)
         PanelTop.TabIndex = 100
         ' 
         ' ControlBoxMin
         ' 
         ControlBoxMin.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         ControlBoxMin.ControlBoxType = Guna.UI2.WinForms.Enums.ControlBoxType.MinimizeBox
-        ControlBoxMin.CustomizableEdges = CustomizableEdges19
+        ControlBoxMin.CustomizableEdges = CustomizableEdges17
         ControlBoxMin.FillColor = Color.FromArgb(CByte(0), CByte(9), CByte(43))
         ControlBoxMin.IconColor = Color.White
         ControlBoxMin.Location = New Point(57, 6)
         ControlBoxMin.Name = "ControlBoxMin"
-        ControlBoxMin.ShadowDecoration.CustomizableEdges = CustomizableEdges20
+        ControlBoxMin.ShadowDecoration.CustomizableEdges = CustomizableEdges18
         ControlBoxMin.Size = New Size(45, 30)
         ControlBoxMin.TabIndex = 0
         ' 
         ' ControlBoxClose
         ' 
         ControlBoxClose.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        ControlBoxClose.CustomizableEdges = CustomizableEdges21
+        ControlBoxClose.CustomizableEdges = CustomizableEdges19
         ControlBoxClose.FillColor = Color.FromArgb(CByte(0), CByte(9), CByte(43))
         ControlBoxClose.HoverState.FillColor = Color.Red
         ControlBoxClose.IconColor = Color.White
         ControlBoxClose.Location = New Point(6, 6)
         ControlBoxClose.Name = "ControlBoxClose"
-        ControlBoxClose.ShadowDecoration.CustomizableEdges = CustomizableEdges22
+        ControlBoxClose.ShadowDecoration.CustomizableEdges = CustomizableEdges20
         ControlBoxClose.Size = New Size(45, 30)
         ControlBoxClose.TabIndex = 1
         ' 
@@ -303,21 +347,31 @@ Partial Class FrmChangePassword
         AutoScaleDimensions = New SizeF(8.0F, 20.0F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(0), CByte(9), CByte(43))
-        ClientSize = New Size(737, 474)
-        Controls.Add(PanelTop)
-        Controls.Add(Panel1)
+        ClientSize = New Size(560, 470)
+        Controls.Add(lblShowPassword)
+        Controls.Add(BtnExit)
+        Controls.Add(BtnOK)
         Controls.Add(ToggleShowPassword)
+        Controls.Add(Panel1)
+        Controls.Add(PanelTop)
         FormBorderStyle = FormBorderStyle.None
         Name = "FrmChangePassword"
         RightToLeft = RightToLeft.Yes
         StartPosition = FormStartPosition.CenterScreen
+        Text = "FrmChangePassword"
         CType(PiczoomPass1, ComponentModel.ISupportInitialize).EndInit()
         CType(PiczoomPass2, ComponentModel.ISupportInitialize).EndInit()
         Panel1.ResumeLayout(False)
+        Panel1.PerformLayout()
         PanelTop.ResumeLayout(False)
+        PanelTop.PerformLayout()
         ResumeLayout(False)
+        PerformLayout()
 
     End Sub
+
+    Friend WithEvents lblTitle As Label
+    Friend WithEvents lblShowPassword As Label
 
     Friend WithEvents Label3 As Label
     Friend WithEvents Label1 As Label
@@ -334,6 +388,7 @@ Partial Class FrmChangePassword
     Friend WithEvents PanelTop As Guna.UI2.WinForms.Guna2Panel
     Friend WithEvents ControlBoxClose As Guna.UI2.WinForms.Guna2ControlBox
     Friend WithEvents ControlBoxMin As Guna.UI2.WinForms.Guna2ControlBox
+
     Private WithEvents Guna2DragControl1 As Guna.UI2.WinForms.Guna2DragControl
     Private WithEvents Guna2Elipse1 As Guna.UI2.WinForms.Guna2Elipse
     Private WithEvents Guna2ShadowForm1 As Guna.UI2.WinForms.Guna2ShadowForm

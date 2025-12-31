@@ -1,90 +1,115 @@
-﻿Imports System.Data.SqlClient
+﻿Imports System.Data
+Imports Microsoft.Data.SqlClient
 
 Public Class FrmChangePassword
-    Private Sub FrmChangPass_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.StartPosition = FormStartPosition.CenterScreen
+
+    Private Sub FrmChangePassword_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        StartPosition = FormStartPosition.CenterScreen
         TxtUserName.Text = UserName
         TxtOldPass.Select()
     End Sub
 
     Private Sub BtnExit_Click(sender As Object, e As EventArgs) Handles BtnExit.Click
-        Me.Dispose()
+        Close()
     End Sub
 
     Private Sub ToggleShowPassword_CheckedChanged(sender As Object, e As EventArgs) Handles ToggleShowPassword.CheckedChanged
-        If ToggleShowPassword.Checked Then
-            TxtOldPass.PasswordChar = vbNullChar
-            TxtNewPass.PasswordChar = vbNullChar
-        Else
-            TxtOldPass.PasswordChar = "●"c
-            TxtNewPass.PasswordChar = "●"c
-        End If
+        Dim ch As Char = If(ToggleShowPassword.Checked, vbNullChar, "●"c)
+        TxtOldPass.PasswordChar = ch
+        TxtNewPass.PasswordChar = ch
     End Sub
 
-    Private Sub TxtOldPw_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtOldPass.KeyPress
-        If Asc(e.KeyChar) = Keys.Enter Then
+    Private Sub TxtOldPass_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtOldPass.KeyPress
+        If AscW(e.KeyChar) = Keys.Enter Then
+            e.Handled = True
             TxtNewPass.Focus()
         End If
     End Sub
 
-    Private Sub GroupBox1_Enter(sender As Object, e As EventArgs)
-    End Sub
-
-    Private Sub PiczoomPass1_Click(sender As Object, e As EventArgs) Handles PiczoomPass1.Click
-    End Sub
-
-    Private Sub PiczoomPass1_MouseHover(sender As Object, e As EventArgs) Handles PiczoomPass1.MouseHover
-        TxtOldPass.PasswordChar = vbNullChar
-    End Sub
-
-    Private Sub PiczoomPass1_MouseLeave(sender As Object, e As EventArgs) Handles PiczoomPass1.MouseLeave
-        TxtOldPass.PasswordChar = "●"
+    Private Sub TxtNewPass_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtNewPass.KeyPress
+        If AscW(e.KeyChar) = Keys.Enter Then
+            e.Handled = True
+            BtnOK.PerformClick()
+        End If
     End Sub
 
     Private Sub PiczoomPass2_MouseHover(sender As Object, e As EventArgs) Handles PiczoomPass2.MouseHover
-        TxtNewPass.PasswordChar = vbNullChar
+        TxtOldPass.PasswordChar = vbNullChar
     End Sub
 
     Private Sub PiczoomPass2_MouseLeave(sender As Object, e As EventArgs) Handles PiczoomPass2.MouseLeave
-        TxtNewPass.PasswordChar = "●"
-
+        If Not ToggleShowPassword.Checked Then
+            TxtOldPass.PasswordChar = "●"c
+        End If
     End Sub
 
-    Private Sub PiczoomPass2_Click(sender As Object, e As EventArgs) Handles PiczoomPass2.Click
-
+    Private Sub PiczoomPass1_MouseHover(sender As Object, e As EventArgs) Handles PiczoomPass1.MouseHover
+        TxtNewPass.PasswordChar = vbNullChar
     End Sub
 
-    'Private Sub BtnOK_Click(sender As Object, e As EventArgs) Handles BtnOK.Click
-    '    If TxtOldPass.Text = vbNullString Then
-    '        MsgBox("يرجى ادخال كلمة المرور الحالية", vbInformation + vbOKOnly, "خطأ إدخال")
-    '        TxtOldPass.Focus()
-    '        Exit Sub
-    '    End If
-    '    If TxtNewPass.Text = vbNullString Then
-    '        MsgBox("يرجى ادخال كلمة المرور الجديدة", vbInformation + vbOKOnly, "خطأ إدخال")
-    '        TxtNewPass.Focus()
-    '        Exit Sub
-    '    End If
+    Private Sub PiczoomPass1_MouseLeave(sender As Object, e As EventArgs) Handles PiczoomPass1.MouseLeave
+        If Not ToggleShowPassword.Checked Then
+            TxtNewPass.PasswordChar = "●"c
+        End If
+    End Sub
 
-    '    Try
-    '        SQLQuery = "update UserTable set  UserPass=@NewPass where ID=@UserID"
+    Private Function GetCurrentPasswordFromDb() As String
+        Using cmd As New SqlCommand("SELECT TOP 1 UserPass FROM UserTable WHERE ID=@id", con)
+            cmd.Parameters.AddWithValue("@id", UserID)
+            If con.State = ConnectionState.Open Then con.Close()
+            con.Open()
+            Dim o = cmd.ExecuteScalar()
+            con.Close()
+            If o Is Nothing OrElse IsDBNull(o) Then Return ""
+            Return o.ToString()
+        End Using
+    End Function
 
-    '        ' تأكد من أن المتغير Cmd معرف كمتغير SqlCommand في مكان مناسب (عام في النموذج أو داخل هذا الإجراء)
-    '        Using Cmd As New SqlCommand(SQLQuery, con)
-    '            Cmd.Parameters.AddWithValue("@NewPass", TxtNewPass.Text.Trim())
-    '            Cmd.Parameters.AddWithValue("@UserID", UserID)
+    Private Sub UpdatePasswordInDb(newPass As String)
+        Using cmd As New SqlCommand("UPDATE UserTable SET UserPass=@p WHERE ID=@id", con)
+            cmd.Parameters.AddWithValue("@p", newPass)
+            cmd.Parameters.AddWithValue("@id", UserID)
+            If con.State = ConnectionState.Open Then con.Close()
+            con.Open()
+            cmd.ExecuteNonQuery()
+            con.Close()
+        End Using
+    End Sub
 
-    '            con.Open()
-    '            Cmd.ExecuteNonQuery()
-    '            con.Close()
-    '        End Using
-    '    Catch ex As Exception
-    '        MsgBox("خطأ اتصال" + ex.Message, MsgBoxStyle.Critical)
-    '        Exit Sub
-    '    End Try
+    Private Sub BtnOK_Click(sender As Object, e As EventArgs) Handles BtnOK.Click
+        Dim oldPass = TxtOldPass.Text.Trim()
+        Dim newPass = TxtNewPass.Text.Trim()
 
-    '    MsgBox("تم تعديل كلمة المرور بنجاح", MsgBoxStyle.Information)
-    '    UserPassword = TxtNewPass.Text.Trim()
-    '    Me.Dispose()
-    'End Sub
+        If String.IsNullOrWhiteSpace(oldPass) Then
+            MessageBox.Show("يرجى إدخال كلمة المرور الحالية", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            TxtOldPass.Focus()
+            Return
+        End If
+
+        If String.IsNullOrWhiteSpace(newPass) Then
+            MessageBox.Show("يرجى إدخال كلمة المرور الجديدة", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            TxtNewPass.Focus()
+            Return
+        End If
+
+        Try
+            Dim currentPass As String = GetCurrentPasswordFromDb()
+            If currentPass <> oldPass Then
+                MessageBox.Show("كلمة المرور الحالية غير صحيحة.", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                TxtOldPass.Focus()
+                Return
+            End If
+
+            UpdatePasswordInDb(newPass)
+
+            UserPassword = newPass
+            MessageBox.Show("تم تعديل كلمة المرور بنجاح", "تم", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Close()
+
+        Catch ex As Exception
+            If con.State = ConnectionState.Open Then con.Close()
+            MessageBox.Show("خطأ اتصال: " & ex.Message, "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
 End Class
