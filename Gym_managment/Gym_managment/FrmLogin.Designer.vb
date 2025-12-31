@@ -111,7 +111,7 @@ Partial Class FrmLogin
         CmbUserName.FillColor = Color.FromArgb(CByte(0), CByte(9), CByte(43))
         CmbUserName.FocusedColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         CmbUserName.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        CmbUserName.Font = New Font("Times New Roman", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        CmbUserName.Font = New Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         CmbUserName.ForeColor = Color.White
         CmbUserName.ItemHeight = 50
         CmbUserName.Location = New Point(45, 329)
@@ -129,9 +129,9 @@ Partial Class FrmLogin
         BtnExit.BorderThickness = 2
         BtnExit.CustomizableEdges = CustomizableEdges3
         BtnExit.FillColor = Color.FromArgb(CByte(0), CByte(9), CByte(43))
-        BtnExit.Font = New Font("Times New Roman", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        BtnExit.Font = New Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         BtnExit.ForeColor = Color.White
-        BtnExit.HoverState.Font = New Font("Segoe UI", 10.0F, FontStyle.Bold)
+        BtnExit.HoverState.Font = New Font("Segoe UI", 10F, FontStyle.Bold)
         BtnExit.Location = New Point(77, 650)
         BtnExit.Margin = New Padding(4, 5, 4, 5)
         BtnExit.Name = "BtnExit"
@@ -148,9 +148,9 @@ Partial Class FrmLogin
         BtnOK.BorderRadius = 10
         BtnOK.CustomizableEdges = CustomizableEdges5
         BtnOK.FillColor = Color.FromArgb(CByte(193), CByte(20), CByte(137))
-        BtnOK.Font = New Font("Times New Roman", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        BtnOK.Font = New Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         BtnOK.ForeColor = Color.White
-        BtnOK.HoverState.Font = New Font("Segoe UI", 10.0F, FontStyle.Bold)
+        BtnOK.HoverState.Font = New Font("Segoe UI", 10F, FontStyle.Bold)
         BtnOK.Location = New Point(258, 650)
         BtnOK.Margin = New Padding(4, 5, 4, 5)
         BtnOK.Name = "BtnOK"
@@ -220,7 +220,7 @@ Partial Class FrmLogin
         TxtPasswprd.DisabledState.PlaceholderForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
         TxtPasswprd.FillColor = Color.FromArgb(CByte(0), CByte(9), CByte(43))
         TxtPasswprd.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        TxtPasswprd.Font = New Font("Times New Roman", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        TxtPasswprd.Font = New Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         TxtPasswprd.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         TxtPasswprd.Location = New Point(45, 440)
         TxtPasswprd.Margin = New Padding(6, 7, 6, 7)
@@ -297,11 +297,11 @@ Partial Class FrmLogin
         Guna2PictureBox2.CustomizableEdges = CustomizableEdges19
         Guna2PictureBox2.Image = My.Resources.Resources._9436687
         Guna2PictureBox2.ImageRotate = 0F
-        Guna2PictureBox2.Location = New Point(0, -7)
+        Guna2PictureBox2.Location = New Point(0, 0)
         Guna2PictureBox2.Margin = New Padding(4, 5, 4, 5)
         Guna2PictureBox2.Name = "Guna2PictureBox2"
         Guna2PictureBox2.ShadowDecoration.CustomizableEdges = CustomizableEdges20
-        Guna2PictureBox2.Size = New Size(594, 776)
+        Guna2PictureBox2.Size = New Size(601, 769)
         Guna2PictureBox2.SizeMode = PictureBoxSizeMode.Zoom
         Guna2PictureBox2.TabIndex = 1
         Guna2PictureBox2.TabStop = False
@@ -322,6 +322,7 @@ Partial Class FrmLogin
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
+        BackColor = Color.FromArgb(CByte(186), CByte(146), CByte(254))
         ClientSize = New Size(1020, 774)
         Controls.Add(Guna2Panel2)
         Controls.Add(Guna2Panel1)

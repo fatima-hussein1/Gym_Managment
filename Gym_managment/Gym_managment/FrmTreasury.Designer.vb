@@ -34,6 +34,8 @@ Partial Class FrmTreasury
         Dim CustomizableEdges8 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges25 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges26 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges11 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges12 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges13 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges14 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges15 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
@@ -46,8 +48,6 @@ Partial Class FrmTreasury
         Dim CustomizableEdges22 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges23 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges24 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges11 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges12 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         PanelTop = New Guna.UI2.WinForms.Guna2Panel()
         ControlBoxMin = New Guna.UI2.WinForms.Guna2ControlBox()
         ControlBoxClose = New Guna.UI2.WinForms.Guna2ControlBox()
@@ -61,6 +61,7 @@ Partial Class FrmTreasury
         Column3 = New DataGridViewTextBoxColumn()
         txtSearch = New Guna.UI2.WinForms.Guna2TextBox()
         PanelLeft = New Guna.UI2.WinForms.Guna2Panel()
+        BtnUpdate = New Guna.UI2.WinForms.Guna2Button()
         lblName = New Label()
         txtName = New Guna.UI2.WinForms.Guna2TextBox()
         lblKeeper = New Label()
@@ -70,7 +71,6 @@ Partial Class FrmTreasury
         btnNew = New Guna.UI2.WinForms.Guna2Button()
         btnSave = New Guna.UI2.WinForms.Guna2Button()
         btnDelete = New Guna.UI2.WinForms.Guna2Button()
-        BtnUpdate = New Guna.UI2.WinForms.Guna2Button()
         PanelTop.SuspendLayout()
         PanelBody.SuspendLayout()
         PanelGrid.SuspendLayout()
@@ -121,7 +121,7 @@ Partial Class FrmTreasury
         ' lblTitle
         ' 
         lblTitle.AutoSize = True
-        lblTitle.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold)
+        lblTitle.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
         lblTitle.ForeColor = Color.White
         lblTitle.Location = New Point(930, 10)
         lblTitle.Name = "lblTitle"
@@ -240,7 +240,7 @@ Partial Class FrmTreasury
         txtSearch.CustomizableEdges = CustomizableEdges7
         txtSearch.DefaultText = ""
         txtSearch.FillColor = Color.FromArgb(CByte(0), CByte(9), CByte(43))
-        txtSearch.Font = New Font("Segoe UI", 9.0F)
+        txtSearch.Font = New Font("Segoe UI", 9F)
         txtSearch.ForeColor = Color.White
         txtSearch.Location = New Point(16, 16)
         txtSearch.Margin = New Padding(3, 4, 3, 4)
@@ -276,10 +276,25 @@ Partial Class FrmTreasury
         PanelLeft.Size = New Size(360, 634)
         PanelLeft.TabIndex = 1
         ' 
+        ' BtnUpdate
+        ' 
+        BtnUpdate.Animated = True
+        BtnUpdate.BorderRadius = 10
+        BtnUpdate.CustomizableEdges = CustomizableEdges11
+        BtnUpdate.FillColor = Color.FromArgb(CByte(193), CByte(20), CByte(137))
+        BtnUpdate.Font = New Font("Segoe UI", 9F)
+        BtnUpdate.ForeColor = Color.White
+        BtnUpdate.Location = New Point(65, 366)
+        BtnUpdate.Name = "BtnUpdate"
+        BtnUpdate.ShadowDecoration.CustomizableEdges = CustomizableEdges12
+        BtnUpdate.Size = New Size(218, 60)
+        BtnUpdate.TabIndex = 9
+        BtnUpdate.Text = "تعديل"
+        ' 
         ' lblName
         ' 
         lblName.AutoSize = True
-        lblName.Font = New Font("Segoe UI", 10.0F, FontStyle.Bold)
+        lblName.Font = New Font("Segoe UI", 10F, FontStyle.Bold)
         lblName.ForeColor = Color.White
         lblName.Location = New Point(250, 20)
         lblName.Name = "lblName"
@@ -294,7 +309,7 @@ Partial Class FrmTreasury
         txtName.CustomizableEdges = CustomizableEdges13
         txtName.DefaultText = ""
         txtName.FillColor = Color.FromArgb(CByte(0), CByte(9), CByte(43))
-        txtName.Font = New Font("Segoe UI", 9.0F)
+        txtName.Font = New Font("Segoe UI", 9F)
         txtName.ForeColor = Color.White
         txtName.Location = New Point(16, 45)
         txtName.Margin = New Padding(3, 4, 3, 4)
@@ -309,9 +324,9 @@ Partial Class FrmTreasury
         ' lblKeeper
         ' 
         lblKeeper.AutoSize = True
-        lblKeeper.Font = New Font("Segoe UI", 10.0F, FontStyle.Bold)
+        lblKeeper.Font = New Font("Segoe UI", 10F, FontStyle.Bold)
         lblKeeper.ForeColor = Color.White
-        lblKeeper.Location = New Point(250, 95)
+        lblKeeper.Location = New Point(234, 93)
         lblKeeper.Name = "lblKeeper"
         lblKeeper.Size = New Size(110, 23)
         lblKeeper.TabIndex = 2
@@ -324,7 +339,7 @@ Partial Class FrmTreasury
         txtStorekeeper.CustomizableEdges = CustomizableEdges15
         txtStorekeeper.DefaultText = ""
         txtStorekeeper.FillColor = Color.FromArgb(CByte(0), CByte(9), CByte(43))
-        txtStorekeeper.Font = New Font("Segoe UI", 9.0F)
+        txtStorekeeper.Font = New Font("Segoe UI", 9F)
         txtStorekeeper.ForeColor = Color.White
         txtStorekeeper.Location = New Point(16, 120)
         txtStorekeeper.Margin = New Padding(3, 4, 3, 4)
@@ -339,9 +354,9 @@ Partial Class FrmTreasury
         ' lblBalance
         ' 
         lblBalance.AutoSize = True
-        lblBalance.Font = New Font("Segoe UI", 10.0F, FontStyle.Bold)
+        lblBalance.Font = New Font("Segoe UI", 10F, FontStyle.Bold)
         lblBalance.ForeColor = Color.White
-        lblBalance.Location = New Point(285, 170)
+        lblBalance.Location = New Point(283, 168)
         lblBalance.Name = "lblBalance"
         lblBalance.Size = New Size(58, 23)
         lblBalance.TabIndex = 4
@@ -354,7 +369,7 @@ Partial Class FrmTreasury
         txtBalance.CustomizableEdges = CustomizableEdges17
         txtBalance.DefaultText = ""
         txtBalance.FillColor = Color.FromArgb(CByte(0), CByte(9), CByte(43))
-        txtBalance.Font = New Font("Segoe UI", 9.0F)
+        txtBalance.Font = New Font("Segoe UI", 9F)
         txtBalance.ForeColor = Color.White
         txtBalance.Location = New Point(16, 195)
         txtBalance.Margin = New Padding(3, 4, 3, 4)
@@ -374,7 +389,7 @@ Partial Class FrmTreasury
         btnNew.BorderThickness = 2
         btnNew.CustomizableEdges = CustomizableEdges19
         btnNew.FillColor = Color.FromArgb(CByte(0), CByte(9), CByte(43))
-        btnNew.Font = New Font("Segoe UI", 9.0F)
+        btnNew.Font = New Font("Segoe UI", 9F)
         btnNew.ForeColor = Color.White
         btnNew.Location = New Point(65, 452)
         btnNew.Name = "btnNew"
@@ -389,7 +404,7 @@ Partial Class FrmTreasury
         btnSave.BorderRadius = 10
         btnSave.CustomizableEdges = CustomizableEdges21
         btnSave.FillColor = Color.FromArgb(CByte(193), CByte(20), CByte(137))
-        btnSave.Font = New Font("Segoe UI", 9.0F)
+        btnSave.Font = New Font("Segoe UI", 9F)
         btnSave.ForeColor = Color.White
         btnSave.Location = New Point(65, 276)
         btnSave.Name = "btnSave"
@@ -406,7 +421,7 @@ Partial Class FrmTreasury
         btnDelete.BorderThickness = 2
         btnDelete.CustomizableEdges = CustomizableEdges23
         btnDelete.FillColor = Color.FromArgb(CByte(0), CByte(9), CByte(43))
-        btnDelete.Font = New Font("Segoe UI", 9.0F)
+        btnDelete.Font = New Font("Segoe UI", 9F)
         btnDelete.ForeColor = Color.White
         btnDelete.Location = New Point(65, 537)
         btnDelete.Name = "btnDelete"
@@ -415,24 +430,9 @@ Partial Class FrmTreasury
         btnDelete.TabIndex = 8
         btnDelete.Text = "حذف"
         ' 
-        ' BtnUpdate
-        ' 
-        BtnUpdate.Animated = True
-        BtnUpdate.BorderRadius = 10
-        BtnUpdate.CustomizableEdges = CustomizableEdges11
-        BtnUpdate.FillColor = Color.FromArgb(CByte(193), CByte(20), CByte(137))
-        BtnUpdate.Font = New Font("Segoe UI", 9.0F)
-        BtnUpdate.ForeColor = Color.White
-        BtnUpdate.Location = New Point(65, 366)
-        BtnUpdate.Name = "BtnUpdate"
-        BtnUpdate.ShadowDecoration.CustomizableEdges = CustomizableEdges12
-        BtnUpdate.Size = New Size(218, 60)
-        BtnUpdate.TabIndex = 9
-        BtnUpdate.Text = "تعديل"
-        ' 
         ' FrmTreasury
         ' 
-        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(0), CByte(9), CByte(43))
         ClientSize = New Size(1100, 700)

@@ -1,0 +1,13 @@
+﻿Public Class FrmMemberTransction
+
+    Private Sub FrmMemberTransction_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        cmbType.Items.Clear()
+        cmbType.Items.AddRange(New Object() { الكل, اشتراك, دفع, خصم, إضافة, أخرى})
+        If cmbType.Items.Count > 0 Then cmbType.SelectedIndex = 0
+
+        dtpFrom.Value = Date.Today.AddMonths(-1)
+        dtpTo.Value = Date.Today
+    End Sub
+
+End Class
+

@@ -79,3 +79,6 @@ C:\Users\شركة دليل التقنية\source\repos\Gym_managment\Gym_managme
 C:\Users\شركة دليل التقنية\source\repos\Gym_managment\Gym_managment\obj\Debug\net10.0-windows\Gym_managment.FrmAddSubscriptionMember.resources
 C:\Users\شركة دليل التقنية\source\repos\Gym_managment\Gym_managment\obj\Debug\net10.0-windows\Gym_managment.FrmSelectMember.resources
 C:\Users\شركة دليل التقنية\source\repos\Gym_managment\Gym_managment\obj\Debug\net10.0-windows\Gym_managment.FrmTreasury.resources
+C:\Users\شركة دليل التقنية\source\repos\Gym_managment\Gym_managment\obj\Debug\net10.0-windows\Gym_managment.FrmMemberTransction.resources
+C:\Users\شركة دليل التقنية\source\repos\Gym_managment\Gym_managment\obj\Debug\net10.0-windows\Gym_managment.FrmPayment.resources
+C:\Users\شركة دليل التقنية\source\repos\Gym_managment\Gym_managment\obj\Debug\net10.0-windows\Gym_managment.FrmSelectSubMember.resources

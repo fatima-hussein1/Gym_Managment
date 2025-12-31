@@ -23,14 +23,14 @@ Partial Public Class FrmMain
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
-        Dim CustomizableEdges1 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges2 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges7 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges8 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges3 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges4 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges5 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges6 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges17 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges18 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges23 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges24 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges19 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges20 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges21 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges22 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         TSLMessage = New ToolStripStatusLabel()
         TSLDateTime = New ToolStripStatusLabel()
         StatusStrip1 = New StatusStrip()
@@ -58,6 +58,10 @@ Partial Public Class FrmMain
         TsmDeletedElements = New ToolStripMenuItem()
         MenuStrip1 = New MenuStrip()
         المستخدمينToolStripMenuItem = New ToolStripMenuItem()
+        الإدارةالماليةToolStripMenuItem = New ToolStripMenuItem()
+        TSMTreasury = New ToolStripMenuItem()
+        TSMPayment = New ToolStripMenuItem()
+        TSMTransctionPayment = New ToolStripMenuItem()
         PnlMain = New Panel()
         Guna2Elipse1 = New Guna.UI2.WinForms.Guna2Elipse(components)
         Guna2ShadowForm1 = New Guna.UI2.WinForms.Guna2ShadowForm(components)
@@ -71,8 +75,6 @@ Partial Public Class FrmMain
         Guna2ElipseBtnMemberSubscription = New Guna.UI2.WinForms.Guna2Elipse(components)
         Guna2ElipseBtnTrainingBooking = New Guna.UI2.WinForms.Guna2Elipse(components)
         Guna2ElipseBtnSubscription = New Guna.UI2.WinForms.Guna2Elipse(components)
-        الإدارةالماليةToolStripMenuItem = New ToolStripMenuItem()
-        TSMTreasury = New ToolStripMenuItem()
         StatusStrip1.SuspendLayout()
         Panel1.SuspendLayout()
         MenuStrip1.SuspendLayout()
@@ -101,7 +103,7 @@ Partial Public Class FrmMain
         ' 
         ' StatusStrip1
         ' 
-        StatusStrip1.BackColor = Color.FromArgb(CByte(25), CByte(118), CByte(210))
+        StatusStrip1.BackColor = Color.FromArgb(CByte(186), CByte(146), CByte(254))
         StatusStrip1.Font = New Font("Microsoft Sans Serif", 11F)
         StatusStrip1.ImageScalingSize = New Size(20, 20)
         StatusStrip1.Items.AddRange(New ToolStripItem() {TSLDateTime, TSLUserName, TSLMessage})
@@ -129,12 +131,12 @@ Partial Public Class FrmMain
         Panel1.Controls.Add(BtnCautch)
         Panel1.Controls.Add(BtnCustomer)
         Panel1.Controls.Add(BtnSubscription)
-        Panel1.CustomizableEdges = CustomizableEdges1
-        Panel1.Location = New Point(3, 142)
+        Panel1.CustomizableEdges = CustomizableEdges17
+        Panel1.Location = New Point(3, 65)
         Panel1.Margin = New Padding(3, 4, 3, 4)
         Panel1.Name = "Panel1"
-        Panel1.ShadowDecoration.CustomizableEdges = CustomizableEdges2
-        Panel1.Size = New Size(314, 792)
+        Panel1.ShadowDecoration.CustomizableEdges = CustomizableEdges18
+        Panel1.Size = New Size(314, 1003)
         Panel1.TabIndex = 31
         ' 
         ' BtnTrainingBooking
@@ -298,7 +300,7 @@ Partial Public Class FrmMain
         ' TSMChangepassword
         ' 
         TSMChangepassword.Name = "TSMChangepassword"
-        TSMChangepassword.Size = New Size(224, 26)
+        TSMChangepassword.Size = New Size(210, 26)
         TSMChangepassword.Text = "تغيير كلمة المرور"
         ' 
         ' TsmDeletedElements
@@ -329,6 +331,32 @@ Partial Public Class FrmMain
         المستخدمينToolStripMenuItem.Name = "المستخدمينToolStripMenuItem"
         المستخدمينToolStripMenuItem.Size = New Size(118, 55)
         المستخدمينToolStripMenuItem.Text = "المستخدمين"
+        ' 
+        ' الإدارةالماليةToolStripMenuItem
+        ' 
+        الإدارةالماليةToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {TSMTreasury, TSMPayment, TSMTransctionPayment})
+        الإدارةالماليةToolStripMenuItem.ForeColor = Color.White
+        الإدارةالماليةToolStripMenuItem.Name = "الإدارةالماليةToolStripMenuItem"
+        الإدارةالماليةToolStripMenuItem.Size = New Size(111, 55)
+        الإدارةالماليةToolStripMenuItem.Text = "الإدارة المالية"
+        ' 
+        ' TSMTreasury
+        ' 
+        TSMTreasury.Name = "TSMTreasury"
+        TSMTreasury.Size = New Size(262, 30)
+        TSMTreasury.Text = "الخزينة"
+        ' 
+        ' TSMPayment
+        ' 
+        TSMPayment.Name = "TSMPayment"
+        TSMPayment.Size = New Size(262, 30)
+        TSMPayment.Text = "إيصالات الدفع"
+        ' 
+        ' TSMTransctionPayment
+        ' 
+        TSMTransctionPayment.Name = "TSMTransctionPayment"
+        TSMTransctionPayment.Size = New Size(262, 30)
+        TSMTransctionPayment.Text = "حركات المالية للإيصالات"
         ' 
         ' PnlMain
         ' 
@@ -364,11 +392,11 @@ Partial Public Class FrmMain
         Guna2PanelTop.BackColor = Color.FromArgb(CByte(0), CByte(9), CByte(43))
         Guna2PanelTop.Controls.Add(Guna2ControlBoxMin)
         Guna2PanelTop.Controls.Add(Guna2ControlBoxClose)
-        Guna2PanelTop.CustomizableEdges = CustomizableEdges7
+        Guna2PanelTop.CustomizableEdges = CustomizableEdges23
         Guna2PanelTop.Dock = DockStyle.Top
         Guna2PanelTop.Location = New Point(0, 59)
         Guna2PanelTop.Name = "Guna2PanelTop"
-        Guna2PanelTop.ShadowDecoration.CustomizableEdges = CustomizableEdges8
+        Guna2PanelTop.ShadowDecoration.CustomizableEdges = CustomizableEdges24
         Guna2PanelTop.Size = New Size(1831, 10)
         Guna2PanelTop.TabIndex = 100
         ' 
@@ -376,25 +404,25 @@ Partial Public Class FrmMain
         ' 
         Guna2ControlBoxMin.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         Guna2ControlBoxMin.ControlBoxType = Guna.UI2.WinForms.Enums.ControlBoxType.MinimizeBox
-        Guna2ControlBoxMin.CustomizableEdges = CustomizableEdges3
+        Guna2ControlBoxMin.CustomizableEdges = CustomizableEdges19
         Guna2ControlBoxMin.FillColor = Color.FromArgb(CByte(0), CByte(9), CByte(43))
         Guna2ControlBoxMin.IconColor = Color.White
         Guna2ControlBoxMin.Location = New Point(57, 6)
         Guna2ControlBoxMin.Name = "Guna2ControlBoxMin"
-        Guna2ControlBoxMin.ShadowDecoration.CustomizableEdges = CustomizableEdges4
+        Guna2ControlBoxMin.ShadowDecoration.CustomizableEdges = CustomizableEdges20
         Guna2ControlBoxMin.Size = New Size(45, 36)
         Guna2ControlBoxMin.TabIndex = 1
         ' 
         ' Guna2ControlBoxClose
         ' 
         Guna2ControlBoxClose.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        Guna2ControlBoxClose.CustomizableEdges = CustomizableEdges5
+        Guna2ControlBoxClose.CustomizableEdges = CustomizableEdges21
         Guna2ControlBoxClose.FillColor = Color.FromArgb(CByte(0), CByte(9), CByte(43))
         Guna2ControlBoxClose.HoverState.FillColor = Color.Red
         Guna2ControlBoxClose.IconColor = Color.White
         Guna2ControlBoxClose.Location = New Point(6, 6)
         Guna2ControlBoxClose.Name = "Guna2ControlBoxClose"
-        Guna2ControlBoxClose.ShadowDecoration.CustomizableEdges = CustomizableEdges6
+        Guna2ControlBoxClose.ShadowDecoration.CustomizableEdges = CustomizableEdges22
         Guna2ControlBoxClose.Size = New Size(45, 36)
         Guna2ControlBoxClose.TabIndex = 0
         ' 
@@ -427,19 +455,6 @@ Partial Public Class FrmMain
         ' 
         Guna2ElipseBtnSubscription.BorderRadius = 20
         Guna2ElipseBtnSubscription.TargetControl = BtnSubscription
-        ' 
-        ' الإدارةالماليةToolStripMenuItem
-        ' 
-        الإدارةالماليةToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {TSMTreasury})
-        الإدارةالماليةToolStripMenuItem.Name = "الإدارةالماليةToolStripMenuItem"
-        الإدارةالماليةToolStripMenuItem.Size = New Size(111, 55)
-        الإدارةالماليةToolStripMenuItem.Text = "الإدارة المالية"
-        ' 
-        ' TSMTreasury
-        ' 
-        TSMTreasury.Name = "TSMTreasury"
-        TSMTreasury.Size = New Size(224, 30)
-        TSMTreasury.Text = "الخزينة"
         ' 
         ' FrmMain
         ' 
@@ -511,4 +526,6 @@ Partial Public Class FrmMain
     Private WithEvents Guna2ElipseBtnSubscription As Guna.UI2.WinForms.Guna2Elipse
     Friend WithEvents الإدارةالماليةToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents TSMTreasury As ToolStripMenuItem
+    Friend WithEvents TSMPayment As ToolStripMenuItem
+    Friend WithEvents TSMTransctionPayment As ToolStripMenuItem
 End Class

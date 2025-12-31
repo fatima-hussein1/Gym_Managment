@@ -181,7 +181,17 @@ Partial Public Class FrmMain
     End Sub
 
     Private Sub TSMTreasury_Click(sender As Object, e As EventArgs) Handles TSMTreasury.Click
-        FrmTreasury.Show()
+        FrmTreasury.ShowDialog()
+
+    End Sub
+
+    Private Sub TSMPayment_Click(sender As Object, e As EventArgs) Handles TSMPayment.Click
+        FrmPayment.ShowDialog()
+
+    End Sub
+
+    Private Sub TSMTransctionPayment_Click(sender As Object, e As EventArgs) Handles TSMTransctionPayment.Click
+        FrmMemberTransction.ShowDialog()
 
     End Sub
 End Class

@@ -34,13 +34,22 @@
     <Compile Update="FrmManagememberr.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="FrmMemberTransction.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="FrmPackages.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FrmPayment.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="FrmProfile.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="FrmSelectMember.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FrmSelectSubMember.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="FrmTrainers.vb">
