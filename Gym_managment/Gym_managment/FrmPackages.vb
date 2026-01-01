@@ -1,21 +1,24 @@
 ﻿Imports Microsoft.Data.SqlClient
 Imports System.Drawing
+Imports Guna.UI2.WinForms
 
 Public Class FrmPackages
 
     Private DTPackages As New DataTable
     Private CurrentPackageId As Integer = 0
+    Private selectedCard As Guna2Panel = Nothing
 
     Private Sub FrmPackages_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        WindowState = FormWindowState.Maximized
         ConfigureDetailsPanel()
         LoadPackages()
     End Sub
 
     Private Sub ConfigureDetailsPanel()
-
         'PnlDetails.Visible = False
         NumDuration.Minimum = 1
         NumDuration.Maximum = 365
+        If NumDuration.Value < NumDuration.Minimum Then NumDuration.Value = NumDuration.Minimum
     End Sub
 
     Private Sub LoadPackages(Optional filter As String = "")
@@ -54,128 +57,131 @@ Public Class FrmPackages
     End Sub
 
     Private Function CreatePackageCard(row As DataRow) As Panel
+        Dim packageId As Integer = Convert.ToInt32(row("PackageID"))
         Dim days As Integer = Convert.ToInt32(row("DurationInDays"))
         Dim price As Decimal = Convert.ToDecimal(row("Price"))
         Dim isActive As Boolean = Convert.ToBoolean(row("IsActive"))
 
-
-        Dim primaryColor As Color
-        If Not isActive Then
-
-            primaryColor = Color.FromArgb(224, 216, 255)
-        ElseIf days <= 30 Then
-
-            primaryColor = Color.FromArgb(129, 212, 250)   ' Sky Blue
-        ElseIf days <= 90 Then
-
-            primaryColor = Color.FromArgb(174, 234, 0)     ' Lime Green
-        Else
-
-            primaryColor = Color.FromArgb(255, 128, 171)   ' Pink
-        End If
-
-        Dim card As New Panel() With {
-        .Width = 260,
-        .Height = 140,
-        .Margin = New Padding(10),
-        .BorderStyle = BorderStyle.None,
-        .Tag = row("PackageID"),
-        .Cursor = Cursors.Hand,
-    .Font = New Font("Times New Roman", 14, FontStyle.Regular),
-        .BackColor = Color.Transparent
-    }
-
-        Dim accentPanel As New Panel() With {
-        .Dock = DockStyle.Fill,
-        .BackColor = primaryColor,
-        .Padding = New Padding(2)
-    }
-        card.Controls.Add(accentPanel)
-
-        Dim contentPanel As New Panel() With {
-        .Dock = DockStyle.Fill,
-        .BackColor = Color.White
-    }
-        accentPanel.Controls.Add(contentPanel)
+        Dim card As New Guna2Panel() With {
+            .Width = 590,
+            .Height = 128,
+            .Margin = New Padding(0, 0, 0, 12),
+            .Padding = New Padding(14),
+            .BorderRadius = 12,
+            .BorderThickness = 1,
+            .BorderColor = Color.FromArgb(234, 153, 149),
+            .FillColor = Color.FromArgb(8, 16, 60),
+            .Tag = packageId,
+            .Cursor = Cursors.Hand
+        }
+        card.ShadowDecoration.Enabled = True
+        card.ShadowDecoration.BorderRadius = 12
+        card.ShadowDecoration.Color = Color.FromArgb(40, 0, 0, 0)
+        card.ShadowDecoration.Depth = 10
+        card.ShadowDecoration.Shadow = New Padding(2, 2, 6, 6)
 
         Dim lblName As New Label() With {
-        .Text = row("PackageName").ToString(),
-    .Font = New Font("Times New Roman", 12, FontStyle.Bold),
-        .ForeColor = Color.FromArgb(33, 33, 33),
-        .AutoSize = False,
-        .Dock = DockStyle.Top,
-        .Height = 36,
-        .TextAlign = ContentAlignment.MiddleCenter,
-        .UseCompatibleTextRendering = True
-    }
+            .Text = row("PackageName").ToString(),
+            .Font = New Font("Segoe UI", 12.0F, FontStyle.Bold),
+            .ForeColor = Color.White,
+            .AutoSize = False,
+            .Left = 14,
+            .Top = 14,
+            .Width = card.Width - 28,
+            .Height = 30,
+            .TextAlign = ContentAlignment.MiddleLeft
+        }
 
-        Dim lblInfo As New Label() With {
-        .Text = days.ToString() & " يوم" & Environment.NewLine &
-                price.ToString("0.00") & " دينار",
-    .Font = New Font("Times New Roman", 12, FontStyle.Regular),
-        .ForeColor = Color.FromArgb(66, 66, 66),
-        .AutoSize = False,
-        .Dock = DockStyle.Fill,
-        .TextAlign = ContentAlignment.MiddleCenter,
-        .UseCompatibleTextRendering = True
-    }
+        Dim lblPrice As New Label() With {
+            .Text = $"السعر: {price:0.00} دينار",
+            .Font = New Font("Segoe UI", 10.0F, FontStyle.Regular),
+            .ForeColor = Color.White,
+            .AutoSize = False,
+            .Left = 14,
+            .Top = 54,
+            .Width = card.Width - 28,
+            .Height = 24,
+            .TextAlign = ContentAlignment.MiddleLeft
+        }
 
-        Dim statusColor As Color = If(isActive,
-                                  Color.FromArgb(76, 175, 80),
-                                  Color.FromArgb(158, 158, 158))
+        Dim lblDays As New Label() With {
+            .Text = $"المدة: {days} يوم",
+            .Font = New Font("Segoe UI", 10.0F, FontStyle.Regular),
+            .ForeColor = Color.White,
+            .AutoSize = False,
+            .Left = 14,
+            .Top = 80,
+            .Width = card.Width - 28,
+            .Height = 24,
+            .TextAlign = ContentAlignment.MiddleLeft
+        }
 
-        Dim lblStatus As New Label() With {
-        .Text = If(isActive, "نشطة", "غير نشطة"),
-        .AutoSize = False,
-        .Width = 78,
-        .Height = 24,
-        .Top = 8,
-        .Left = 8,
-        .BackColor = statusColor,
-        .ForeColor = Color.White,
-    .Font = New Font("Times New Roman", 12, FontStyle.Bold),
-        .TextAlign = ContentAlignment.MiddleCenter,
-        .UseCompatibleTextRendering = True
-    }
+        Dim statusText As String = If(isActive, "نشطة", "غير مفعلة")
+        Dim statusColor As Color = If(isActive, Color.FromArgb(76, 175, 80), Color.FromArgb(244, 67, 54))
+        Dim lblState As New Label() With {
+            .Text = statusText,
+            .Font = New Font("Segoe UI", 9.0F, FontStyle.Bold),
+            .ForeColor = Color.White,
+            .BackColor = statusColor,
+            .AutoSize = False,
+            .Width = 90,
+            .Height = 22,
+            .Left = 14,
+            .Top = 16,
+            .TextAlign = ContentAlignment.MiddleCenter
+        }
+        ' في WinForms (RTL) جهة اليمين هي X=14 داخل الكارد
+        lblState.Left = 14
 
-        contentPanel.Controls.Add(lblInfo)
-        contentPanel.Controls.Add(lblName)
-        contentPanel.Controls.Add(lblStatus)
+        card.Controls.Add(lblName)
+        card.Controls.Add(lblPrice)
+        card.Controls.Add(lblDays)
+        card.Controls.Add(lblState)
+        lblState.BringToFront()
 
-        Dim originalContentColor As Color = contentPanel.BackColor
-        Dim originalAccentColor As Color = accentPanel.BackColor
+        Dim originalFill As Color = card.FillColor
+        Dim originalBorder As Color = card.BorderColor
 
         Dim hoverEnter As EventHandler =
         Sub(sender As Object, e As EventArgs)
-            accentPanel.BackColor = Color.FromArgb(
-                Math.Min(originalAccentColor.R + 15, 255),
-                Math.Min(originalAccentColor.G + 15, 255),
-                Math.Min(originalAccentColor.B + 15, 255))
-            contentPanel.BackColor = Color.FromArgb(250, 250, 255)
-            card.Padding = New Padding(0, 0, 0, 4)
+            If selectedCard IsNot Nothing AndAlso Object.ReferenceEquals(card, selectedCard) Then Return
+            card.FillColor = Color.FromArgb(12, 24, 80)
         End Sub
 
         Dim hoverLeave As EventHandler =
         Sub(sender As Object, e As EventArgs)
-            accentPanel.BackColor = originalAccentColor
-            contentPanel.BackColor = originalContentColor
-            card.Padding = New Padding(0)
+            If selectedCard IsNot Nothing AndAlso Object.ReferenceEquals(card, selectedCard) Then Return
+            card.FillColor = originalFill
         End Sub
 
         AddHandler card.MouseEnter, hoverEnter
         AddHandler card.MouseLeave, hoverLeave
-        For Each ctl As Control In contentPanel.Controls
+        For Each ctl As Control In card.Controls
             AddHandler ctl.MouseEnter, hoverEnter
             AddHandler ctl.MouseLeave, hoverLeave
         Next
 
         Dim clickHandler As EventHandler =
         Sub(sender As Object, e As EventArgs)
-            EditPackage(row)
+            If selectedCard IsNot Nothing AndAlso Not Object.ReferenceEquals(selectedCard, card) Then
+                selectedCard.BorderColor = Color.FromArgb(234, 153, 149)
+                selectedCard.BorderThickness = 1
+                selectedCard.FillColor = Color.FromArgb(8, 16, 60)
+            End If
+
+            selectedCard = card
+            card.BorderColor = Color.FromArgb(193, 20, 137)
+            card.BorderThickness = 2
+            card.FillColor = Color.FromArgb(12, 24, 80)
+
+            Dim found = DTPackages.Select($"PackageID = {packageId}").FirstOrDefault()
+            If found IsNot Nothing Then
+                EditPackage(found)
+            End If
         End Sub
 
         AddHandler card.Click, clickHandler
-        For Each ctl As Control In contentPanel.Controls
+        For Each ctl As Control In card.Controls
             AddHandler ctl.Click, clickHandler
         Next
 
@@ -185,11 +191,24 @@ Public Class FrmPackages
         Try
             CurrentPackageId = Convert.ToInt32(row("PackageID"))
             TxtpackName.Text = row("PackageName").ToString()
-            NumDuration.Value = Convert.ToInt32(row("DurationInDays"))
+
+            Dim days As Integer = CInt(NumDuration.Minimum)
+            If row.Table.Columns.Contains("DurationInDays") AndAlso Not IsDBNull(row("DurationInDays")) Then
+                Integer.TryParse(row("DurationInDays").ToString(), days)
+            End If
+
+            days = Math.Max(CInt(NumDuration.Minimum), Math.Min(CInt(NumDuration.Maximum), days))
+
+            NumDuration.Value = days
+            NumDuration.Refresh()
+            NumDuration.Update()
+
             TxtPrice.Text = Convert.ToDecimal(row("Price")).ToString("0.00")
             ChkIsActive.Checked = Convert.ToBoolean(row("IsActive"))
 
             PnlDetails.Visible = True
+            PnlDetails.BringToFront()
+            NumDuration.Focus()
         Catch ex As Exception
             ShowAppMessage("خطأ في تحميل بيانات الباقة للتعديل: " & ex.Message, AppMessageType.Error)
         End Try

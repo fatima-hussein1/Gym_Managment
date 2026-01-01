@@ -238,7 +238,7 @@ Partial Class FrmChangePassword
         PiczoomPass1.BackgroundImage = My.Resources.Resources.icons8_show_password_40
         PiczoomPass1.BackgroundImageLayout = ImageLayout.Stretch
         PiczoomPass1.CustomizableEdges = CustomizableEdges13
-        PiczoomPass1.Image = My.Resources.Resources.icons8_show_password_401
+        PiczoomPass1.Image = My.Resources.Resources.icons8_show_password_40
         PiczoomPass1.ImageRotate = 0F
         PiczoomPass1.Location = New Point(17, 122)
         PiczoomPass1.Name = "PiczoomPass1"
@@ -253,7 +253,7 @@ Partial Class FrmChangePassword
         PiczoomPass2.BackgroundImage = My.Resources.Resources.icons8_show_password_40
         PiczoomPass2.BackgroundImageLayout = ImageLayout.Stretch
         PiczoomPass2.CustomizableEdges = CustomizableEdges13
-        PiczoomPass2.Image = My.Resources.Resources.icons8_show_password_401
+        PiczoomPass2.Image = My.Resources.Resources.icons8_show_password_40
         PiczoomPass2.ImageRotate = 0F
         PiczoomPass2.Location = New Point(17, 198)
         PiczoomPass2.Name = "PiczoomPass2"

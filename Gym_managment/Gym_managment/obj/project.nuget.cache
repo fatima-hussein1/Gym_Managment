@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "IQ+QLfm7EvI=",
+  "dgSpecHash": "dh0FSHsXLvM=",
   "success": true,
-  "projectFilePath": "C:\\Users\\شركة دليل التقنية\\source\\repos\\Gym_managment\\Gym_managment\\Gym_managment.vbproj",
+  "projectFilePath": "C:\\Users\\شركة دليل التقنية\\Documents\\Gym_managment\\Gym_managment\\Gym_managment\\Gym_managment.vbproj",
   "expectedPackageFiles": [
     "C:\\Users\\شركة دليل التقنية\\.nuget\\packages\\azure.core\\1.47.1\\azure.core.1.47.1.nupkg.sha512",
     "C:\\Users\\شركة دليل التقنية\\.nuget\\packages\\azure.identity\\1.14.2\\azure.identity.1.14.2.nupkg.sha512",

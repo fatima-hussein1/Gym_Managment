@@ -60,7 +60,7 @@ Partial Class FrmPackages
         BtnNew.BorderThickness = 2
         BtnNew.CustomizableEdges = CustomizableEdges1
         BtnNew.FillColor = Color.FromArgb(CByte(0), CByte(9), CByte(43))
-        BtnNew.Font = New Font("Segoe UI", 10.0F)
+        BtnNew.Font = New Font("Segoe UI", 10F)
         BtnNew.ForeColor = Color.White
         BtnNew.Image = My.Resources.Resources.icons8_erase_48
         BtnNew.ImageAlign = HorizontalAlignment.Right
@@ -83,7 +83,7 @@ Partial Class FrmPackages
         BtnUpdatePack.BorderThickness = 2
         BtnUpdatePack.CustomizableEdges = CustomizableEdges3
         BtnUpdatePack.FillColor = Color.FromArgb(CByte(0), CByte(9), CByte(43))
-        BtnUpdatePack.Font = New Font("Segoe UI", 10.0F)
+        BtnUpdatePack.Font = New Font("Segoe UI", 10F)
         BtnUpdatePack.ForeColor = Color.White
         BtnUpdatePack.Image = My.Resources.Resources.icons8_edit_64__2_
         BtnUpdatePack.ImageAlign = HorizontalAlignment.Right
@@ -104,7 +104,7 @@ Partial Class FrmPackages
         BtnAddPack.BorderRadius = 10
         BtnAddPack.CustomizableEdges = CustomizableEdges5
         BtnAddPack.FillColor = Color.FromArgb(CByte(193), CByte(20), CByte(137))
-        BtnAddPack.Font = New Font("Segoe UI", 10.0F)
+        BtnAddPack.Font = New Font("Segoe UI", 10F)
         BtnAddPack.ForeColor = Color.White
         BtnAddPack.Image = My.Resources.Resources.icons8_add_file_40
         BtnAddPack.ImageAlign = HorizontalAlignment.Right
@@ -140,7 +140,7 @@ Partial Class FrmPackages
         TxtSearch.DefaultText = ""
         TxtSearch.FillColor = Color.FromArgb(CByte(0), CByte(9), CByte(43))
         TxtSearch.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        TxtSearch.Font = New Font("Segoe UI", 9.0F)
+        TxtSearch.Font = New Font("Segoe UI", 9F)
         TxtSearch.ForeColor = Color.White
         TxtSearch.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         TxtSearch.Location = New Point(348, 13)
@@ -157,7 +157,7 @@ Partial Class FrmPackages
         ' 
         FlpPackages.AutoScroll = True
         FlpPackages.Dock = DockStyle.Left
-        FlpPackages.Font = New Font("Times New Roman", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        FlpPackages.Font = New Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         FlpPackages.Location = New Point(0, 77)
         FlpPackages.Name = "FlpPackages"
         FlpPackages.Size = New Size(654, 841)
@@ -188,7 +188,7 @@ Partial Class FrmPackages
         BtnDelete.BorderThickness = 2
         BtnDelete.CustomizableEdges = CustomizableEdges11
         BtnDelete.FillColor = Color.FromArgb(CByte(0), CByte(9), CByte(43))
-        BtnDelete.Font = New Font("Segoe UI", 10.0F)
+        BtnDelete.Font = New Font("Segoe UI", 10F)
         BtnDelete.ForeColor = Color.White
         BtnDelete.Image = My.Resources.Resources.icons8_close_40
         BtnDelete.ImageAlign = HorizontalAlignment.Right
@@ -224,7 +224,7 @@ Partial Class FrmPackages
         ' 
         NumDuration.BackColor = Color.Transparent
         NumDuration.CustomizableEdges = CustomizableEdges13
-        NumDuration.Font = New Font("Segoe UI", 9.0F)
+        NumDuration.Font = New Font("Segoe UI", 9F)
         NumDuration.Location = New Point(150, 121)
         NumDuration.Margin = New Padding(3, 4, 3, 4)
         NumDuration.Name = "NumDuration"

@@ -16,7 +16,7 @@ Imports System.Reflection
 <Assembly: System.Reflection.AssemblyCompanyAttribute("Gym_managment"),  _
  Assembly: System.Reflection.AssemblyConfigurationAttribute("Debug"),  _
  Assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0"),  _
- Assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b689430302985d979aaaa7c95a8d55cf982225e5"),  _
+ Assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9b304c1fe1196957a4d8175fef08dbe47006a351"),  _
  Assembly: System.Reflection.AssemblyProductAttribute("Gym_managment"),  _
  Assembly: System.Reflection.AssemblyTitleAttribute("Gym_managment"),  _
  Assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0"),  _
