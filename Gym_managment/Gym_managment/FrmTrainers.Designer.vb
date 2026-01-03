@@ -52,7 +52,7 @@ Partial Class FrmTrainers
         BtnAddtrain.BorderRadius = 10
         BtnAddtrain.CustomizableEdges = CustomizableEdges3
         BtnAddtrain.FillColor = Color.FromArgb(CByte(193), CByte(20), CByte(137))
-        BtnAddtrain.Font = New Font("Segoe UI", 10.0F)
+        BtnAddtrain.Font = New Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         BtnAddtrain.ForeColor = Color.White
         BtnAddtrain.Image = My.Resources.Resources.icons8_add_641
         BtnAddtrain.ImageAlign = HorizontalAlignment.Right
@@ -193,7 +193,7 @@ Partial Class FrmTrainers
         ' 
         ' FrmTrainers
         ' 
-        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(0), CByte(9), CByte(43))
         ClientSize = New Size(1186, 727)

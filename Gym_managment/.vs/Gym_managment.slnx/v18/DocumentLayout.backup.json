@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\\u0634\u0631\u0643\u0629 \u062F\u0644\u064A\u0644 \u0627\u0644\u062A\u0642\u0646\u064A\u0629\\Documents\\Gym_managment\\Gym_managment\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{0F6DE8CE-A7CD-EBE4-2D46-19F65D56EECA}|Gym_managment\\Gym_managment.vbproj|c:\\users\\\u0634\u0631\u0643\u0629 \u062F\u0644\u064A\u0644 \u0627\u0644\u062A\u0642\u0646\u064A\u0629\\documents\\gym_managment\\gym_managment\\gym_managment\\frmpackages.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{0F6DE8CE-A7CD-EBE4-2D46-19F65D56EECA}|Gym_managment\\Gym_managment.vbproj|solutionrelative:gym_managment\\frmpackages.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{0F6DE8CE-A7CD-EBE4-2D46-19F65D56EECA}|Gym_managment\\Gym_managment.vbproj|c:\\users\\\u0634\u0631\u0643\u0629 \u062F\u0644\u064A\u0644 \u0627\u0644\u062A\u0642\u0646\u064A\u0629\\documents\\gym_managment\\gym_managment\\gym_managment\\frmpackages.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
       "RelativeMoniker": "D:0:0:{0F6DE8CE-A7CD-EBE4-2D46-19F65D56EECA}|Gym_managment\\Gym_managment.vbproj|solutionrelative:gym_managment\\frmpackages.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
     },
@@ -17,10 +21,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{0F6DE8CE-A7CD-EBE4-2D46-19F65D56EECA}|Gym_managment\\Gym_managment.vbproj|c:\\users\\\u0634\u0631\u0643\u0629 \u062F\u0644\u064A\u0644 \u0627\u0644\u062A\u0642\u0646\u064A\u0629\\documents\\gym_managment\\gym_managment\\gym_managment\\frmchangepassword.designer.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
       "RelativeMoniker": "D:0:0:{0F6DE8CE-A7CD-EBE4-2D46-19F65D56EECA}|Gym_managment\\Gym_managment.vbproj|solutionrelative:gym_managment\\frmchangepassword.designer.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0F6DE8CE-A7CD-EBE4-2D46-19F65D56EECA}|Gym_managment\\Gym_managment.vbproj|c:\\users\\\u0634\u0631\u0643\u0629 \u062F\u0644\u064A\u0644 \u0627\u0644\u062A\u0642\u0646\u064A\u0629\\documents\\gym_managment\\gym_managment\\gym_managment\\frmpackages.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
-      "RelativeMoniker": "D:0:0:{0F6DE8CE-A7CD-EBE4-2D46-19F65D56EECA}|Gym_managment\\Gym_managment.vbproj|solutionrelative:gym_managment\\frmpackages.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0F6DE8CE-A7CD-EBE4-2D46-19F65D56EECA}|Gym_managment\\Gym_managment.vbproj|c:\\users\\\u0634\u0631\u0643\u0629 \u062F\u0644\u064A\u0644 \u0627\u0644\u062A\u0642\u0646\u064A\u0629\\documents\\gym_managment\\gym_managment\\gym_managment\\mdlcon.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
@@ -161,7 +161,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -169,7 +169,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "FrmChangePassword.vb [Design]",
               "DocumentMoniker": "C:\\Users\\\u0634\u0631\u0643\u0629 \u062F\u0644\u064A\u0644 \u0627\u0644\u062A\u0642\u0646\u064A\u0629\\Documents\\Gym_managment\\Gym_managment\\Gym_managment\\FrmChangePassword.vb",
               "RelativeDocumentMoniker": "Gym_managment\\FrmChangePassword.vb",
@@ -181,7 +181,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "FrmProfile.vb [Design]",
               "DocumentMoniker": "C:\\Users\\\u0634\u0631\u0643\u0629 \u062F\u0644\u064A\u0644 \u0627\u0644\u062A\u0642\u0646\u064A\u0629\\Documents\\Gym_managment\\Gym_managment\\Gym_managment\\FrmProfile.vb",
               "RelativeDocumentMoniker": "Gym_managment\\FrmProfile.vb",
@@ -193,7 +193,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "FrmPackages.vb [Design]",
               "DocumentMoniker": "C:\\Users\\\u0634\u0631\u0643\u0629 \u062F\u0644\u064A\u0644 \u0627\u0644\u062A\u0642\u0646\u064A\u0629\\Documents\\Gym_managment\\Gym_managment\\Gym_managment\\FrmPackages.vb",
               "RelativeDocumentMoniker": "Gym_managment\\FrmPackages.vb",
@@ -205,20 +205,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "FrmPackages.vb",
               "DocumentMoniker": "C:\\Users\\\u0634\u0631\u0643\u0629 \u062F\u0644\u064A\u0644 \u0627\u0644\u062A\u0642\u0646\u064A\u0629\\Documents\\Gym_managment\\Gym_managment\\Gym_managment\\FrmPackages.vb",
               "RelativeDocumentMoniker": "Gym_managment\\FrmPackages.vb",
               "ToolTip": "C:\\Users\\\u0634\u0631\u0643\u0629 \u062F\u0644\u064A\u0644 \u0627\u0644\u062A\u0642\u0646\u064A\u0629\\Documents\\Gym_managment\\Gym_managment\\Gym_managment\\FrmPackages.vb",
               "RelativeToolTip": "Gym_managment\\FrmPackages.vb",
-              "ViewState": "AgIAAGEAAAAAAAAAAAAkwGYAAAAZAAAAAAAAAA==",
+              "ViewState": "AgIAAC0BAAAAAAAAAAA2wDkBAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2025-12-15T14:24:17.582Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "FrmChangePassword.designer.vb",
               "DocumentMoniker": "C:\\Users\\\u0634\u0631\u0643\u0629 \u062F\u0644\u064A\u0644 \u0627\u0644\u062A\u0642\u0646\u064A\u0629\\Documents\\Gym_managment\\Gym_managment\\Gym_managment\\FrmChangePassword.designer.vb",
               "RelativeDocumentMoniker": "Gym_managment\\FrmChangePassword.designer.vb",
