@@ -40,6 +40,8 @@ Partial Class FrmAddTrainer
         Dim CustomizableEdges16 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges17 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges18 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges19 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges20 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         PanelTop = New Guna.UI2.WinForms.Guna2Panel()
         ControlBoxMin = New Guna.UI2.WinForms.Guna2ControlBox()
         ControlBoxClose = New Guna.UI2.WinForms.Guna2ControlBox()
@@ -47,6 +49,10 @@ Partial Class FrmAddTrainer
         BtnUpdateTrainer = New Guna.UI2.WinForms.Guna2Button()
         BtnAddTrainer = New Guna.UI2.WinForms.Guna2Button()
         GroupBox1 = New GroupBox()
+        Label4 = New Label()
+        DtpBirthDate = New Guna.UI2.WinForms.Guna2DateTimePicker()
+        TxtEmail = New Guna.UI2.WinForms.Guna2TextBox()
+        LabelEmail = New Label()
         RdStatues = New RadioButton()
         DtpDate = New Guna.UI2.WinForms.Guna2DateTimePicker()
         Pictrainer = New PictureBox()
@@ -107,7 +113,7 @@ Partial Class FrmAddTrainer
         BtnNew.BorderThickness = 2
         BtnNew.CustomizableEdges = CustomizableEdges7
         BtnNew.FillColor = Color.FromArgb(CByte(0), CByte(9), CByte(43))
-        BtnNew.Font = New Font("Segoe UI", 10.0F, FontStyle.Bold)
+        BtnNew.Font = New Font("Times New Roman", 13.8F)
         BtnNew.ForeColor = Color.White
         BtnNew.Location = New Point(39, 401)
         BtnNew.Name = "BtnNew"
@@ -124,7 +130,7 @@ Partial Class FrmAddTrainer
         BtnUpdateTrainer.BorderThickness = 2
         BtnUpdateTrainer.CustomizableEdges = CustomizableEdges9
         BtnUpdateTrainer.FillColor = Color.FromArgb(CByte(0), CByte(9), CByte(43))
-        BtnUpdateTrainer.Font = New Font("Segoe UI", 10.0F, FontStyle.Bold)
+        BtnUpdateTrainer.Font = New Font("Times New Roman", 13.8F)
         BtnUpdateTrainer.ForeColor = Color.White
         BtnUpdateTrainer.Location = New Point(304, 401)
         BtnUpdateTrainer.Name = "BtnUpdateTrainer"
@@ -139,7 +145,7 @@ Partial Class FrmAddTrainer
         BtnAddTrainer.BorderRadius = 10
         BtnAddTrainer.CustomizableEdges = CustomizableEdges11
         BtnAddTrainer.FillColor = Color.FromArgb(CByte(193), CByte(20), CByte(137))
-        BtnAddTrainer.Font = New Font("Segoe UI", 10.0F, FontStyle.Bold)
+        BtnAddTrainer.Font = New Font("Times New Roman", 13.8F)
         BtnAddTrainer.ForeColor = Color.White
         BtnAddTrainer.Location = New Point(574, 401)
         BtnAddTrainer.Name = "BtnAddTrainer"
@@ -150,6 +156,10 @@ Partial Class FrmAddTrainer
         ' 
         ' GroupBox1
         ' 
+        GroupBox1.Controls.Add(Label4)
+        GroupBox1.Controls.Add(DtpBirthDate)
+        GroupBox1.Controls.Add(TxtEmail)
+        GroupBox1.Controls.Add(LabelEmail)
         GroupBox1.Controls.Add(RdStatues)
         GroupBox1.Controls.Add(DtpDate)
         GroupBox1.Controls.Add(Pictrainer)
@@ -159,19 +169,80 @@ Partial Class FrmAddTrainer
         GroupBox1.Controls.Add(Label2)
         GroupBox1.Controls.Add(Label1)
         GroupBox1.Font = New Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        GroupBox1.Location = New Point(25, 113)
+        GroupBox1.Location = New Point(25, 42)
         GroupBox1.Name = "GroupBox1"
         GroupBox1.RightToLeft = RightToLeft.Yes
-        GroupBox1.Size = New Size(780, 272)
+        GroupBox1.Size = New Size(780, 343)
         GroupBox1.TabIndex = 3
         GroupBox1.TabStop = False
+        ' 
+        ' Label4
+        ' 
+        Label4.AutoSize = True
+        Label4.Font = New Font("Times New Roman", 13.8F)
+        Label4.ForeColor = Color.White
+        Label4.Location = New Point(622, 250)
+        Label4.Name = "Label4"
+        Label4.Size = New Size(105, 26)
+        Label4.TabIndex = 11
+        Label4.Text = "تاريخ الميلاد"
+        ' 
+        ' DtpBirthDate
+        ' 
+        DtpBirthDate.Animated = True
+        DtpBirthDate.BorderColor = Color.FromArgb(CByte(234), CByte(153), CByte(149))
+        DtpBirthDate.BorderRadius = 6
+        DtpBirthDate.Checked = True
+        DtpBirthDate.CustomizableEdges = CustomizableEdges13
+        DtpBirthDate.FillColor = Color.FromArgb(CByte(0), CByte(9), CByte(43))
+        DtpBirthDate.Font = New Font("Segoe UI", 10.0F)
+        DtpBirthDate.ForeColor = Color.White
+        DtpBirthDate.Format = DateTimePickerFormat.Short
+        DtpBirthDate.Location = New Point(385, 242)
+        DtpBirthDate.MaxDate = New Date(2077, 11, 16, 23, 59, 59, 0)
+        DtpBirthDate.MinDate = New Date(1900, 4, 30, 0, 0, 0, 0)
+        DtpBirthDate.Name = "DtpBirthDate"
+        DtpBirthDate.ShadowDecoration.CustomizableEdges = CustomizableEdges14
+        DtpBirthDate.Size = New Size(208, 34)
+        DtpBirthDate.TabIndex = 10
+        DtpBirthDate.Value = New Date(2025, 12, 29, 0, 20, 38, 604)
+        ' 
+        ' TxtEmail
+        ' 
+        TxtEmail.BorderColor = Color.FromArgb(CByte(234), CByte(153), CByte(149))
+        TxtEmail.BorderRadius = 6
+        TxtEmail.CustomizableEdges = CustomizableEdges15
+        TxtEmail.DefaultText = ""
+        TxtEmail.FillColor = Color.FromArgb(CByte(0), CByte(9), CByte(43))
+        TxtEmail.Font = New Font("Segoe UI", 10.0F)
+        TxtEmail.ForeColor = Color.White
+        TxtEmail.Location = New Point(385, 186)
+        TxtEmail.Margin = New Padding(3, 4, 3, 4)
+        TxtEmail.Name = "TxtEmail"
+        TxtEmail.PlaceholderText = ""
+        TxtEmail.RightToLeft = RightToLeft.No
+        TxtEmail.SelectedText = ""
+        TxtEmail.ShadowDecoration.CustomizableEdges = CustomizableEdges16
+        TxtEmail.Size = New Size(208, 34)
+        TxtEmail.TabIndex = 8
+        ' 
+        ' LabelEmail
+        ' 
+        LabelEmail.AutoSize = True
+        LabelEmail.Font = New Font("Times New Roman", 13.8F)
+        LabelEmail.ForeColor = Color.White
+        LabelEmail.Location = New Point(622, 186)
+        LabelEmail.Name = "LabelEmail"
+        LabelEmail.Size = New Size(138, 26)
+        LabelEmail.TabIndex = 9
+        LabelEmail.Text = "البريد الإلكتروني"
         ' 
         ' RdStatues
         ' 
         RdStatues.AutoSize = True
         RdStatues.Font = New Font("Times New Roman", 13.8F)
         RdStatues.ForeColor = Color.White
-        RdStatues.Location = New Point(628, 198)
+        RdStatues.Location = New Point(593, 297)
         RdStatues.Name = "RdStatues"
         RdStatues.RightToLeft = RightToLeft.No
         RdStatues.Size = New Size(124, 30)
@@ -184,7 +255,7 @@ Partial Class FrmAddTrainer
         DtpDate.BorderColor = Color.FromArgb(CByte(234), CByte(153), CByte(149))
         DtpDate.BorderRadius = 6
         DtpDate.Checked = True
-        DtpDate.CustomizableEdges = CustomizableEdges13
+        DtpDate.CustomizableEdges = CustomizableEdges17
         DtpDate.FillColor = Color.FromArgb(CByte(0), CByte(9), CByte(43))
         DtpDate.Font = New Font("Segoe UI", 10.0F)
         DtpDate.ForeColor = Color.White
@@ -193,7 +264,7 @@ Partial Class FrmAddTrainer
         DtpDate.MaxDate = New Date(2077, 11, 16, 23, 59, 59, 0)
         DtpDate.MinDate = New Date(1900, 4, 30, 0, 0, 0, 0)
         DtpDate.Name = "DtpDate"
-        DtpDate.ShadowDecoration.CustomizableEdges = CustomizableEdges14
+        DtpDate.ShadowDecoration.CustomizableEdges = CustomizableEdges18
         DtpDate.Size = New Size(208, 34)
         DtpDate.TabIndex = 1
         DtpDate.Value = New Date(2025, 12, 29, 0, 20, 38, 604)
@@ -231,7 +302,7 @@ Partial Class FrmAddTrainer
         ' 
         TxtName.BorderColor = Color.FromArgb(CByte(234), CByte(153), CByte(149))
         TxtName.BorderRadius = 6
-        TxtName.CustomizableEdges = CustomizableEdges17
+        TxtName.CustomizableEdges = CustomizableEdges19
         TxtName.DefaultText = ""
         TxtName.FillColor = Color.FromArgb(CByte(0), CByte(9), CByte(43))
         TxtName.Font = New Font("Segoe UI", 10.0F)
@@ -241,7 +312,7 @@ Partial Class FrmAddTrainer
         TxtName.Name = "TxtName"
         TxtName.PlaceholderText = ""
         TxtName.SelectedText = ""
-        TxtName.ShadowDecoration.CustomizableEdges = CustomizableEdges18
+        TxtName.ShadowDecoration.CustomizableEdges = CustomizableEdges20
         TxtName.Size = New Size(208, 34)
         TxtName.TabIndex = 4
         ' 
@@ -314,7 +385,11 @@ Partial Class FrmAddTrainer
     Friend WithEvents Pictrainer As PictureBox
     Friend WithEvents TxtPhone As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents TxtName As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents TxtEmail As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents LabelEmail As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
+    Friend WithEvents Label4 As Label
+    Friend WithEvents DtpBirthDate As Guna.UI2.WinForms.Guna2DateTimePicker
 End Class
